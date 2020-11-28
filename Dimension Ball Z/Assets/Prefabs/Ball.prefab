@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6423798843695942756
+--- !u!212 &5127848754696034656
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6423798843695942757}
+  m_GameObject: {fileID: 5127848754696034657}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -85,13 +85,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6423798843695942777
+--- !u!58 &5127848754696034685
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6423798843695942757}
+  m_GameObject: {fileID: 5127848754696034657}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 4bedff819a4554c4fa959558ca310aa9, type: 2}
@@ -101,14 +101,14 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.59
---- !u!50 &6423798843695942758
+--- !u!50 &5127848754696034658
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6423798843695942757}
+  m_GameObject: {fileID: 5127848754696034657}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -122,18 +122,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6423798843695942776
+--- !u!114 &5127848754696034684
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6423798843695942757}
+  m_GameObject: {fileID: 5127848754696034657}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94d173b2dc35d4b4095427e4c9ae3dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 6423798843695942758}
+  body: {fileID: 5127848754696034658}
   direction: {x: 1, y: 0}
   speed: 5
