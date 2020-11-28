@@ -8,18 +8,22 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     public Rigidbody2D body;
     public Vector2 direction;
-    public float impulse;
-    public float veloc;
+    public float speed;
     void Start()
     {
-        body.velocity = direction.normalized * impulse;
-        
+        body.velocity = direction.normalized * speed;
     }
 
     // Update is called once per frame
-    void Update()
+
+
+
+
+    private void OnCollisionExit2D(Collision2D other)
     {
-        veloc = body.velocity.magnitude; // <--- number of positions traveled per second
+        Vector2 thing = GetComponent<Rigidbody2D>().velocity.normalized;
+        thing *= speed;
+        GetComponent<Rigidbody2D>().velocity = thing;
+
     }
-    
 }
