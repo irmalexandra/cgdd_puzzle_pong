@@ -38,12 +38,10 @@ public class Portal : MonoBehaviour
         if (portals[0] == GetComponent<Rigidbody2D>())
         {
             ball.transform.position = portals[1].transform.position;
-            Debug.Log("destination" + portals[1].name);
         }
         else if (portals[1] == GetComponent<Rigidbody2D>())
         {
             ball.transform.position = portals[0].transform.position;
-            Debug.Log("destination" + portals[0].name);
         }
         PlayerPrefs.SetFloat("timer", timer);
         
