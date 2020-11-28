@@ -7,35 +7,44 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     private GameObject ball;
+    private Rigidbody2D[] portals;
 
     void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball");
-
+        portals = transform.parent.gameObject.GetComponentsInChildren<Rigidbody2D>();
+        if (!PlayerPrefs.HasKey("timer"))
+        {
+            PlayerPrefs.SetFloat("timer", 0);
+        }
     }
-    
+
+    private void Update()
+    {
+        if (PlayerPrefs.GetFloat("timer") > 0)
+        {
+            PlayerPrefs.SetFloat("timer", PlayerPrefs.GetFloat("timer") - Time.deltaTime);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D ball)
     {
-        Debug.Log("in portal thing for some reason");
         var destination = gameObject;
-        var portal1 = PortalController.instance.portal1; 
-        var portal2 = PortalController.instance.portal2;
         if (!ball.CompareTag("Ball")) return; // Makes sure the object entering the portal is a ball.
-        if (!(PortalController.instance.timer < 0.0001f)) return;
-
-        if (portal1.GetComponent<Rigidbody2D>() == GetComponent<Rigidbody2D>())
+        if (!(PlayerPrefs.GetFloat("timer") < 0.0001f)) return;
+    
+        if (portals[0] == GetComponent<Rigidbody2D>())
         {
-            ball.transform.position = portal2.transform.position;
+            ball.transform.position = portals[1].transform.position;
+            Debug.Log("destination" + portals[1].name);
         }
-        else if (portal2.GetComponent<Rigidbody2D>() == GetComponent<Rigidbody2D>())
+        else if (portals[1] == GetComponent<Rigidbody2D>())
         {
-
-            ball.transform.position = portal1.transform.position;
+            ball.transform.position = portals[0].transform.position;
+            Debug.Log("destination" + portals[0].name);
         }
-
-        PortalController.instance.timer = 0.1f;
-
-
+        PlayerPrefs.SetFloat("timer", 1f);
+        
     }
 
 
