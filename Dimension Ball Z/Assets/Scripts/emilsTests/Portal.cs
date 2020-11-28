@@ -8,6 +8,7 @@ public class Portal : MonoBehaviour
 {
     private GameObject ball;
     private Rigidbody2D[] portals;
+    public float timer;
 
     void Start()
     {
@@ -44,7 +45,7 @@ public class Portal : MonoBehaviour
             ball.transform.position = portals[0].transform.position;
             Debug.Log("destination" + portals[0].name);
         }
-        PlayerPrefs.SetFloat("timer", 1f);
+        PlayerPrefs.SetFloat("timer", timer);
         
     }
 
