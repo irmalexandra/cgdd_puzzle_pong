@@ -9,7 +9,7 @@ public class WinPortalController : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D collision){
 
-        Destroy(collision.collider.gameObject);
-        Application.LoadLevel(SceneManager.GetActiveScene().buildIndex+1);
+        Destroy(collision.collider.gameObject); 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }
