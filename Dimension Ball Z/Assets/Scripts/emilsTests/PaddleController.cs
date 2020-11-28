@@ -26,14 +26,23 @@ public class PaddleController : MonoBehaviour
 
     void ProcessInputs()
     {
-        float moveY = Input.GetAxisRaw("Vertical");
-
-        _moveDirection = new Vector2(0, moveY);   
+        Vector2 direction = new Vector2(0, Input.GetAxisRaw("Vertical"));
+        _moveDirection = direction;
     }
 
     void Move()
     {
-        body.velocity = new Vector2(0, _moveDirection.y * movementSpeed);
+        if ((_moveDirection.y < 0 && transform.position.y < lowerBound) 
+            || (_moveDirection.y > 0 && transform.position.y > upperBound))
+        {
+            body.velocity = new Vector2(0,0);
+        }
+        else
+        {
+            Vector2 newPosition = new Vector2(0, _moveDirection.y * movementSpeed);
+            body.velocity = newPosition;
+        }
+
     }
 }
 
