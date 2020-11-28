@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -28,5 +29,11 @@ public class PaddleController : MonoBehaviour
         }
         transform.position = position;
 
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Destroy(other.gameObject);
+        
     }
 }
