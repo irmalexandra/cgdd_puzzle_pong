@@ -94,14 +94,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4109497000499569902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12fe3624103e1494ba2c73f276f321cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 94d173b2dc35d4b4095427e4c9ae3dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4109497000499569875}
-  direction: {x: 1, y: 0}
-  impulse: 10
-  levelBounds: {x: 0, y: 0}
-  spawnPoint: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  speed: 5
 --- !u!50 &4109497000499569875
 Rigidbody2D:
   serializedVersion: 4
