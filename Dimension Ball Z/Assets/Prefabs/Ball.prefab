@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6423798843695942757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.97, y: 2.31, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,6 +93,7 @@ CircleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6423798843695942757}
   m_Enabled: 1
+<<<<<<< HEAD
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 4bedff819a4554c4fa959558ca310aa9, type: 2}
   m_IsTrigger: 0
@@ -102,6 +103,16 @@ CircleCollider2D:
   serializedVersion: 2
   m_Radius: 0.59
 --- !u!50 &6423798843695942758
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d173b2dc35d4b4095427e4c9ae3dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 4109497000499569875}
+  direction: {x: 0, y: 0}
+  speed: 5
+--- !u!50 &4109497000499569875
+>>>>>>> 1923cf10fc7874ca82c59709f27a3d8f03a65d2f
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
