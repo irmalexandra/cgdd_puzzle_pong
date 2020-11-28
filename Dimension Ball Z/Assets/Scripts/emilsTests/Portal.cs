@@ -29,10 +29,11 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D ball)
     {
+        
         var destination = gameObject;
         if (!ball.CompareTag("Ball")) return; // Makes sure the object entering the portal is a ball.
         if (!(PlayerPrefs.GetFloat("timer") < 0.0001f)) return;
-    
+        SoundManagerScript.PlayPortalSound();
         if (portals[0] == GetComponent<Rigidbody2D>())
         {
             ball.transform.position = portals[1].transform.position;
