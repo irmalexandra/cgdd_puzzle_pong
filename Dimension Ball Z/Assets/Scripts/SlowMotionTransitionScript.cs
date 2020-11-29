@@ -63,5 +63,6 @@ public class SlowMotionTransitionScript : MonoBehaviour
 
         _timer = timer;
         _active = true;
+        SoundManagerScript.PlaySoundEffect("SlowMotion");
     }
 }
