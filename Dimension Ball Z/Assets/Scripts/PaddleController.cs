@@ -13,10 +13,19 @@ public class PaddleController : MonoBehaviour
     public Rigidbody2D body;
     private float _verticalMovement;
     private Vector2 _moveDirection;
+    public bool active;
     
     private void Update()
     {
-        ProcessInputs();
+        if (active)
+        {
+            ProcessInputs();
+        }
+        else
+        {
+            _moveDirection = new Vector2(0, 0);
+        }
+
     }
 
     private void FixedUpdate()
