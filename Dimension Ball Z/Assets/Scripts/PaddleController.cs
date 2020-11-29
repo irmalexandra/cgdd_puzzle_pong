@@ -13,7 +13,7 @@ public class PaddleController : MonoBehaviour
     public Rigidbody2D body;
     private float _verticalMovement;
     private Vector2 _moveDirection;
-    public bool active;
+    public bool active = false;
     
     private void Update()
     {
