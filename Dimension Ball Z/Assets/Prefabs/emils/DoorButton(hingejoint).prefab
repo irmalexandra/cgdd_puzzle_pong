@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 4284019758312875911}
+  openOnly: 0
 --- !u!1 &4284019758312875911
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,12 +487,12 @@ HingeJoint2D:
   m_ConnectedAnchor: {x: -0.75746703, y: -0.8429873}
   m_UseMotor: 1
   m_Motor:
-    m_MotorSpeed: 100
+    m_MotorSpeed: -100
     m_MaximumMotorForce: 100
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 0.71599627
-    m_UpperAngle: 89.131996
+    m_LowerAngle: 0
+    m_UpperAngle: 90
 --- !u!1 &4284019758348470336
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4284019758348470343}
   m_Layer: 0
-  m_Name: DoorButton
+  m_Name: DoorButton(hingejoint)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
