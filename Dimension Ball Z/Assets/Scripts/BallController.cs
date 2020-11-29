@@ -9,21 +9,24 @@ public class BallController : MonoBehaviour
     public Rigidbody2D body;
     public Vector2 direction;
     public float speed;
+    public float currentMagnitude;
     void Start()
     {
         body.velocity = direction.normalized * speed;
     }
 
     // Update is called once per frame
-
-
+    private void Update()
+    {
+        currentMagnitude = body.velocity.magnitude;
+    }
 
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        Vector2 thing = GetComponent<Rigidbody2D>().velocity.normalized;
-        thing *= speed;
-        GetComponent<Rigidbody2D>().velocity = thing;
+        Vector2 reDirection = GetComponent<Rigidbody2D>().velocity.normalized;
+        reDirection *= speed;
+        GetComponent<Rigidbody2D>().velocity = reDirection;
 
     }
 }
