@@ -151,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 7299886548559804042, guid: 881cb94613064ef4ba5010001ffae7ca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7299886548559804042, guid: 881cb94613064ef4ba5010001ffae7ca,
         type: 3}
@@ -335,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 6381178194369760563, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8930892962912410281, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
@@ -559,12 +559,12 @@ PrefabInstance:
     - target: {fileID: 5817526469158189058, guid: 412b1b5bc3c139442bf043004f27a158,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.73
+      value: -0.81
       objectReference: {fileID: 0}
     - target: {fileID: 5817526469158189058, guid: 412b1b5bc3c139442bf043004f27a158,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 5817526469158189058, guid: 412b1b5bc3c139442bf043004f27a158,
         type: 3}
@@ -691,12 +691,12 @@ PrefabInstance:
     - target: {fileID: 2766549631180791481, guid: 53e2394bfef47694d92b8fd100208133,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8541565
+      value: 6.11
       objectReference: {fileID: 0}
     - target: {fileID: 2766549631180791481, guid: 53e2394bfef47694d92b8fd100208133,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5874963
+      value: 3.55
       objectReference: {fileID: 0}
     - target: {fileID: 2766549631180791481, guid: 53e2394bfef47694d92b8fd100208133,
         type: 3}
@@ -747,6 +747,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766549631180791483, guid: 53e2394bfef47694d92b8fd100208133,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.58
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53e2394bfef47694d92b8fd100208133, type: 3}
