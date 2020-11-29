@@ -22,11 +22,12 @@ public class BallController : MonoBehaviour
     }
 
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         Vector2 reDirection = GetComponent<Rigidbody2D>().velocity.normalized;
         reDirection *= speed;
         GetComponent<Rigidbody2D>().velocity = reDirection;
+        Debug.Log("collide");
 
     }
 }
