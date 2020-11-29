@@ -302,6 +302,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightPaddle
       objectReference: {fileID: 0}
+    - target: {fileID: 7299886548559804041, guid: 881cb94613064ef4ba5010001ffae7ca,
+        type: 3}
+      propertyPath: upperBound
+      value: 4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299886548559804041, guid: 881cb94613064ef4ba5010001ffae7ca,
+        type: 3}
+      propertyPath: lowerBound
+      value: -4.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7299886548559804042, guid: 881cb94613064ef4ba5010001ffae7ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -554,6 +564,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeftPaddle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299886548559804041, guid: 881cb94613064ef4ba5010001ffae7ca,
+        type: 3}
+      propertyPath: upperBound
+      value: 4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299886548559804041, guid: 881cb94613064ef4ba5010001ffae7ca,
+        type: 3}
+      propertyPath: lowerBound
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 7299886548559804042, guid: 881cb94613064ef4ba5010001ffae7ca,
         type: 3}
