@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
 
-    public void activateDoor()
+    public void activate()
     {
         JointMotor2D direction = GetComponent<HingeJoint2D>().motor;
         direction.motorSpeed *= -1;
