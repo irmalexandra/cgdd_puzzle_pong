@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
-    public GameObject door;
+    public GameObject[] toActivate;
     public bool openOnly;
     private bool _open;
+    private GameObject _buttonFace;
+    private Vector3 _originalPosition;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        
         if (other.gameObject.name == "ButtonFace")
         {
             if (openOnly)
@@ -24,17 +27,25 @@ public class ButtonController : MonoBehaviour
             
         }
     }
+
+    private void Start()
+    {
+        _buttonFace = GameObject.Find("ButtonFace");
+        _originalPosition = _buttonFace.transform.position;
+    }
+
     
+
     private void Toggle()
     {
-        door.gameObject.GetComponent<DoorController>().activateDoor();
+        GameManager.Instance.Activate(toActivate);
     }
 
     private void OpenOnly()
     {
         if (!_open)
         {
-            door.gameObject.GetComponent<DoorController>().activateDoor();
+            GameManager.Instance.Activate(toActivate);
             _open = true;
         }
     }

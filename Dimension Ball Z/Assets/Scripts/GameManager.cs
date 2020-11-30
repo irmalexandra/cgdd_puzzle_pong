@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private GameObject[] _dimensions;
-
+    private GameObject _gameOverCanvas;
     public static GameManager Instance;
     public int extraBalls;
 
@@ -17,12 +18,26 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         _dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
+        _gameOverCanvas = GameObject.Find("GameOverCanvas");
+        _gameOverCanvas.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
+
+
+    public void TriggerGameOverMenu()
     {
-        
+        _gameOverCanvas.SetActive(true);
+    }
+    
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void SwitchPaddle(PaddleController[] otherPaddles)
@@ -35,6 +50,14 @@ public class GameManager : MonoBehaviour
             {
                 dimensionPaddle.active = otherPaddles.Contains(dimensionPaddle);
             }
+        }
+    }
+    
+    public void Activate(GameObject[] objects)
+    {
+        foreach (var toActivate in objects)
+        {
+            toActivate.GetComponent<InteractablesController>().activate();
         }
     }
 }
