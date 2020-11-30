@@ -30,8 +30,6 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D ball)
     {
-        Debug.Log("portal trigger");
-        var destination = gameObject;
         if (!ball.CompareTag("Ball")) return; // Makes sure the object entering the portal is a ball.
         if (!(PlayerPrefs.GetFloat("timer") < 0.0001f)) return;
         SoundManagerScript.PlaySoundEffect("PortalSoundEffect");

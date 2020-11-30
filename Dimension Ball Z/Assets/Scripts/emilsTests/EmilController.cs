@@ -5,7 +5,7 @@ using UnityEngine;
 public class EmilController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public EmilController instance;
+    public static EmilController instance;
     
     void Start()
     {
@@ -13,8 +13,12 @@ public class EmilController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
 
+    public void activate(GameObject[] objects)
+    {
+        foreach (var toActivate in objects)
+        {
+            toActivate.GetComponent<InteractablesController>().activate();
+        }
     }
 }

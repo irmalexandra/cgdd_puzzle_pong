@@ -34,30 +34,18 @@ public class ButtonController : MonoBehaviour
         _originalPosition = _buttonFace.transform.position;
     }
 
-    private void Update()
-    {
-        if (_buttonFace.transform.position.y > _originalPosition.y)
-        {
-            _buttonFace.transform.position = _originalPosition;
-        }
-    }
+    
 
     private void Toggle()
     {
-        foreach (var gameobject in toActivate)
-        {
-            gameobject.gameObject.GetComponent<DoorController>().activate();
-        }
+        EmilController.instance.activate(toActivate);
     }
 
     private void OpenOnly()
     {
         if (!_open)
         {
-            foreach (var gameobject in toActivate)
-            {
-                gameobject.gameObject.GetComponent<DoorController>().activate();
-            }
+            EmilController.instance.activate(toActivate);
             _open = true;
         }
     }
