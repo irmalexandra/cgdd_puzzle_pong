@@ -29,13 +29,11 @@ public class GameManager : MonoBehaviour
     
     public void RestartLevel()
     {
-        Debug.Log("restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ReturnToMenu()
     {
-        Debug.Log("menu");
         SceneManager.LoadScene(0);
     }
 
