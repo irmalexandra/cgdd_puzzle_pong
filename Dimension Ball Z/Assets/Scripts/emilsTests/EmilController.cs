@@ -14,11 +14,5 @@ public class EmilController : MonoBehaviour
 
     // Update is called once per frame
 
-    public void activate(GameObject[] objects)
-    {
-        foreach (var toActivate in objects)
-        {
-            toActivate.GetComponent<InteractablesController>().activate();
-        }
-    }
+
 }

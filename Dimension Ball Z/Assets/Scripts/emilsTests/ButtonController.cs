@@ -38,14 +38,14 @@ public class ButtonController : MonoBehaviour
 
     private void Toggle()
     {
-        EmilController.instance.activate(toActivate);
+        GameManager.Instance.Activate(toActivate);
     }
 
     private void OpenOnly()
     {
         if (!_open)
         {
-            EmilController.instance.activate(toActivate);
+            GameManager.Instance.Activate(toActivate);
             _open = true;
         }
     }
