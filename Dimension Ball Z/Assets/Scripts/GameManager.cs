@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private GameObject[] _dimensions;
-
+    private GameObject _gameOverCanvas;
     public static GameManager Instance;
 
     // Start is called before the first frame update
@@ -14,12 +15,28 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         _dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
+        _gameOverCanvas = GameObject.Find("GameOverCanvas");
+        _gameOverCanvas.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
+
+
+    public void TriggerGameOverMenu()
     {
-        
+        _gameOverCanvas.SetActive(true);
+    }
+    
+    public void RestartLevel()
+    {
+        Debug.Log("restart");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ReturnToMenu()
+    {
+        Debug.Log("menu");
+        SceneManager.LoadScene(0);
     }
 
     public void SwitchPaddle(PaddleController[] otherPaddles)
