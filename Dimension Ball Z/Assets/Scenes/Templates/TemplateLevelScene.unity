@@ -260,7 +260,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0024747849, y: -0.0026843548}
+  m_Offset: {x: 0.0024747849, y: 0.004647732}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -271,7 +271,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.20595, y: 0.1639905}
+  m_Size: {x: 19.20595, y: 0.17865467}
   m_EdgeRadius: 0
 --- !u!4 &752795772
 Transform:
@@ -431,7 +431,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0024747849, y: -0.0026843548}
+  m_Offset: {x: 0.0024747849, y: -0.0061006546}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -442,7 +442,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.20595, y: 0.1639905}
+  m_Size: {x: 19.20595, y: 0.1708231}
   m_EdgeRadius: 0
 --- !u!4 &1604540253
 Transform:
@@ -469,6 +469,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SoundEffectManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040360933987817003, guid: 03bacf73926f9e24bbee8d46d036780d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4647435819839759049, guid: 03bacf73926f9e24bbee8d46d036780d,
         type: 3}
@@ -523,6 +528,11 @@ PrefabInstance:
     - target: {fileID: 4647435819839759049, guid: 03bacf73926f9e24bbee8d46d036780d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216249684988415357, guid: 03bacf73926f9e24bbee8d46d036780d,
+        type: 3}
+      propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
