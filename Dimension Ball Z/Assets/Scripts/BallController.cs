@@ -25,9 +25,14 @@ public class BallController : MonoBehaviour
         currentMagnitude = body.velocity.magnitude;
         if (!(transform.position.x < -levelBounds.x) && !(transform.position.x > levelBounds.x) &&
             !(transform.position.y < -levelBounds.y) && !(transform.position.y > levelBounds.y)) return;
-        transform.position = startPosition;
-        //body.velocity = Vector2.zero;
+        
         GameManager.Instance.extraBalls--;
+        
+        if (GameManager.Instance.extraBalls == 0)
+        {
+            GameManager.Instance.RestartLevel();
+        }
+        transform.position = startPosition;
     }
 
 
