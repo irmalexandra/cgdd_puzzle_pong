@@ -51,7 +51,7 @@ public class SlowMotionTransitionScript : MonoBehaviour
         {
             Debug.Log("Triggering SlowMotion");
             SlowMotionTrigger();
-            GameManager.Instance.SwitchPaddle(transform.parent.gameObject.GetComponentsInChildren<PaddleController>());
+            GameManager.Instance.SwitchPaddle(transform.gameObject.GetComponentsInChildren<PaddleController>());
         }
     }
 
