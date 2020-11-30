@@ -27,7 +27,17 @@ public class BallController : MonoBehaviour
         Vector2 reDirection = GetComponent<Rigidbody2D>().velocity.normalized;
         reDirection *= speed;
         GetComponent<Rigidbody2D>().velocity = reDirection;
+        
         Debug.Log("collide");
+
+        if (other.gameObject.CompareTag("Paddle"))
+        {
+            SoundManagerScript.PlaySoundEffect("PaddleHit");
+        }
+        else
+        {
+            SoundManagerScript.PlaySoundEffect("BallHit");
+        }
 
     }
 }
