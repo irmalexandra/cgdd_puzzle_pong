@@ -32,7 +32,8 @@ public class BallController : MonoBehaviour
         {
             GameManager.Instance.RestartLevel();
         }
-        transform.position = startPosition;
+        if (GameManager.Instance.extraBalls != 0)
+            transform.position = startPosition;
     }
 
 
