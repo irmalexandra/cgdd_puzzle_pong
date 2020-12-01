@@ -60,11 +60,4 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void Activate(GameObject[] objects)
-    {
-        foreach (var toActivate in objects)
-        {
-            toActivate.GetComponent<InteractablesController>().activate();
-        }
-    }
 }
