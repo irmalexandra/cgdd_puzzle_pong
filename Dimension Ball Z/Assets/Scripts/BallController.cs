@@ -30,7 +30,8 @@ public class BallController : MonoBehaviour
         
         if (GameManager.Instance.extraBalls == 0)
         {
-            GameManager.Instance.RestartLevel();
+            GameManager.Instance.TriggerGameOverMenu();
+            
         }
         transform.position = startPosition;
     }
