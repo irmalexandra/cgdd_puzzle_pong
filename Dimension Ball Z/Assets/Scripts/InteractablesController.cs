@@ -1,25 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class InteractablesController : MonoBehaviour
 {
+
+    public bool toggle;
+    private bool _toggled;
     
-    public void activate()
+
+    public void Signal()
     {
-        if (CompareTag("Door"))
+        if (toggle)
         {
-            openDoor();
+            Toggle();
         }
+        else
+        {
+            NotToggle();
+        }
+  
     }
 
 
-
-    private void openDoor()
+    private void Toggle()
     {
-        JointMotor2D direction = GetComponent<HingeJoint2D>().motor;
+        if (!_toggled)
+        {
+            _toggled = true;
+            Activate();
+        }
+    }
+
+    private void NotToggle()
+    {
+        Activate();
+    }
+
+
+    private void Activate()
+    {
+        if (CompareTag("Door"))
+        {
+            OpenDoor();
+        }
+    }
+    
+    
+    private void OpenDoor()
+    {
+        HingeJoint2D hinge = gameObject.GetComponent<HingeJoint2D>();
+        JointMotor2D direction = hinge.motor;
         direction.motorSpeed *= -1;
-        GetComponent<HingeJoint2D>().motor = direction;
+        hinge.motor = direction;
     }
 }
 
