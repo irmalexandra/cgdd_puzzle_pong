@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public TimeManager timeManager;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
