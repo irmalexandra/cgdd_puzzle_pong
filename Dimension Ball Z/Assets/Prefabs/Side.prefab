@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6694401970043394737}
   - component: {fileID: 2763616869993784928}
-  - component: {fileID: 172089289733339417}
+  - component: {fileID: 2061873625735452030}
   m_Layer: 0
   m_Name: Side
   m_TagString: DimensionZone
@@ -62,7 +62,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.599999, y: 10.007171}
   m_EdgeRadius: 0
---- !u!114 &172089289733339417
+--- !u!114 &2061873625735452030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,11 +71,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131075740072726969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12f552f2662b604ba6c0e8dd8d1fc09, type: 3}
+  m_Script: {fileID: 11500000, guid: d9b0a00d68d6e2f489adee5bab6d9e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowMotionSpeed: 0.5
-  timer: 1
 --- !u!1001 &283791673272839553
 PrefabInstance:
   m_ObjectHideFlags: 0
