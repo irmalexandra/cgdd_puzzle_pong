@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int extraBalls;
 
+    public TimeManager timeManager;
+
     
 
     // Start is called before the first frame update
@@ -20,7 +22,11 @@ public class GameManager : MonoBehaviour
         _dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
         _gameOverCanvas = GameObject.Find("GameOverCanvas");
         _gameOverCanvas.SetActive(false);
+<<<<<<< HEAD
         Physics2D.IgnoreLayerCollision(8,8, true);
+=======
+        timeManager.DoSlowmotion();
+>>>>>>> SlowMotionwithTimeScale
     }
 
     // Update is called once per frame
