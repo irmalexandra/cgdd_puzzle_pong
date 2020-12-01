@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         _dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
         _gameOverCanvas = GameObject.Find("GameOverCanvas");
         _gameOverCanvas.SetActive(false);
+        Physics2D.IgnoreLayerCollision(8,8, true);
     }
 
     // Update is called once per frame
