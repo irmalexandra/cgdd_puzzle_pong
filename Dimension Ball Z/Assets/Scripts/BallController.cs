@@ -18,10 +18,7 @@ public class BallController : MonoBehaviour
     
     
     public float nudgePower;
-    public float nudgeCooldown = 5f;
-    private bool nudgeUsed;
-    private float nudgeCooldownTimer;
-    private bool nudgePressed;
+    public int nudgeStaminaCost;
     
     void Start()
     {
@@ -47,16 +44,8 @@ public class BallController : MonoBehaviour
             GameManager.Instance.TriggerGameOverMenu();
             
         }
-        
     }
-    
-
-    private void FixedUpdate()
-    {
-
-    }
-
-
+  
     private void OnCollisionEnter2D(Collision2D other)
     {
         Vector2 reDirection = GetComponent<Rigidbody2D>().velocity.normalized;
@@ -75,16 +64,17 @@ public class BallController : MonoBehaviour
 
     private void ProcessInputs()
     {
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
-            Nudge();
+            if (StaminaBar.instance.UseStamina(nudgeStaminaCost))
+            {
+                Nudge();
+            }
         }
     }
 
     private  void Nudge()
     {
-        Debug.Log("Nudging Ball");
-
         var nudgeDirection = body.velocity;
         
         var above = transform.position.y <= Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
@@ -96,12 +86,10 @@ public class BallController : MonoBehaviour
         {
             if (above)
             {
-                Debug.Log("Adding to Y");
                 nudgeDirection.y += (nudgePower);
             }
             else
             {
-                Debug.Log("Subtracting from Y");
                 nudgeDirection.y -= nudgePower;
             }
         }
@@ -109,16 +97,13 @@ public class BallController : MonoBehaviour
         {
             if (right)
             {
-                Debug.Log("Adding to X");
                 nudgeDirection.x += nudgePower;
             }
             else
             {
-                Debug.Log("Subtracting from X");
                 nudgeDirection.x -= nudgePower;
             }
         }
-
         body.velocity = nudgeDirection;
     }
 }
