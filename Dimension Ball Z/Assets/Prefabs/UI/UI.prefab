@@ -241,6 +241,31 @@ PrefabInstance:
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 7013971883551075147, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: m_enableKerning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013971883551075147, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013971883551075147, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013971883551075147, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013971883551075147, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
     - target: {fileID: 7013971883854063744, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -416,6 +441,31 @@ PrefabInstance:
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 7013971883914729105, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: m_enableKerning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013971883914729105, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013971883914729105, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013971883914729105, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013971883914729105, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22cd9e77ce4cf8849877c0ea79123ecd, type: 3}
 --- !u!224 &7515688031658366478 stripped
@@ -461,6 +511,16 @@ PrefabInstance:
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 6345322580259571455, guid: 471fe1a595dce1b408adea3a09859624,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 6345322580522172369, guid: 471fe1a595dce1b408adea3a09859624,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 6345322580813569668, guid: 471fe1a595dce1b408adea3a09859624,
         type: 3}
       propertyPath: m_ScaleFactor
