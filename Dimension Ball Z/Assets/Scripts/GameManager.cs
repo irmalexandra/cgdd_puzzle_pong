@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,8 +9,15 @@ public class GameManager : MonoBehaviour
 {
     private GameObject[] _dimensions;
     private GameObject _gameOverCanvas;
+
+    private GameObject _pauseCanvas;
+
+    private GameObject _levelCompleteCanvas;
     public static GameManager Instance;
     public int extraBalls;
+
+    private bool _levelStarted;
+    private bool _paused;
 
     public TimeManager timeManager;
 
@@ -20,17 +28,59 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         _dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
+        
         _gameOverCanvas = GameObject.FindWithTag("GameOverMenu");
+        _pauseCanvas = GameObject.FindWithTag("PauseMenu");
         _gameOverCanvas.SetActive(false);
+        _pauseCanvas.SetActive(false);
         
         Physics2D.IgnoreLayerCollision(8,8, true);
         Physics2D.IgnoreLayerCollision(9,10, true);
         Physics2D.IgnoreLayerCollision(9,9, true);
+        
+        timeManager.Pause();
+    }
+    
+    private void Update()
+    {
+        ProcessInputs();
+        _levelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
+        _levelCompleteCanvas.SetActive(false);
+
+        Physics2D.IgnoreLayerCollision(8, 8, true);
+        Physics2D.IgnoreLayerCollision(9, 10, true);
+        Physics2D.IgnoreLayerCollision(9, 9, true);
 
         timeManager.DoSlowmotion();
 
     }
 
+    void ProcessInputs()
+    {
+        if (!_levelStarted)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                Resume();
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                if (!IsPaused())
+                {
+                    Pause();
+                }
+                else
+                {
+                    Resume();
+                }
+                
+            }
+        }
+        
+    }
     // Update is called once per frame
 
 
@@ -38,7 +88,13 @@ public class GameManager : MonoBehaviour
     {
         _gameOverCanvas.SetActive(true);
     }
-    
+
+    public void TriggerLevelCompleteMenu()
+    {
+        Debug.Log("in trigger level complete menu");
+        _levelCompleteCanvas.SetActive(true);
+    }
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -47,6 +103,11 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void SwitchPaddle(PaddleController[] otherPaddles)
@@ -60,6 +121,37 @@ public class GameManager : MonoBehaviour
                 dimensionPaddle.active = otherPaddles.Contains(dimensionPaddle);
             }
         }
+    }
+
+    public bool IsPaused()
+    {
+        return timeManager.GetPaused();
+    }
+
+    public void Resume()
+    {
+        Debug.Log("Triggering Resume");
+        if (!_levelStarted)
+        {
+            timeManager.Resume();
+            GameObject.FindGameObjectWithTag("LevelStartMenu").SetActive(false);
+            _levelStarted = true;
+            
+        }
+        else
+        {
+            timeManager.Resume();
+            _pauseCanvas.SetActive(false);
+        }
+        
+        
+        
+    }
+
+    public void Pause()
+    {
+        timeManager.Pause();
+        _pauseCanvas.SetActive(true);
     }
     
 }
