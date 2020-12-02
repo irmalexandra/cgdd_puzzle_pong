@@ -1,4 +1,5 @@
 ﻿
+using System.Data;
 using UnityEngine;
 
 public class InteractablesController : MonoBehaviour
@@ -50,6 +51,8 @@ public class InteractablesController : MonoBehaviour
     {
         HingeJoint2D hinge = gameObject.GetComponent<HingeJoint2D>();
         JointMotor2D direction = hinge.motor;
+        Rigidbody2D door = gameObject.GetComponent<Rigidbody2D>();
+        door.constraints = RigidbodyConstraints2D.None;
         direction.motorSpeed *= -1;
         hinge.motor = direction;
     }
