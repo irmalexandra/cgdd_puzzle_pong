@@ -10,7 +10,14 @@ public class TimeManager : MonoBehaviour
 
     private bool _paused = true;
 
-    private float _previousTimeScale;
+    private float _previousTimeScale = 1f;
+
+    public static TimeManager Instance;
+
+    public void Start()
+    {
+        Instance = this;
+    }
 
     void Update ()
     {
@@ -41,9 +48,10 @@ public class TimeManager : MonoBehaviour
 
     public void Resume()
     {
+        Debug.Log("Starting Game");
         _paused = false;
         Time.timeScale = _previousTimeScale;
-        Debug.Log("Starting Game");
+        
     }
 
     public bool GetPaused()

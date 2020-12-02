@@ -8,18 +8,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private GameObject[] _dimensions;
-    private GameObject _gameOverCanvas;
-
-    private GameObject _pauseCanvas;
-
-    private GameObject _levelCompleteCanvas;
+    public static GameObject GameOverCanvas;
+    public static GameObject PauseCanvas;
+    public static GameObject LevelStartCanvas;
+    public static GameObject LevelCompleteCanvas;
+    
     public static GameManager Instance;
     public int extraBalls;
 
     private bool _levelStarted;
     private bool _paused;
 
-    public TimeManager timeManager;
 
 
 
@@ -29,29 +28,33 @@ public class GameManager : MonoBehaviour
         Instance = this;
         _dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
         
-        _gameOverCanvas = GameObject.FindWithTag("GameOverMenu");
-        _pauseCanvas = GameObject.FindWithTag("PauseMenu");
-        _gameOverCanvas.SetActive(false);
-        _pauseCanvas.SetActive(false);
+        GameOverCanvas = GameObject.FindWithTag("GameOverMenu");
+        PauseCanvas = GameObject.FindWithTag("PauseMenu");
+        LevelStartCanvas = GameObject.FindWithTag("LevelStartMenu");
+        LevelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
+        Debug.Log(PauseCanvas);
+        GameOverCanvas.SetActive(false);
+        PauseCanvas.SetActive(false);
         
         Physics2D.IgnoreLayerCollision(8,8, true);
         Physics2D.IgnoreLayerCollision(9,10, true);
         Physics2D.IgnoreLayerCollision(9,9, true);
         
-        timeManager.Pause();
+        Debug.Log(TimeManager.Instance);
+        Time.timeScale = 0;
     }
     
     private void Update()
     {
         ProcessInputs();
-        _levelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
-        _levelCompleteCanvas.SetActive(false);
+        LevelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
+        LevelCompleteCanvas.SetActive(false);
 
         Physics2D.IgnoreLayerCollision(8, 8, true);
         Physics2D.IgnoreLayerCollision(9, 10, true);
         Physics2D.IgnoreLayerCollision(9, 9, true);
 
-        timeManager.DoSlowmotion();
+        TimeManager.Instance.DoSlowmotion();
 
     }
 
@@ -61,7 +64,7 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                Resume();
+                StartLevel();
             }
         }
         else
@@ -86,13 +89,13 @@ public class GameManager : MonoBehaviour
 
     public void TriggerGameOverMenu()
     {
-        _gameOverCanvas.SetActive(true);
+        GameOverCanvas.SetActive(true);
     }
 
     public void TriggerLevelCompleteMenu()
     {
         Debug.Log("in trigger level complete menu");
-        _levelCompleteCanvas.SetActive(true);
+        LevelStartCanvas.SetActive(true);
     }
 
     public void RestartLevel()
@@ -125,33 +128,29 @@ public class GameManager : MonoBehaviour
 
     public bool IsPaused()
     {
-        return timeManager.GetPaused();
+        return TimeManager.Instance.GetPaused();
     }
 
     public void Resume()
     {
-        Debug.Log("Triggering Resume");
-        if (!_levelStarted)
-        {
-            timeManager.Resume();
-            GameObject.FindGameObjectWithTag("LevelStartMenu").SetActive(false);
-            _levelStarted = true;
-            
-        }
-        else
-        {
-            timeManager.Resume();
-            _pauseCanvas.SetActive(false);
-        }
-        
-        
-        
+        TimeManager.Instance.Resume();
+        Debug.Log(PauseCanvas);
+        PauseCanvas.SetActive(false);
+    
     }
 
     public void Pause()
     {
-        timeManager.Pause();
-        _pauseCanvas.SetActive(true);
+        TimeManager.Instance.Pause();
+        Debug.Log(PauseCanvas);
+        PauseCanvas.SetActive(true);
+    }
+
+    private void StartLevel()
+    {
+        TimeManager.Instance.Resume();
+        GameObject.FindGameObjectWithTag("LevelStartMenu").SetActive(false);
+        _levelStarted = true;
     }
     
 }

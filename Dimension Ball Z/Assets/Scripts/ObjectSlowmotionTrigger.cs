@@ -9,7 +9,7 @@ public class ObjectSlowmotionTrigger : MonoBehaviour
  {
   if (other.gameObject.CompareTag("Ball"))
   {
-   GameManager.Instance.timeManager.DoSlowmotion();
+   TimeManager.Instance.DoSlowmotion();
   }
  }
 }
