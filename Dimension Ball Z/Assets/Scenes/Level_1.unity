@@ -1394,7 +1394,7 @@ PrefabInstance:
     - target: {fileID: 5032131052832143345, guid: eec6a7f3abd498d4c971291cad6ad403,
         type: 3}
       propertyPath: nudgePower
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5702944671181492609, guid: eec6a7f3abd498d4c971291cad6ad403,
         type: 3}
@@ -2078,6 +2078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197031909576207348, guid: 2fea8573f84abc14995d5766f83005ba,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7515688031719041054, guid: 2fea8573f84abc14995d5766f83005ba,
         type: 3}
