@@ -29,7 +29,11 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        ProcessInputs();
+        if (!GameManager.Instance.IsPaused())
+        {
+            ProcessInputs(); 
+        }
+        
         currentMagnitude = body.velocity.magnitude;
         if (!(transform.position.x < -levelBounds.x) && !(transform.position.x > levelBounds.x) &&
             !(transform.position.y < -levelBounds.y) && !(transform.position.y > levelBounds.y)) return;
