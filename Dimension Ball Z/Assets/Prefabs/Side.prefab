@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6694401970043394737}
   - component: {fileID: 2763616869993784928}
   - component: {fileID: 2061873625735452030}
+  - component: {fileID: 1246272542710474318}
   m_Layer: 0
   m_Name: Side
   m_TagString: DimensionZone
@@ -72,6 +73,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9b0a00d68d6e2f489adee5bab6d9e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1246272542710474318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131075740072726969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7298bcf62b36fae4d9f552c1c5f01c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &283791673272839553
