@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     private GameObject[] _dimensions;
     private GameObject _gameOverCanvas;
+    private GameObject _levelCompleteCanvas;
     public static GameManager Instance;
     public int extraBalls;
 
@@ -23,9 +24,12 @@ public class GameManager : MonoBehaviour
         _gameOverCanvas = GameObject.FindWithTag("GameOverMenu");
         _gameOverCanvas.SetActive(false);
         
-        Physics2D.IgnoreLayerCollision(8,8, true);
-        Physics2D.IgnoreLayerCollision(9,10, true);
-        Physics2D.IgnoreLayerCollision(9,9, true);
+        _levelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
+        _levelCompleteCanvas.SetActive(false);
+
+        Physics2D.IgnoreLayerCollision(8, 8, true);
+        Physics2D.IgnoreLayerCollision(9, 10, true);
+        Physics2D.IgnoreLayerCollision(9, 9, true);
 
         timeManager.DoSlowmotion();
 
@@ -38,7 +42,13 @@ public class GameManager : MonoBehaviour
     {
         _gameOverCanvas.SetActive(true);
     }
-    
+
+    public void TriggerLevelCompleteMenu()
+    {
+        Debug.Log("in trigger level complete menu");
+        _levelCompleteCanvas.SetActive(true);
+    }
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -47,6 +57,11 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void SwitchPaddle(PaddleController[] otherPaddles)
