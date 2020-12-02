@@ -83,7 +83,7 @@ MonoBehaviour:
   - {x: -8.353172, y: 0.079310894, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -137362
+  m_InstanceId: 21602
 --- !u!1 &1542967791203987152
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   - {x: -8.356825, y: 0.09397507, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -137840
+  m_InstanceId: 21592
 --- !u!1 &2479548609702939136
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +330,16 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6506950431904378813, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 446795229
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506950431904378813, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6694401970043394737, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -445,6 +455,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506950431904378813, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 446795229
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506950431904378813, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6694401970043394737, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
