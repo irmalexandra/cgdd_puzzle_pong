@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(PauseCanvas);
         GameOverCanvas.SetActive(false);
         PauseCanvas.SetActive(false);
+        LevelCompleteCanvas.SetActive(false);
         
         Physics2D.IgnoreLayerCollision(8,8, true);
         Physics2D.IgnoreLayerCollision(9,10, true);
@@ -47,8 +48,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         ProcessInputs();
-        LevelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
-        LevelCompleteCanvas.SetActive(false);
 
         Physics2D.IgnoreLayerCollision(8, 8, true);
         Physics2D.IgnoreLayerCollision(9, 10, true);
