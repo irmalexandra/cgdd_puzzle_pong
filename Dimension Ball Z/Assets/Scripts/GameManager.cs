@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
         _gameOverCanvas.SetActive(false);
         
         Physics2D.IgnoreLayerCollision(8,8, true);
+        Physics2D.IgnoreLayerCollision(9,10, true);
+        Physics2D.IgnoreLayerCollision(9,9, true);
 
         timeManager.DoSlowmotion();
 
