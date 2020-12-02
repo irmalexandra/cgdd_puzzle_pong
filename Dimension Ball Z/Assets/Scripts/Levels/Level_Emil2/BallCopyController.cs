@@ -14,6 +14,7 @@ public class BallCopyController : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class BallCopyController : MonoBehaviour
             if (_timer > 0)
             {
                 _timer -= Time.deltaTime;
+
             }
             else
             {
