@@ -9,11 +9,10 @@ public class GameManager : MonoBehaviour
 {
     private GameObject[] _dimensions;
     private GameObject _gameOverCanvas;
-<<<<<<< HEAD
+
     private GameObject _pauseCanvas;
-=======
+
     private GameObject _levelCompleteCanvas;
->>>>>>> c477972f77567845b9f9294b0f9a531d03c8987c
     public static GameManager Instance;
     public int extraBalls;
 
@@ -35,7 +34,6 @@ public class GameManager : MonoBehaviour
         _gameOverCanvas.SetActive(false);
         _pauseCanvas.SetActive(false);
         
-<<<<<<< HEAD
         Physics2D.IgnoreLayerCollision(8,8, true);
         Physics2D.IgnoreLayerCollision(9,10, true);
         Physics2D.IgnoreLayerCollision(9,9, true);
@@ -46,7 +44,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         ProcessInputs();
-=======
         _levelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
         _levelCompleteCanvas.SetActive(false);
 
@@ -56,7 +53,6 @@ public class GameManager : MonoBehaviour
 
         timeManager.DoSlowmotion();
 
->>>>>>> c477972f77567845b9f9294b0f9a531d03c8987c
     }
 
     void ProcessInputs()
