@@ -59,9 +59,8 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Vector2 reDirection = GetComponent<Rigidbody2D>().velocity.normalized;
-        reDirection *= speed;
-        GetComponent<Rigidbody2D>().velocity = reDirection;
+        Vector2 reDirection = GetComponent<Rigidbody2D>().velocity;
+        
 
         if (other.gameObject.CompareTag("Paddle"))
         {
@@ -70,7 +69,17 @@ public class BallController : MonoBehaviour
         else
         {
             SoundManagerScript.PlaySoundEffect("BallHit");
+            
+            if (other.gameObject.CompareTag("ButtonFace"))
+            {
+                Vector3 otherBoost = other.transform.up * 2f;
+                reDirection += new Vector2(otherBoost.x, otherBoost.y);
+            }
         }
+
+        reDirection = reDirection.normalized;
+        reDirection *= speed;
+        GetComponent<Rigidbody2D>().velocity = reDirection;
     }
 
     private void ProcessInputs()

@@ -9,9 +9,8 @@ public class SlowMotionTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            Debug.Log("Triggering SLowmotion");
+            Debug.Log("Triggering Slowmotion");
             GameManager.Instance.timeManager.DoSlowmotion();
-            GameManager.Instance.SwitchPaddle(transform.gameObject.GetComponentsInChildren<PaddleController>());
         }
     }
 }
