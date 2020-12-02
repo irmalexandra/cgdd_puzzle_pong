@@ -18,10 +18,7 @@ public class GameManager : MonoBehaviour
 
     private bool _levelStarted;
     private bool _paused;
-
-
-
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -52,9 +49,7 @@ public class GameManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 8, true);
         Physics2D.IgnoreLayerCollision(9, 10, true);
         Physics2D.IgnoreLayerCollision(9, 9, true);
-
-        TimeManager.Instance.DoSlowmotion();
-
+        
     }
 
     void ProcessInputs()

@@ -10,7 +10,7 @@ public class TimeManager : MonoBehaviour
 
     private bool _paused = true;
 
-    private float _previousTimeScale = 1f;
+    private float _previousTimeScale = 1;
 
     public static TimeManager Instance;
 
