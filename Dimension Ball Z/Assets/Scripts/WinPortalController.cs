@@ -12,7 +12,7 @@ public class WinPortalController : MonoBehaviour
         {
             SoundManagerScript.PlaySoundEffect("PortalSoundEffect");
             Destroy(collision.collider.gameObject); 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            GameManager.Instance.TriggerLevelCompleteMenu();
         }
     }
 }
