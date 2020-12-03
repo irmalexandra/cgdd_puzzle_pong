@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     public void TriggerLevelCompleteMenu()
     {
-        PauseCanvas.SetActive(true);
+        TimeManager.Instance.Pause();
         LevelCompleteCanvas.SetActive(true);
     }
 
