@@ -16,16 +16,12 @@ public class MenuController : MonoBehaviour
     {
 
         SceneManager.LoadScene("BallHell");
-
-        //SceneManager.LoadScene()
-
     }
 
-    /*public void PortalInsanity()
+    public void PortalInsanity()
     {
-
-        SceneManager.LoadScene()
-    }*/
+        SceneManager.LoadScene("PortalInsanity");
+    }
 
 
     
