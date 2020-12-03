@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2609781470588916993}
   - component: {fileID: 5747018112447226891}
   - component: {fileID: 3240885508466133489}
+  - component: {fileID: 3450387903335414336}
   m_Layer: 9
   m_Name: triangleFinal
   m_TagString: Untagged
@@ -132,3 +133,28 @@ PolygonCollider2D:
     - - {x: -0.90999997, y: 0.9}
       - {x: 0.9109887, y: 0.89705855}
       - {x: 0.90653497, y: -0.9029898}
+--- !u!114 &3450387903335414336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758833579920503342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: dd8da11a00000000
+  m_ShapePath:
+  - {x: 0.9097137, y: -0.9114534, z: 0}
+  - {x: 0.91001004, y: 0.8999992, z: 0}
+  - {x: -0.90244293, y: 0.8999992, z: 0}
+  m_ShapePathHash: -908479435
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 40822
