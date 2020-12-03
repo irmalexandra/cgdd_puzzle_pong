@@ -91,6 +91,8 @@ public class BallController : MonoBehaviour
 
     private  void Nudge()
     {
+        Debug.Log("nudge nudge");
+
         var nudgeDirection = body.velocity;
         
         var above = transform.position.y <= Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
