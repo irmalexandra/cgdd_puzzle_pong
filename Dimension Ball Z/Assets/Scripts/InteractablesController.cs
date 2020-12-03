@@ -1,6 +1,4 @@
-﻿
-using System.Data;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InteractablesController : MonoBehaviour
 {
