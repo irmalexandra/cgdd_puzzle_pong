@@ -40,7 +40,10 @@ public class BallController : MonoBehaviour
         if (GameManager.Instance.extraBalls > 0)
             GameManager.Instance.extraBalls--;
         if (GameManager.Instance.extraBalls != 0)
+        {
             transform.position = startPosition;
+            body.velocity = direction.normalized * speed;
+        }
         
 
         if (GameManager.Instance.extraBalls == 0)
