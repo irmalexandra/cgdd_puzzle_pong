@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
         PauseCanvas = GameObject.FindWithTag("PauseMenu");
         LevelStartCanvas = GameObject.FindWithTag("LevelStartMenu");
         LevelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
-        Debug.Log(PauseCanvas);
         GameOverCanvas.SetActive(false);
         PauseCanvas.SetActive(false);
         LevelCompleteCanvas.SetActive(false);
@@ -35,7 +34,6 @@ public class GameManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(9,10, true);
         Physics2D.IgnoreLayerCollision(9,9, true);
         
-        Debug.Log(TimeManager.Instance);
         Time.timeScale = 0;
     }
     
