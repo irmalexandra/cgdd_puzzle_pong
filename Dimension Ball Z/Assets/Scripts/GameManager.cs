@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         if (!_levelStarted)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Submit"))
             {
                 StartLevel();
             }
