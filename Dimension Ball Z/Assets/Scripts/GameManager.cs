@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,7 +26,6 @@ public class GameManager : MonoBehaviour
         PauseCanvas = GameObject.FindWithTag("PauseMenu");
         LevelStartCanvas = GameObject.FindWithTag("LevelStartMenu");
         LevelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
-        Debug.Log(PauseCanvas);
         GameOverCanvas.SetActive(false);
         PauseCanvas.SetActive(false);
         LevelCompleteCanvas.SetActive(false);
@@ -38,7 +34,6 @@ public class GameManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(9,10, true);
         Physics2D.IgnoreLayerCollision(9,9, true);
         
-        Debug.Log(TimeManager.Instance);
         Time.timeScale = 0;
     }
     
@@ -88,7 +83,6 @@ public class GameManager : MonoBehaviour
 
     public void TriggerLevelCompleteMenu()
     {
-        Debug.Log("in trigger level complete menu:");
         LevelCompleteCanvas.SetActive(true);
     }
 
@@ -128,7 +122,6 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         TimeManager.Instance.Resume();
-        Debug.Log(PauseCanvas);
         PauseCanvas.SetActive(false);
     
     }
@@ -136,7 +129,6 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         TimeManager.Instance.Pause();
-        Debug.Log(PauseCanvas);
         PauseCanvas.SetActive(true);
     }
 
