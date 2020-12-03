@@ -83,7 +83,7 @@ MonoBehaviour:
   - {x: -8.353172, y: 0.079310894, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 135690
+  m_InstanceId: -471496
 --- !u!1 &1542967791203987152
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   - {x: -8.356825, y: 0.09397507, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 135680
+  m_InstanceId: -471478
 --- !u!1 &2479548609702939136
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +354,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InstanceId
       value: -217500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104863785362013546, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4416465550440755006, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
@@ -1075,6 +1080,11 @@ PrefabInstance:
       propertyPath: m_BlendStyleIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655488018980851537, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6506950431904378812, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
       propertyPath: m_Name
@@ -1084,6 +1094,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506950431904378812, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6506950431904378813, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
@@ -1212,6 +1227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InstanceId
       value: -217552
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104863785362013546, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4416465550440755006, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
@@ -1918,6 +1938,11 @@ PrefabInstance:
       propertyPath: m_ShapePath.Array.data[63].y
       value: -0.8765436
       objectReference: {fileID: 0}
+    - target: {fileID: 5655488018980851537, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6506950431904378812, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
       propertyPath: m_Name
@@ -1927,6 +1952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506950431904378812, guid: 5b726ed086ea9a948a49eaac524ee21d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6506950431904378813, guid: 5b726ed086ea9a948a49eaac524ee21d,
         type: 3}
