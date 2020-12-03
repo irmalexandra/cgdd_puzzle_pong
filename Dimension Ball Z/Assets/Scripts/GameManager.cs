@@ -88,8 +88,8 @@ public class GameManager : MonoBehaviour
 
     public void TriggerLevelCompleteMenu()
     {
-        Debug.Log("in trigger level complete menu");
-        LevelStartCanvas.SetActive(true);
+        Debug.Log("in trigger level complete menu:");
+        LevelCompleteCanvas.SetActive(true);
     }
 
     public void RestartLevel()
