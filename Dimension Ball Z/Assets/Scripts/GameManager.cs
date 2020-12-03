@@ -122,7 +122,6 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         TimeManager.Instance.Resume();
-        Debug.Log(PauseCanvas);
         PauseCanvas.SetActive(false);
     
     }
@@ -130,7 +129,6 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         TimeManager.Instance.Pause();
-        Debug.Log(PauseCanvas);
         PauseCanvas.SetActive(true);
     }
 
