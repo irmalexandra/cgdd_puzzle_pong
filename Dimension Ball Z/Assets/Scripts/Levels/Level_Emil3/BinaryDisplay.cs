@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,22 +13,26 @@ public class BinaryDisplay : MonoBehaviour
     public TMPro.TextMeshProUGUI currentInt;
     public TMPro.TextMeshProUGUI requiredInt;
     public GameObject winPortal;
+
+    private List<int> _binaryList;
     // Start is called before the first frame update
     void Start()
     {
         requiredInt.text = Random.Range(3, 8).ToString();
         Instance = this;
+        _binaryList = new List<int>() {0,0,0,0};
+        UpdateCurrentBinary();
     }
 
+    private void UpdateCurrentBinary()
+    {
+        currentBinary.text = String.Join("", _binaryList.ToArray());
+    }
     public void Signal(int input)
     {
-
-        if (currentBinary.text.Length == 0 && input == 0)
-        {
-            return;
-        }
-        
-        currentBinary.text += input;
+        _binaryList.Insert(4, input);
+        _binaryList.RemoveAt(0);
+        UpdateCurrentBinary();
         int required = int.Parse(requiredInt.text);
         int binaryToInt = Convert.ToInt32(currentBinary.text, 2);
         currentInt.text = binaryToInt.ToString();
@@ -35,13 +41,6 @@ public class BinaryDisplay : MonoBehaviour
         {
             winPortal.SetActive(true);
         }
-        else if (binaryToInt > required)
-        {
-            currentBinary.text = "";
-        }
-        
-
-
     }
     
 }
