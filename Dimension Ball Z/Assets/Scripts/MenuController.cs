@@ -11,5 +11,15 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void BallHell()
+    {
+        SceneManager.LoadScene()
+    }
+
+    public void PortalInsanity()
+    {
+        SceneManager.LoadScene()
+    }
 }
 
