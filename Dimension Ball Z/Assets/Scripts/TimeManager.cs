@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
@@ -43,12 +40,10 @@ public class TimeManager : MonoBehaviour
         _paused = true;
         _previousTimeScale = Time.timeScale;
         Time.timeScale = 0;
-        Debug.Log("Pausing Game");
     }
 
     public void Resume()
     {
-        Debug.Log("Starting Game");
         _paused = false;
         Time.timeScale = _previousTimeScale;
         
