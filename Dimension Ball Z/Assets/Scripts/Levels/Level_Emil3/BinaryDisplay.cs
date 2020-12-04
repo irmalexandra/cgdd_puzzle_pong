@@ -17,7 +17,7 @@ public class BinaryDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        requiredInt.text = Random.Range(3, 8).ToString();
+        requiredInt.text = Random.Range(3, 16).ToString();
         Instance = this;
         _binaryList = new List<int>() {0,0,0,0};
         UpdateCurrentBinary();
