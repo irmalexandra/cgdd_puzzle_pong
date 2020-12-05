@@ -14,19 +14,23 @@ public class BallController : MonoBehaviour
     public float currentMagnitude;
     public Vector2 levelBounds;
     public Vector2 startPosition;
-
     private Vector3 nullVect = Vector3.zero;
+    private float defaultTrailTime = 0.2f;
     
     public float nudgePower;
     public int nudgeStaminaCost;
 
     private bool _thrustOnCooldown;
+
+    public TrailRenderer trail;
     
     public Light2D pointLight;
     public Light2D paraLight;
     private Color originalColor;
     void Start()
     {
+        trail = GetComponent<TrailRenderer>();
+        trail.time = 0;
         startPosition = transform.position;
         body.velocity = direction.normalized * speed;
         originalColor = paraLight.color;
@@ -109,9 +113,11 @@ public class BallController : MonoBehaviour
         }*/
         if (_thrustOnCooldown)
         {
+            trail.time -= 0.005f;
             if (Input.GetButtonDown("Fire1"))
             {
                 SoundManagerScript.PlaySoundEffect("Cooldown");
+                
             }
         }
         else
@@ -120,6 +126,7 @@ public class BallController : MonoBehaviour
             {
                 if (StaminaBar.instance.UseStamina(1))
                 {
+                    trail.time = defaultTrailTime;
                     Thrust();
                 }
             }
@@ -127,14 +134,14 @@ public class BallController : MonoBehaviour
             if (Input.GetButtonUp("Fire1"))
             {
                 _thrustOnCooldown = true;
+                trail.time -= 0.005f;
             }
         }
-        
-        
     }
 
     private void Thrust()
     {
+        
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         Vector2 fromMouseToBall = mousePos - new Vector2(transform.position.x, transform.position.y);
@@ -188,8 +195,12 @@ public class BallController : MonoBehaviour
         Debug.Log("stam percentage:" +StaminaBar.instance.GetStamPercentage());
         if (StaminaBar.instance.GetStamPercentage() <= 0.99f)
         {
+            
             pointLight.color = Color.LerpUnclamped(Color.red, originalColor , 1 * StaminaBar.instance.GetStamPercentage());
             paraLight.color = Color.LerpUnclamped(Color.red, originalColor, 1 * StaminaBar.instance.GetStamPercentage());
+            
+            trail.startColor = pointLight.color;
+
         }
         else
         {
