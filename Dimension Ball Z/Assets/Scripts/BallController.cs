@@ -188,8 +188,8 @@ public class BallController : MonoBehaviour
         Debug.Log("stam percentage:" +StaminaBar.instance.GetStamPercentage());
         if (StaminaBar.instance.GetStamPercentage() <= 0.99f)
         {
-            pointLight.color = Color.red;
-            paraLight.color = Color.red;
+            pointLight.color = Color.LerpUnclamped(Color.red, originalColor , 1 * StaminaBar.instance.GetStamPercentage());
+            paraLight.color = Color.LerpUnclamped(Color.red, originalColor, 1 * StaminaBar.instance.GetStamPercentage());
         }
         else
         {
