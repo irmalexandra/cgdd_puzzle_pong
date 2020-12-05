@@ -214,11 +214,11 @@ MonoBehaviour:
   currentMagnitude: 0
   levelBounds: {x: 9.6, y: 5}
   startPosition: {x: 0, y: 0}
-  nudgePower: 1.5
-  nudgeStaminaCost: 50
-  trail: {fileID: 0}
-  pointLight: {fileID: 0}
-  paraLight: {fileID: 0}
+  trail: {fileID: 5863673554370631444}
+  thrustPower: 0.0115
+  thrustStaminaCost: 1
+  pointLight: {fileID: 8079811403610568490}
+  paraLight: {fileID: 1039395829604475037}
 --- !u!96 &5863673554370631444
 TrailRenderer:
   serializedVersion: 2
@@ -325,12 +325,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.03
   m_Autodestruct: 0
   m_Emitting: 1
-=======
-  thrustPower: 0.0115
-  thrustStaminaCost: 1
-  pointLight: {fileID: 8079811403610568490}
-  paraLight: {fileID: 1039395829604475037}
->>>>>>> 688b75e903d897515af77da38b92f7361d0c05ec
 --- !u!1 &7023679635194487522
 GameObject:
   m_ObjectHideFlags: 0
