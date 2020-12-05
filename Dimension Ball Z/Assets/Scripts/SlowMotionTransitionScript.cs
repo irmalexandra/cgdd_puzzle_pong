@@ -20,12 +20,7 @@ public class SlowMotionTransitionScript : MonoBehaviour
         _ballBody = GameObject.FindWithTag("Ball").GetComponent<Rigidbody2D>();
         _timer = 0;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     private void FixedUpdate()
     {

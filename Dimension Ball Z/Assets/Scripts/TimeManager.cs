@@ -35,6 +35,16 @@ public class TimeManager : MonoBehaviour
         
     }
 
+    public void DoSlowmotion(float time)
+    {
+        if (!_paused)
+        {
+            Time.timeScale = time;
+            Time.fixedDeltaTime = Time.timeScale * .02f;
+        }
+        
+    }
+
     public void Pause()
     {
         _paused = true;
