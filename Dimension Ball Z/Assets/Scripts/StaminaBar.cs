@@ -1,19 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 public class StaminaBar : MonoBehaviour
 {
     public Slider staminaBar;
 
-    public int maxStamina = 100;
-    private int currentStamina;
+    public float maxStamina = 100;
+    private float currentStamina;
     
-    public int regenRate = 100;
+    public float regenRate = 100;
     private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
     private Coroutine regen;
     
     public static StaminaBar instance;
-
+    
     private void Awake()
     {
         instance = this;
@@ -27,6 +28,7 @@ public class StaminaBar : MonoBehaviour
         staminaBar.value = maxStamina;
     }
 
+    
     public bool UseStamina(int amount)
     {
         if (currentStamina - amount >= 0)
@@ -41,16 +43,12 @@ public class StaminaBar : MonoBehaviour
             regen = StartCoroutine(RegenStamina());
             return true;
         }
-        else
-        {
-            Debug.Log("Not enough stamina");
-            return false;
-        }
+        return false;
     }
 
     private IEnumerator RegenStamina()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         while (currentStamina < maxStamina)
         {
@@ -61,6 +59,11 @@ public class StaminaBar : MonoBehaviour
         }
 
         regen = null;
+    }
+
+    public float GetStamPercentage()
+    {
+        return currentStamina / maxStamina;
     }
     
 }

@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 using Debug = UnityEngine.Debug;
 
 public class BallController : MonoBehaviour
@@ -11,23 +15,41 @@ public class BallController : MonoBehaviour
     public Vector2 levelBounds;
     public Vector2 startPosition;
 
-    
+    private Vector3 nullVect = Vector3.zero;
     
     public float nudgePower;
     public int nudgeStaminaCost;
+
+    private bool _thrustOnCooldown;
     
+    public Light2D pointLight;
+    public Light2D paraLight;
+    private Color originalColor;
     void Start()
     {
         startPosition = transform.position;
         body.velocity = direction.normalized * speed;
+        originalColor = paraLight.color;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (StaminaBar.instance.GetStamPercentage() == 0f)
+        {
+            Debug.Log("oncooldown = true");
+            _thrustOnCooldown = true;
+        }
+        else if (StaminaBar.instance.GetStamPercentage() >= 0.99f)
+        {
+            Debug.Log("oncooldown = false");
+            _thrustOnCooldown = false;
+        }
+        ChangeLights();
+        
         if (!GameManager.Instance.IsPaused())
         {
-            ProcessInputs(); 
+            ProcessInputs();
         }
         
         currentMagnitude = body.velocity.magnitude;
@@ -48,7 +70,8 @@ public class BallController : MonoBehaviour
             
         }
     }
-  
+
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         Vector2 reDirection = GetComponent<Rigidbody2D>().velocity;
@@ -73,16 +96,53 @@ public class BallController : MonoBehaviour
         reDirection *= speed;
         GetComponent<Rigidbody2D>().velocity = reDirection;
     }
-
+    
     private void ProcessInputs()
     {
-        if (Input.GetButtonDown("Jump"))
+        /*if (Input.GetButton("Jump"))
         {
+            
             if (StaminaBar.instance.UseStamina(nudgeStaminaCost))
             {
                 Nudge();
             }
+        }*/
+        if (_thrustOnCooldown)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                SoundManagerScript.PlaySoundEffect("Cooldown");
+            }
         }
+        else
+        {
+            if (Input.GetButton("Fire1"))
+            {
+                if (StaminaBar.instance.UseStamina(1))
+                {
+                    Thrust();
+                }
+            }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                _thrustOnCooldown = true;
+            }
+        }
+        
+        
+    }
+
+    private void Thrust()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 fromMouseToBall = mousePos - new Vector2(transform.position.x, transform.position.y);
+        
+        var newDirection = Vector2.LerpUnclamped(body.velocity.normalized, fromMouseToBall.normalized, 0.0115f);
+
+        body.velocity = newDirection * speed;
+
     }
 
     private  void Nudge()
@@ -119,5 +179,22 @@ public class BallController : MonoBehaviour
             }
         }
         body.velocity = nudgeDirection;
+    }
+
+    private void ChangeLights()
+    {
+        pointLight.intensity = 1 * StaminaBar.instance.GetStamPercentage();
+        Debug.Log(pointLight.intensity);
+        Debug.Log("stam percentage:" +StaminaBar.instance.GetStamPercentage());
+        if (StaminaBar.instance.GetStamPercentage() <= 0.99f)
+        {
+            pointLight.color = Color.LerpUnclamped(Color.red, originalColor , 1 * StaminaBar.instance.GetStamPercentage());
+            paraLight.color = Color.LerpUnclamped(Color.red, originalColor, 1 * StaminaBar.instance.GetStamPercentage());
+        }
+        else
+        {
+            pointLight.color = originalColor;
+            paraLight.color = originalColor;
+        }
     }
 }
