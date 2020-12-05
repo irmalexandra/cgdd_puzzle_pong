@@ -34,6 +34,7 @@ public class TimeManager : MonoBehaviour
         }
         
     }
+    
 
     public void Pause()
     {

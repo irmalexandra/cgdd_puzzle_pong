@@ -6,7 +6,6 @@ public class SlowMotionTrigger : MonoBehaviour
     {
         if (GameManager.Instance.IsPaused()) {return;}
         if (!other.gameObject.CompareTag("Ball")) return;
-        Debug.Log("Triggering Slowmotion");
         TimeManager.Instance.DoSlowmotion();
     }
 }
