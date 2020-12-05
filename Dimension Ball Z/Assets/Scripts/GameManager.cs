@@ -138,6 +138,7 @@ public class GameManager : MonoBehaviour
         TimeManager.Instance.Resume();
         GameObject.FindGameObjectWithTag("LevelStartMenu").SetActive(false);
         _levelStarted = true;
+        LevelTimer.StartTimer();
     }
     
 }
