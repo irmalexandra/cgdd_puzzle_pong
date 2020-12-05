@@ -15,13 +15,14 @@ public class BallController : MonoBehaviour
     public Vector2 levelBounds;
     public Vector2 startPosition;
 
-    private Vector3 nullVect = Vector3.zero;
-    
-    public float nudgePower;
-    public int nudgeStaminaCost;
+    /*public float nudgePower;
+    public int nudgeStaminaCost;*/
 
-    private bool _thrustOnCooldown;
+    public float thrustPower = 0.0115f;
+    public float thrustStaminaCost = 1f;
     
+    private bool _thrustOnCooldown;
+
     public Light2D pointLight;
     public Light2D paraLight;
     private Color originalColor;
@@ -35,16 +36,7 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (StaminaBar.instance.GetStamPercentage() == 0f)
-        {
-            Debug.Log("oncooldown = true");
-            _thrustOnCooldown = true;
-        }
-        else if (StaminaBar.instance.GetStamPercentage() >= 0.99f)
-        {
-            Debug.Log("oncooldown = false");
-            _thrustOnCooldown = false;
-        }
+        CooldownTrigger();
         ChangeLights();
         
         if (!GameManager.Instance.IsPaused())
@@ -70,8 +62,6 @@ public class BallController : MonoBehaviour
             
         }
     }
-
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         Vector2 reDirection = GetComponent<Rigidbody2D>().velocity;
@@ -118,7 +108,7 @@ public class BallController : MonoBehaviour
         {
             if (Input.GetButton("Fire1"))
             {
-                if (StaminaBar.instance.UseStamina(1))
+                if (StaminaBar.instance.UseStamina(thrustStaminaCost))
                 {
                     Thrust();
                 }
@@ -139,13 +129,44 @@ public class BallController : MonoBehaviour
 
         Vector2 fromMouseToBall = mousePos - new Vector2(transform.position.x, transform.position.y);
         
-        var newDirection = Vector2.LerpUnclamped(body.velocity.normalized, fromMouseToBall.normalized, 0.0115f);
+        var newDirection = Vector2.LerpUnclamped(body.velocity.normalized, fromMouseToBall.normalized, thrustPower);
 
         body.velocity = newDirection * speed;
 
     }
 
-    private  void Nudge()
+    private void CooldownTrigger()
+    {
+        if (StaminaBar.instance.GetStamPercentage() == 0f)
+        {
+            _thrustOnCooldown = true;
+        }
+        else if (StaminaBar.instance.GetStamPercentage() >= 0.99f)
+        {
+            _thrustOnCooldown = false;
+        }
+    }
+    
+    private void ChangeLights()
+    {
+        pointLight.intensity = 1 * StaminaBar.instance.GetStamPercentage();
+        Debug.Log(pointLight.intensity);
+        Debug.Log("stam percentage:" +StaminaBar.instance.GetStamPercentage());
+        if (StaminaBar.instance.GetStamPercentage() <= 0.99f)
+        {
+            pointLight.color = Color.LerpUnclamped(Color.red, originalColor , 1 * StaminaBar.instance.GetStamPercentage());
+            paraLight.color = Color.LerpUnclamped(Color.red, originalColor, 1 * StaminaBar.instance.GetStamPercentage());
+        }
+        else
+        {
+            pointLight.color = originalColor;
+            paraLight.color = originalColor;
+        }
+    }
+    
+    
+
+    /*private  void Nudge()
     {
         Debug.Log("nudge nudge");
 
@@ -179,22 +200,7 @@ public class BallController : MonoBehaviour
             }
         }
         body.velocity = nudgeDirection;
-    }
+    }*/
 
-    private void ChangeLights()
-    {
-        pointLight.intensity = 1 * StaminaBar.instance.GetStamPercentage();
-        Debug.Log(pointLight.intensity);
-        Debug.Log("stam percentage:" +StaminaBar.instance.GetStamPercentage());
-        if (StaminaBar.instance.GetStamPercentage() <= 0.99f)
-        {
-            pointLight.color = Color.LerpUnclamped(Color.red, originalColor , 1 * StaminaBar.instance.GetStamPercentage());
-            paraLight.color = Color.LerpUnclamped(Color.red, originalColor, 1 * StaminaBar.instance.GetStamPercentage());
-        }
-        else
-        {
-            pointLight.color = originalColor;
-            paraLight.color = originalColor;
-        }
-    }
+    
 }
