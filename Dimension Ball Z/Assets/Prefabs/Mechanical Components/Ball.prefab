@@ -209,14 +209,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 5817526469158189059}
   direction: {x: 1, y: 0}
-  speed: 6
+  speed: 5
   currentMagnitude: 0
   levelBounds: {x: 9.6, y: 5}
   startPosition: {x: 0, y: 0}
-  nudgePower: 1.5
-  nudgeStaminaCost: 50
-  pointLight: {fileID: 0}
-  paraLight: {fileID: 0}
+  thrustPower: 0.0115
+  thrustStaminaCost: 1
+  pointLight: {fileID: 8079811403610568490}
+  paraLight: {fileID: 1039395829604475037}
 --- !u!1 &7023679635194487522
 GameObject:
   m_ObjectHideFlags: 0
