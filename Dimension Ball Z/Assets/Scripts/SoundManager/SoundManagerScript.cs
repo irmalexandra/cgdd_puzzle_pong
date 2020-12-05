@@ -13,6 +13,7 @@ public class SoundManagerScript : MonoBehaviour
     private static List<AudioClip> paddleHitSounds = new List<AudioClip>();
 
     private static AudioClip _abilityCooldown;
+    private static AudioClip _thrustReady;
 
     private static int _ballHitSound = 4;
     
@@ -25,6 +26,7 @@ public class SoundManagerScript : MonoBehaviour
         _slowMotion1 = Resources.Load<AudioClip>("Development/SlowMotion1");
         _slowMotion2 = Resources.Load<AudioClip>("Development/SlowMotion2");
         _abilityCooldown = Resources.Load<AudioClip>("Development/cooldown1");
+        _thrustReady = Resources.Load<AudioClip>("Development/thrustReady");
 
         for (var i = 1; i <= 5; i++)
         {
@@ -53,6 +55,9 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "Cooldown":
                 _audioSource.PlayOneShot(_abilityCooldown);
+                break;
+            case "ThrustReady":
+                _audioSource.PlayOneShot(_thrustReady);
                 break;
         }
     }

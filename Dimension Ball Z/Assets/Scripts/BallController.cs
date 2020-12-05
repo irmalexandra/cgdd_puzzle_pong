@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Rendering;
@@ -16,6 +17,8 @@ public class BallController : MonoBehaviour
     private float defaultTrailTime = 0.2f;
 
     private bool _thrustOnCooldown;
+    private bool _thrustSoundCD;
+    private float _thrustStaminaCost = 0.0115f;
 
     public TrailRenderer trail;
     /*public float nudgePower;
@@ -39,16 +42,6 @@ public class BallController : MonoBehaviour
 
     private void Update()
     {
-        if (StaminaBar.instance.GetStamPercentage() == 0f)
-        {
-            _thrustOnCooldown = true;
-        }
-
-        else if (StaminaBar.instance.GetStamPercentage() >= 0.99f)
-        {
-            _thrustOnCooldown = false;
-        }
-
         CooldownTrigger();
         ChangeLights();
 
@@ -145,7 +138,7 @@ public class BallController : MonoBehaviour
 
         Vector2 fromMouseToBall = mousePos - new Vector2(transform.position.x, transform.position.y);
 
-        var newDirection = Vector2.LerpUnclamped(body.velocity.normalized, fromMouseToBall.normalized, 0.0115f);
+        var newDirection = Vector2.LerpUnclamped(body.velocity.normalized, fromMouseToBall.normalized, _thrustStaminaCost);
 
         body.velocity = newDirection * speed;
 
@@ -159,6 +152,8 @@ public class BallController : MonoBehaviour
         }
         else if (StaminaBar.instance.GetStamPercentage() >= 0.99f)
         {
+            if (!_thrustOnCooldown) return;
+            SoundManagerScript.PlaySoundEffect("ThrustReady");
             _thrustOnCooldown = false;
         }
     }
@@ -168,7 +163,7 @@ public class BallController : MonoBehaviour
         pointLight.intensity = 1 * StaminaBar.instance.GetStamPercentage();
         Debug.Log(pointLight.intensity);
         Debug.Log("stam percentage:" + StaminaBar.instance.GetStamPercentage());
-        if (StaminaBar.instance.GetStamPercentage() <= 0.99f)
+        if (_thrustOnCooldown)
         {
             pointLight.color =
                 Color.LerpUnclamped(Color.red, originalColor, 1 * StaminaBar.instance.GetStamPercentage());
@@ -179,9 +174,26 @@ public class BallController : MonoBehaviour
         }
         else
         {
-            pointLight.color = originalColor;
-            paraLight.color = originalColor;
+            if (paraLight.color != originalColor)
+            {
+                StartCoroutine(ColorStatusUpdate());
+            }
+            
         }
+    }
+
+
+    private IEnumerator ColorStatusUpdate()
+    {
+        ChangeLightsColor(Color.green);
+        yield return new WaitForSeconds(0.3f);
+        ChangeLightsColor(originalColor);
+    }
+    
+    private void ChangeLightsColor(Color color)
+    {
+        pointLight.color = color;
+        paraLight.color = color;
     }
 }
 
