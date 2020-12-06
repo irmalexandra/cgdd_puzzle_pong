@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -111,6 +112,14 @@ public class GameManager : MonoBehaviour
             foreach (var dimensionPaddle in paddlesInDimension)
             {
                 dimensionPaddle.active = otherPaddles.Contains(dimensionPaddle);
+                if (dimensionPaddle.active)
+                {
+                    dimensionPaddle.GetComponentInChildren<Light2D>().intensity = 0.5f;
+                }
+                else
+                {
+                    dimensionPaddle.GetComponentInChildren<Light2D>().intensity = 0.1f;
+                }
             }
         }
     }
