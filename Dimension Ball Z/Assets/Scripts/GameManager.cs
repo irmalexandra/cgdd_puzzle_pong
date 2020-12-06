@@ -93,16 +93,19 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ScoreTracking.ResetScore();
     }
 
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
+        ScoreTracking.ResetScore();
     }
 
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        ScoreTracking.ResetScore();
     }
 
     public void SwitchPaddle(PaddleController[] otherPaddles)

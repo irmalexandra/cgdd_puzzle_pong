@@ -58,4 +58,10 @@ public class ScoreTracking : MonoBehaviour
     {
         return _leftScore >= _scoreLimit && _rightScore >= _scoreLimit;
     }
+
+    public static void ResetScore()
+    {
+        _leftScore = 0;
+        _rightScore = 0;
+    }
 }

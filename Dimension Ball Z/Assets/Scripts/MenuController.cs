@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
 
+    public void PlayTutorial()
+    {
+        SceneManager.LoadScene("PaddleTutorial");
+    }
     public void ShowTutorialI()
     {
         SceneManager.LoadScene("Tutorial");
