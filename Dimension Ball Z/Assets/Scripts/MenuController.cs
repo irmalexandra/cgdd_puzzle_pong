@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,7 +8,7 @@ public class MenuController : MonoBehaviour
 {
     private void Start()
     {
-        GameManager.Instance.StartLevel();
+        Task.Delay(1000).ContinueWith(t => GameManager.Instance.StartLevel());
     }
 
     public void PlayTutorial()
