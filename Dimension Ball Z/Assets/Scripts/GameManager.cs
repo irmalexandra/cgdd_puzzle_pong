@@ -3,6 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         ProcessInputs();
-
+        
         Physics2D.IgnoreLayerCollision(8, 8, true);
         Physics2D.IgnoreLayerCollision(9, 10, true);
         Physics2D.IgnoreLayerCollision(9, 9, true);
@@ -100,20 +101,14 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        ScoreTracking.ResetScore();
         SceneManager.LoadScene(0);
-        if (GameObject.FindGameObjectWithTag("ScoreSystem"))
-        {
-            ScoreTracking.ResetScore();
-        }
     }
 
     public void NextLevel()
     {
+        ScoreTracking.ResetScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        if (GameObject.FindGameObjectWithTag("ScoreSystem"))
-        {
-            ScoreTracking.ResetScore();
-        }
     }
 
     public void SwitchPaddle(PaddleController[] otherPaddles)

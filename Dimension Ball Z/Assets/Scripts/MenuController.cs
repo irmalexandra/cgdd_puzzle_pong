@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    private void Start()
+    private bool _backgroundStarted;
+    
+    private void Update()
     {
-        Task.Delay(1000).ContinueWith(t => GameManager.Instance.StartLevel());
+        if (_backgroundStarted) return;
+        GameManager.Instance.StartLevel();
+        _backgroundStarted = true;
     }
 
     public void PlayTutorial()

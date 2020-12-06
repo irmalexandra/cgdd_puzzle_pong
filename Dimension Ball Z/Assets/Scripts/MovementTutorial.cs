@@ -10,7 +10,7 @@ public class MovementTutorial : MonoBehaviour
     private void Start()
     {
         _textBox = GameObject.FindGameObjectWithTag("TutorialTopMid").GetComponent<TMPro.TextMeshProUGUI>();
-        Debug.Log(_textBox);
+        _textBox.color = Color.white;
     }
 
     private void Update()
