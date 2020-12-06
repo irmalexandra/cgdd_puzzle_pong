@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -93,19 +94,26 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        ScoreTracking.ResetScore();
+        
+        
     }
 
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
-        ScoreTracking.ResetScore();
+        if (GameObject.FindGameObjectWithTag("ScoreSystem"))
+        {
+            ScoreTracking.ResetScore();
+        }
     }
 
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        ScoreTracking.ResetScore();
+        if (GameObject.FindGameObjectWithTag("ScoreSystem"))
+        {
+            ScoreTracking.ResetScore();
+        }
     }
 
     public void SwitchPaddle(PaddleController[] otherPaddles)
@@ -147,7 +155,7 @@ public class GameManager : MonoBehaviour
         PauseCanvas.SetActive(true);
     }
 
-    private void StartLevel()
+    public void StartLevel()
     {
         TimeManager.Instance.Resume();
         GameObject.FindGameObjectWithTag("LevelStartMenu").SetActive(false);

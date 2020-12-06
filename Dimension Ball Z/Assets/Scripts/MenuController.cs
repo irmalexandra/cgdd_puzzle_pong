@@ -1,8 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    private void Start()
+    {
+        GameManager.Instance.StartLevel();
+    }
 
     public void PlayTutorial()
     {
