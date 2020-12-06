@@ -26,6 +26,11 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("PortalInsanity");
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
 
     
 

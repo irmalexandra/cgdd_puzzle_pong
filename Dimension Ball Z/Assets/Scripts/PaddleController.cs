@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PaddleController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PaddleController : MonoBehaviour
     private float _verticalMovement;
     private Vector2 _moveDirection;
     public bool active = false;
+
+    public bool scoreSystemInPlay;
     
     private void Update()
     {
@@ -21,7 +24,6 @@ public class PaddleController : MonoBehaviour
         {
             _moveDirection = new Vector2(0, 0);
         }
-
     }
 
     private void FixedUpdate()
@@ -47,7 +49,21 @@ public class PaddleController : MonoBehaviour
             Vector2 newPosition = new Vector2(0, _moveDirection.y * movementSpeed);
             body.velocity = newPosition;
         }
+    }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!scoreSystemInPlay) return;
+        var side = transform.parent.name;
+        switch (side)
+        {
+            case "LeftSide":
+                ScoreTracking.AddScore(true);
+                break;
+            case "RightSide":
+                ScoreTracking.AddScore(false);
+                break;
+        }
     }
 }
 
