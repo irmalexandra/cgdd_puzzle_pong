@@ -28,7 +28,7 @@ public class Portal : MonoBehaviour
     {
         if (!ball.CompareTag("Ball")) return; // Makes sure the object entering the portal is a ball.
         if (!(PlayerPrefs.GetFloat("timer") < 0.0001f)) return;
-        SoundManagerScript.PlaySoundEffect("PortalSoundEffect");
+        SoundManager.PlaySoundEffect("PortalSoundEffect");
         if (portals[0] == GetComponent<Rigidbody2D>())
         {
             ball.transform.position = portals[1].transform.position;

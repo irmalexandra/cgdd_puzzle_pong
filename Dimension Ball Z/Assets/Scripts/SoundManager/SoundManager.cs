@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManagerScript : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     private static AudioClip _portalSound;
     private static AudioClip _portalSound2;
     private static AudioClip _slowMotion1;
     private static AudioClip _slowMotion2;
+
+    private static AudioClip _positiveFeedback;
 
     private static List<AudioClip> ballHitSounds = new List<AudioClip>();
     private static List<AudioClip> paddleHitSounds = new List<AudioClip>();
@@ -27,6 +29,7 @@ public class SoundManagerScript : MonoBehaviour
         _slowMotion2 = Resources.Load<AudioClip>("Development/SlowMotion2");
         _abilityCooldown = Resources.Load<AudioClip>("Development/cooldown1");
         _thrustReady = Resources.Load<AudioClip>("Development/thrustReady");
+        _positiveFeedback = Resources.Load<AudioClip>("Development/positiveFeedback");
 
         for (var i = 1; i <= 5; i++)
         {
@@ -58,6 +61,9 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "ThrustReady":
                 _audioSource.PlayOneShot(_thrustReady);
+                break;
+            case "PositiveFeedback":
+                _audioSource.PlayOneShot(_positiveFeedback);
                 break;
         }
     }

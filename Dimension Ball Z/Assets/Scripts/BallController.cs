@@ -76,11 +76,11 @@ public class BallController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Paddle"))
         {
-            SoundManagerScript.PlaySoundEffect("PaddleHit");
+            SoundManager.PlaySoundEffect("PaddleHit");
         }
         else
         {
-            SoundManagerScript.PlaySoundEffect("BallHit");
+            SoundManager.PlaySoundEffect("BallHit");
 
             if (other.gameObject.CompareTag("ButtonFace"))
             {
@@ -109,7 +109,7 @@ public class BallController : MonoBehaviour
             trail.time -= 0.005f;
             if (Input.GetButtonDown("Fire1"))
             {
-                SoundManagerScript.PlaySoundEffect("Cooldown");
+                SoundManager.PlaySoundEffect("Cooldown");
             }
         }
         else
@@ -153,7 +153,7 @@ public class BallController : MonoBehaviour
         else if (StaminaBar.instance.GetStamPercentage() >= 0.99f)
         {
             if (!_thrustOnCooldown) return;
-            SoundManagerScript.PlaySoundEffect("ThrustReady");
+            SoundManager.PlaySoundEffect("ThrustReady");
             _thrustOnCooldown = false;
         }
     }

@@ -18,6 +18,8 @@ public class ScoreTracking : MonoBehaviour
     private static int _scoreLimit;
 
     public GameObject WinPortal;
+
+    private bool _playSound = true;
     private void Start()
     {
         _scoreLimit = sLimit;
@@ -32,10 +34,11 @@ public class ScoreTracking : MonoBehaviour
         
         _leftScoreText.text = _leftScore.ToString();
         _rightScoreText.text = _rightScore.ToString();
-        if (CheckScore())
-        {
-            WinPortal.SetActive(true);
-        }
+        if (!CheckScore()) return;
+        WinPortal.SetActive(true);
+        if (!_playSound) return;
+        SoundManager.PlaySoundEffect("PositiveFeedback");
+        _playSound = false;
 
     }
 
@@ -53,6 +56,6 @@ public class ScoreTracking : MonoBehaviour
 
     public static bool CheckScore()
     {
-        return _leftScore == _scoreLimit && _rightScore == _scoreLimit;
+        return _leftScore >= _scoreLimit && _rightScore >= _scoreLimit;
     }
 }
