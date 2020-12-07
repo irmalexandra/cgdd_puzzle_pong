@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -63,16 +62,25 @@ public class InteractablesController : MonoBehaviour
 
         if (CompareTag("Pusher"))
         {
-            Push();
+            StartCoroutine(Push());
         }
         
     }
 
-    private void Push()
+    private IEnumerator Push()
     {
         JointMotor2D sliderMotor = gameObject.GetComponent<SliderJoint2D>().motor;
         sliderMotor.motorSpeed *= -1;
         gameObject.GetComponent<SliderJoint2D>().motor = sliderMotor;
+
+        if (!toggle)
+        {
+            yield return new WaitForSeconds(0.5f);
+        
+            sliderMotor = gameObject.GetComponent<SliderJoint2D>().motor;
+            sliderMotor.motorSpeed *= -1;
+            gameObject.GetComponent<SliderJoint2D>().motor = sliderMotor;
+        }
     }
     
     private void OpenDoor()
