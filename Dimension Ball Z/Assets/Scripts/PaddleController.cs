@@ -8,13 +8,15 @@ public class PaddleController : MonoBehaviour
     public float upperBound;
     public float lowerBound;
     public Rigidbody2D body;
+    public float speed;
+    private Vector3 _mousePosition;
     private float _verticalMovement;
     private Vector2 _moveDirection;
     public bool active = false;
 
     public bool scoreSystemInPlay;
     
-    private void Update()
+    /*private void Update()
     {
         if (active)
         {
@@ -24,11 +26,19 @@ public class PaddleController : MonoBehaviour
         {
             _moveDirection = new Vector2(0, 0);
         }
-    }
+    }*/
 
     private void FixedUpdate()
     {
-        Move();
+        if (!active) return;
+        if (transform.position.y < lowerBound && transform.position.y > upperBound);
+            _mousePosition = Input.mousePosition;
+            _mousePosition = Camera.main.ScreenToWorldPoint(_mousePosition);
+            var paddleLocation = transform.position;
+            var step = speed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);
+        
+        /*Move();*/
     }
 
     void ProcessInputs()
@@ -42,7 +52,11 @@ public class PaddleController : MonoBehaviour
         if ((_moveDirection.y < 0 && transform.position.y < lowerBound) 
             || (_moveDirection.y > 0 && transform.position.y > upperBound))
         {
-            body.velocity = new Vector2(0,0);
+            if (!Input.GetKey(KeyCode.Mouse2)) return;
+            Debug.Log("Hello!");
+            _mousePosition = Input.mousePosition;
+            _mousePosition = Camera.main.ScreenToWorldPoint(_mousePosition);
+            transform.position = Vector2.Lerp(transform.position, _mousePosition, 2.0f);
         }
         else
         {
