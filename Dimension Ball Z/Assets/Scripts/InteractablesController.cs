@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class InteractablesController : MonoBehaviour
 {
@@ -54,6 +56,11 @@ public class InteractablesController : MonoBehaviour
         {
             OpenDoor();
         }
+        if (CompareTag("Pear"))
+        {
+            Debug.Log("flashing green");
+            StartCoroutine(FlashGreen());
+        }
     }
     
     
@@ -65,6 +72,15 @@ public class InteractablesController : MonoBehaviour
         door.constraints = RigidbodyConstraints2D.None;
         direction.motorSpeed *= -1;
         hinge.motor = direction;
+    }
+
+    private IEnumerator FlashGreen()
+    {
+        Light2D light = GetComponentInChildren<Light2D>();
+        Color originalColor = light.color;
+        light.color = Color.green;
+        yield return new WaitForSeconds(0.3f);
+        light.color = originalColor;
     }
 }
 
