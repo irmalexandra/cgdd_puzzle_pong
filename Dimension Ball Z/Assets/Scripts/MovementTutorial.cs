@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class MovementTutorial : MonoBehaviour
 {
+    public GameObject winPortal;
+
     private TMPro.TextMeshProUGUI _textBox;
 
+    
+    
     private void Start()
     {
         _textBox = GameObject.Find("ScoreObjective").GetComponent<TMPro.TextMeshProUGUI>();
