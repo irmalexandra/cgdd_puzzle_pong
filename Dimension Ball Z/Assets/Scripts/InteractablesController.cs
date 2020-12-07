@@ -58,11 +58,22 @@ public class InteractablesController : MonoBehaviour
         }
         if (CompareTag("Pear"))
         {
-            Debug.Log("flashing green");
             StartCoroutine(FlashGreen());
         }
+
+        if (CompareTag("Pusher"))
+        {
+            Push();
+        }
+        
     }
-    
+
+    private void Push()
+    {
+        JointMotor2D sliderMotor = gameObject.GetComponent<SliderJoint2D>().motor;
+        sliderMotor.motorSpeed *= -1;
+        gameObject.GetComponent<SliderJoint2D>().motor = sliderMotor;
+    }
     
     private void OpenDoor()
     {
