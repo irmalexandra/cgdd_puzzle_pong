@@ -46,7 +46,7 @@ MonoBehaviour:
   m_LightType: 1
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.857
-  m_Color: {r: 0.9339623, g: 0.030838395, b: 0.030838395, a: 1}
+  m_Color: {r: 0.6698113, g: 0.21800463, b: 0.21800463, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0.097
   m_ApplyToSortingLayers: 00000000dd8da11a
@@ -174,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toActivate: []
   hold: 0
+  buttonFace: {fileID: 5212117034078493143}
 --- !u!212 &5212117033872073581
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -342,7 +343,7 @@ MonoBehaviour:
   - {x: -2.275, y: 0.7350003, z: 0}
   m_ShapePathHash: -1043048012
   m_Mesh: {fileID: 0}
-  m_InstanceId: 52932
+  m_InstanceId: 134586
 --- !u!1 &5212117034078493143
 GameObject:
   m_ObjectHideFlags: 0
