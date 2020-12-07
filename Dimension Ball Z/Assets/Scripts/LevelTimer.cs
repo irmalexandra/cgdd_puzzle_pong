@@ -3,14 +3,10 @@
 public class LevelTimer : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI timer;
-    private static bool _isRunning;
+    private static bool _isRunning = false;
     private double _elapsedTime;
     public float milliseconds, seconds, minutes;
-
-    private void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     private void Update()
@@ -27,7 +23,7 @@ public class LevelTimer : MonoBehaviour
     public static void StartTimer() {
         _isRunning = true;
     }
-    private void StopTimer() {
+    public static void StopTimer() {
         _isRunning = false;
     }
 

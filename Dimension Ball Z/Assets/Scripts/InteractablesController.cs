@@ -1,11 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class InteractablesController : MonoBehaviour
 {
 
     public bool toggle;
+    public GameObject[] ignorables;
     private bool _toggled;
-    
+
+
+    private void Start()
+    {
+        foreach (var item in ignorables)
+        {
+            Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+        
+    }
+
 
     public void Signal()
     {

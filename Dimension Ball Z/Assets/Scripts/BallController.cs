@@ -30,6 +30,10 @@ public class BallController : MonoBehaviour
     public Light2D paraLight;
     private Color originalColor;
 
+    private float _horizontal;
+    private float _vertical;
+    private bool _flashGreen;
+    
     void Start()
     {
         trail = GetComponent<TrailRenderer>();
@@ -43,6 +47,7 @@ public class BallController : MonoBehaviour
     {
         CooldownTrigger();
         ChangeLights();
+        
 
         if (!GameManager.Instance.IsPaused())
         {
@@ -67,6 +72,7 @@ public class BallController : MonoBehaviour
 
         }
     }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -95,6 +101,8 @@ public class BallController : MonoBehaviour
 
     private void ProcessInputs()
     {
+        _horizontal = Input.GetAxisRaw("Horizontal");
+        _vertical = Input.GetAxisRaw("Vertical");
         /*if (Input.GetButton("Jump"))
         {
             
@@ -106,29 +114,40 @@ public class BallController : MonoBehaviour
         if (_thrustOnCooldown)
         {
             trail.time -= 0.005f;
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal"))
             {
                 SoundManager.PlaySoundEffect("Cooldown");
             }
         }
         else
         {
-            if (Input.GetButton("Fire1"))
+            if (_vertical == 0 && _horizontal == 0)
             {
-                if (StaminaBar.instance.UseStamina(1))
-                    if (StaminaBar.instance.UseStamina(thrustStaminaCost))
-                    {
-                        trail.time = defaultTrailTime;
-                        Thrust();
-                    }
+                trail.time -= 0.005f;
+                return;
             }
+                
+            if (!StaminaBar.instance.UseStamina(thrustStaminaCost)) return;
+            trail.time = defaultTrailTime;
+            Thrust2();
 
-            if (Input.GetButtonUp("Fire1"))
+            if (_vertical == 0 && _horizontal == 0)
             {
-                _thrustOnCooldown = true;
                 trail.time -= 0.005f;
             }
         }
+    }
+
+    private void Thrust2()
+    {
+        var bodyVelocity = body.velocity;
+        Vector2 position = transform.position;
+        
+        Vector2 target = new Vector2(position.x+_horizontal, position.y+_vertical);
+        
+        var newDirection = Vector2.LerpUnclamped(bodyVelocity.normalized, (target-position).normalized, _thrustStaminaCost);
+
+        body.velocity = newDirection*speed;
     }
 
     private void Thrust()
@@ -145,22 +164,28 @@ public class BallController : MonoBehaviour
 
     private void CooldownTrigger()
     {
-        if (StaminaBar.instance.GetStamPercentage() == 0f)
+        if (StaminaBar.instance.GetStamPercentage() <= 0f)
         {
             _thrustOnCooldown = true;
+        }
+        else if (StaminaBar.instance.GetStamPercentage() <= 0.99f)
+        {
+            if (_flashGreen) return;
+            _flashGreen = true;
+
         }
         else if (StaminaBar.instance.GetStamPercentage() >= 0.99f)
         {
             if (!_thrustOnCooldown) return;
-            SoundManager.PlaySoundEffect("ThrustReady");
             _thrustOnCooldown = false;
+            _flashGreen = true;
         }
     }
 
     private void ChangeLights()
     {
         pointLight.intensity = 1 * StaminaBar.instance.GetStamPercentage();
-        if (_thrustOnCooldown)
+        if (StaminaBar.instance.GetStamPercentage() < 1f)
         {
             pointLight.color =
                 Color.LerpUnclamped(Color.red, originalColor, 1 * StaminaBar.instance.GetStamPercentage());
@@ -169,20 +194,20 @@ public class BallController : MonoBehaviour
 
             trail.startColor = pointLight.color;
         }
-        else
+        else if (_flashGreen)
         {
-            if (paraLight.color != originalColor)
-            {
-                StartCoroutine(ColorStatusUpdate());
-            }
-            
+            StartCoroutine(ColorStatusUpdate());
+            _flashGreen = false;
         }
+        
+        
     }
 
 
     private IEnumerator ColorStatusUpdate()
     {
         ChangeLightsColor(Color.green);
+        SoundManager.PlaySoundEffect("ThrustReady");
         yield return new WaitForSeconds(0.3f);
         ChangeLightsColor(originalColor);
     }
