@@ -9,7 +9,7 @@ public class MovementTutorial : MonoBehaviour
 
     private void Start()
     {
-        _textBox = GameObject.FindGameObjectWithTag("TutorialTopMid").GetComponent<TMPro.TextMeshProUGUI>();
+        _textBox = GameObject.Find("ScoreObjective").GetComponent<TMPro.TextMeshProUGUI>();
         _textBox.color = Color.white;
     }
 
