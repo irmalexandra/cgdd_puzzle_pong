@@ -33,9 +33,11 @@ public class GameManager : MonoBehaviour
         PauseCanvas.SetActive(false);
         LevelCompleteCanvas.SetActive(false);
         
-        Physics2D.IgnoreLayerCollision(8,8, true);
-        Physics2D.IgnoreLayerCollision(9,10, true);
-        Physics2D.IgnoreLayerCollision(9,9, true);
+        Physics2D.IgnoreLayerCollision(8, 8, true);
+        Physics2D.IgnoreLayerCollision(9, 10, true);
+        Physics2D.IgnoreLayerCollision(9, 9, true);
+        Physics2D.IgnoreLayerCollision(11, 11, true);
+        Physics2D.IgnoreLayerCollision(11, 9, true);
         
         Time.timeScale = 0;
     }
@@ -44,11 +46,7 @@ public class GameManager : MonoBehaviour
     {
         ProcessInputs();
         
-        Physics2D.IgnoreLayerCollision(8, 8, true);
-        Physics2D.IgnoreLayerCollision(9, 10, true);
-        Physics2D.IgnoreLayerCollision(9, 9, true);
-        Physics2D.IgnoreLayerCollision(11, 11, true);
-        Physics2D.IgnoreLayerCollision(11, 9, true);
+
         
     }
 
