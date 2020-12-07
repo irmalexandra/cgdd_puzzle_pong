@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PaddleController : MonoBehaviour
 {
@@ -15,7 +17,10 @@ public class PaddleController : MonoBehaviour
     public bool active = false;
 
     public bool scoreSystemInPlay;
-    
+    public Light2D freeFormLight;
+    private float _originalIntensity;
+    private float _originalFalloff;
+
     /*private void Update()
     {
         if (active)
@@ -28,15 +33,40 @@ public class PaddleController : MonoBehaviour
         }
     }*/
 
+    private void Start()
+    {
+        
+        _originalIntensity = freeFormLight.intensity;
+        _originalFalloff = freeFormLight.falloffIntensity;
+    }
+
     private void FixedUpdate()
     {
         if (!active) return;
-        if (transform.position.y < lowerBound && transform.position.y > upperBound);
-            _mousePosition = Input.mousePosition;
-            _mousePosition = Camera.main.ScreenToWorldPoint(_mousePosition);
-            var paddleLocation = transform.position;
-            var step = speed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);
+        
+        _mousePosition = Input.mousePosition;
+        _mousePosition = Camera.main.ScreenToWorldPoint(_mousePosition);
+        var paddleLocation = transform.position;
+        var step = speed * Time.deltaTime;
+        if (transform.position.y <= upperBound && transform.position.y >= lowerBound)
+        {
+            transform.position = 
+                Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);
+        }
+        else
+        {
+            if (transform.position.y >= upperBound && _mousePosition.y <= upperBound)
+            {
+                transform.position =
+                    Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, upperBound), step);
+            }
+            else if (transform.position.y <= lowerBound && _mousePosition.y >= lowerBound)
+            {
+                transform.position =
+                    Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, lowerBound), step);
+            }
+        }
+        
         
         /*Move();*/
     }
@@ -64,9 +94,17 @@ public class PaddleController : MonoBehaviour
             body.velocity = newPosition;
         }
     }
+    private IEnumerator Flash()
+    {
+        freeFormLight.intensity += 2;
+        yield return new WaitForSeconds(0.1f);
+        freeFormLight.intensity = _originalIntensity;
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        StartCoroutine(Flash());
+        
         if (!scoreSystemInPlay) return;
         var side = transform.parent.name;
         switch (side)
