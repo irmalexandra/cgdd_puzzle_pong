@@ -13,6 +13,8 @@ public class ButtonController : MonoBehaviour
     private Color _buttonFaceLightOriginalColor;
     private Color _buttonFaceLightInvertedColor;
 
+    public bool pressed;
+
     private void Start()
     {
         _buttonFaceOriginalColor = buttonFace.GetComponent<SpriteRenderer>().color;
@@ -52,6 +54,7 @@ public class ButtonController : MonoBehaviour
 
         if (other.gameObject.name == "ButtonFace")
         {
+            pressed = true;
             invertButtonFaceColors(other);
             foreach (var interactableObject in toActivate)
             {
@@ -65,6 +68,7 @@ public class ButtonController : MonoBehaviour
     {
         if (hold && other.gameObject.name == "ButtonFace")
         {
+            pressed = false;
             invertButtonFaceColors(other);
             foreach (var interactableObject in toActivate)
             {

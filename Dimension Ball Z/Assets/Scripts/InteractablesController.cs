@@ -10,6 +10,9 @@ public class InteractablesController : MonoBehaviour
     public GameObject[] ignorables;
     private bool _toggled;
 
+    public GameObject[] multiButtons;
+    private bool _activated;
+
 
     private void Start()
     {
@@ -60,12 +63,35 @@ public class InteractablesController : MonoBehaviour
         {
             StartCoroutine(FlashGreen());
         }
-
         if (CompareTag("Pusher"))
         {
             Push();
         }
-        
+
+        if (CompareTag("MultiDoor"))
+        {
+            var open = true;
+            foreach (var button in multiButtons)
+            {
+                if (!button.GetComponent<ButtonController>().pressed)
+                {
+                    open = false;
+                }
+            }
+
+            if (open)
+            {
+                OpenDoor();
+                _activated = true;
+            }
+
+            if (_activated && !open)
+            {
+                OpenDoor();
+                _activated = false;
+            }
+        }
+
     }
 
     private void Push()
