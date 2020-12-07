@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
-using Debug = UnityEngine.Debug;
 
 public class BallController : MonoBehaviour
 {
@@ -161,8 +160,6 @@ public class BallController : MonoBehaviour
     private void ChangeLights()
     {
         pointLight.intensity = 1 * StaminaBar.instance.GetStamPercentage();
-        Debug.Log(pointLight.intensity);
-        Debug.Log("stam percentage:" + StaminaBar.instance.GetStamPercentage());
         if (_thrustOnCooldown)
         {
             pointLight.color =
@@ -199,7 +196,6 @@ public class BallController : MonoBehaviour
 
 /*private  void Nudge()
 {
-    Debug.Log("nudge nudge");
 
     var nudgeDirection = body.velocity;
     
