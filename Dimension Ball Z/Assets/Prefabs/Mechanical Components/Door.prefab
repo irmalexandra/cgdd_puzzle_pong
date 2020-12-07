@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggle: 0
+  ignorables: []
 --- !u!114 &491743909540931445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,4 +196,4 @@ MonoBehaviour:
   - {x: -0.90499824, y: 2.3350008, z: 0}
   m_ShapePathHash: 213342050
   m_Mesh: {fileID: 0}
-  m_InstanceId: -198510
+  m_InstanceId: 147188
