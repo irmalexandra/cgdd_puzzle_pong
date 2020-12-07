@@ -9,6 +9,7 @@ public class WinPortalController : MonoBehaviour
             SoundManager.PlaySoundEffect("PortalSoundEffect");
             Destroy(collision.collider.gameObject); 
             GameManager.Instance.TriggerLevelCompleteMenu();
+            LevelTimer.StopTimer();
         }
     }
 }
