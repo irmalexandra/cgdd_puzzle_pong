@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public class PhysicsObject : MonoBehaviour
@@ -11,7 +12,10 @@ public class PhysicsObject : MonoBehaviour
     private Quaternion _originalRotation;
     private SpriteRenderer _spriteRenderer;
     private Color _originalColor;
-
+    
+    public Vector2 levelBounds;
+    public Vector2 startPosition;
+ 
 
     private void Start()
     {
@@ -20,6 +24,13 @@ public class PhysicsObject : MonoBehaviour
         _originalRotation = transform.rotation;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _originalColor = _spriteRenderer.color;
+        startPosition = transform.position;
+        levelBounds = new Vector2(9.6f, 5f);
+    }
+
+    private void Update()
+    {
+        BoundCheck();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -51,6 +62,12 @@ public class PhysicsObject : MonoBehaviour
                 _spriteRenderer.color = _originalColor;
             }
         }
-
+    }
+    
+    private void BoundCheck()
+    {
+        if (!(transform.position.x < -levelBounds.x) && !(transform.position.x > levelBounds.x) &&
+            !(transform.position.y < -levelBounds.y) && !(transform.position.y > levelBounds.y)) return;
+        transform.position = startPosition;
     }
 }

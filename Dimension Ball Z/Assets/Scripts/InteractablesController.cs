@@ -140,6 +140,7 @@ public class InteractablesController : MonoBehaviour
         Light2D light = GetComponentInChildren<Light2D>();
         Color originalColor = light.color;
         light.color = Color.green;
+        SoundManager.PlaySoundEffect("PositiveFeedback");
         yield return new WaitForSeconds(0.3f);
         light.color = originalColor;
     }

@@ -53,7 +53,16 @@ public class BallController : MonoBehaviour
         {
             ProcessInputs();
         }
+        BoundCheck();
+        if (GameManager.Instance.extraBalls == 0)
+        {
+            GameManager.Instance.TriggerGameOverMenu();
 
+        }
+    }
+
+    private void BoundCheck()
+    {
         currentMagnitude = body.velocity.magnitude;
         if (!(transform.position.x < -levelBounds.x) && !(transform.position.x > levelBounds.x) &&
             !(transform.position.y < -levelBounds.y) && !(transform.position.y > levelBounds.y)) return;
@@ -63,13 +72,6 @@ public class BallController : MonoBehaviour
         {
             transform.position = startPosition;
             body.velocity = direction.normalized * speed;
-        }
-
-
-        if (GameManager.Instance.extraBalls == 0)
-        {
-            GameManager.Instance.TriggerGameOverMenu();
-
         }
     }
 
