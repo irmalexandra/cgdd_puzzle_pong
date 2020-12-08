@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1311113091672957459}
+  - component: {fileID: 9017020943191337647}
   - component: {fileID: 1524291037962358570}
   - component: {fileID: 7453515710783672663}
-  - component: {fileID: 9017020943191337647}
   m_Layer: 5
   m_Name: fpsCounter
   m_TagString: Untagged
@@ -35,9 +35,22 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92, y: -45.4}
-  m_SizeDelta: {x: 65.04996, y: 11.200001}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 125.8, y: -60.7}
+  m_SizeDelta: {x: 200, y: 35.49579}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9017020943191337647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3996215956138021714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53325d6cdafb6604fa94000677e9a00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsDisplay: {fileID: 7453515710783672663}
 --- !u!222 &1524291037962358570
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -65,7 +78,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -99,8 +112,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -134,19 +147,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &9017020943191337647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3996215956138021714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53325d6cdafb6604fa94000677e9a00d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fpsDisplay: {fileID: 7453515710783672663}
 --- !u!1 &7013971883551075149
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,8 +407,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7013971883914729104}
-  - component: {fileID: 7013971883914729118}
   - component: {fileID: 7013971883914729119}
+  - component: {fileID: 7013971883914729118}
   - component: {fileID: 7013971883914729105}
   m_Layer: 5
   m_Name: ballCounter
@@ -433,17 +433,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 124, y: -25.65}
+  m_AnchoredPosition: {x: 124, y: -25.650024}
   m_SizeDelta: {x: 200, y: 35.49579}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7013971883914729118
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013971883914729107}
-  m_CullTransparentMesh: 0
 --- !u!114 &7013971883914729119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,6 +449,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballCounter: {fileID: 7013971883914729105}
+--- !u!222 &7013971883914729118
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013971883914729107}
+  m_CullTransparentMesh: 0
 --- !u!114 &7013971883914729105
 MonoBehaviour:
   m_ObjectHideFlags: 0
