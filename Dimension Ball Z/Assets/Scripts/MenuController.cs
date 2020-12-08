@@ -1,18 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    private bool _backgroundStarted;
+    public GameObject gameName;
+    public GameObject inputMenu;
+    public GameObject mainMenu;
+    /*private bool _backgroundStarted;
     
     private void Update()
     {
         if (_backgroundStarted) return;
         GameManager.Instance.StartLevel();
         _backgroundStarted = true;
+    }*/
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("Input"))
+        {
+            gameName.gameObject.SetActive(true);
+            mainMenu.gameObject.SetActive(true);
+            mainMenu.gameObject.SetActive(false);
+        }
+
     }
 
     public void PlayTutorial()
@@ -46,8 +58,16 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
 
-
-    
-
+    public void UserInputs(bool mouse)
+    {
+        if (mouse)
+        {
+            PlayerPrefs.SetInt("Input", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Input", 0);
+        }
+    }
 }
 
