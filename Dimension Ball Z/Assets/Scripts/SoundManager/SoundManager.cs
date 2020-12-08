@@ -67,7 +67,6 @@ public class SoundManager : MonoBehaviour
     
     private static void PlayMenuButtonSoundEffect(AudioSource source)
     {
-        Debug.Log("play sound thing");
         source.PlayOneShot(_buttonClick);
     }
     
