@@ -91,6 +91,22 @@ public class InteractablesController : MonoBehaviour
             }
         }
 
+        if (CompareTag("WinPortal"))
+        {
+            ToggleActive();
+        }
+
+    }
+
+    private void ToggleActive()
+    {
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        gameObject.SetActive(true);
+        
     }
 
     private IEnumerator Push()

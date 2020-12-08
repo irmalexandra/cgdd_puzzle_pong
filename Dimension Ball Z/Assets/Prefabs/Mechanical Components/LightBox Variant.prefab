@@ -107,12 +107,17 @@ PrefabInstance:
     - target: {fileID: 738898092123631599, guid: 1a5fabcd392e1494ea49bc40445c70f8,
         type: 3}
       propertyPath: m_Name
-      value: LightBox
+      value: LightBox Variant
       objectReference: {fileID: 0}
     - target: {fileID: 738898092123631599, guid: 1a5fabcd392e1494ea49bc40445c70f8,
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 738898092123631599, guid: 1a5fabcd392e1494ea49bc40445c70f8,
+        type: 3}
+      propertyPath: m_TagString
+      value: PhysicsObject
       objectReference: {fileID: 0}
     - target: {fileID: 1032674132219689632, guid: 1a5fabcd392e1494ea49bc40445c70f8,
         type: 3}
@@ -202,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 6648232782786195015, guid: 1a5fabcd392e1494ea49bc40445c70f8,
         type: 3}
       propertyPath: m_InstanceId
-      value: -356216
+      value: -381420
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a5fabcd392e1494ea49bc40445c70f8, type: 3}
