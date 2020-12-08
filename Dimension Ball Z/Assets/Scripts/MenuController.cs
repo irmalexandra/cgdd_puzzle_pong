@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour
         {
             gameName.gameObject.SetActive(true);
             mainMenu.gameObject.SetActive(true);
-            mainMenu.gameObject.SetActive(false);
+            inputMenu.gameObject.SetActive(false);
         }
 
     }
