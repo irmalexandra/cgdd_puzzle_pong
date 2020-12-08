@@ -67,12 +67,14 @@ public class BallController : MonoBehaviour
         if (!(transform.position.x < -levelBounds.x) && !(transform.position.x > levelBounds.x) &&
             !(transform.position.y < -levelBounds.y) && !(transform.position.y > levelBounds.y)) return;
         if (GameManager.Instance.extraBalls > 0)
-            GameManager.Instance.extraBalls--;
-        if (GameManager.Instance.extraBalls != 0)
         {
-            transform.position = startPosition;
-            body.velocity = direction.normalized * speed;
+            GameManager.Instance.extraBalls--;
+            BallCounter.loseLife(GameManager.Instance.extraBalls);
         }
+
+        if (GameManager.Instance.extraBalls == 0) return;
+        transform.position = startPosition;
+        body.velocity = direction.normalized * speed;
     }
 
 
