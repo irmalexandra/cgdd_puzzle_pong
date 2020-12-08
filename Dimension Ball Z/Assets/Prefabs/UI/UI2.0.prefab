@@ -198,6 +198,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -60.699997
       objectReference: {fileID: 0}
+    - target: {fileID: 1311113091672957459, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 125.79999
+      objectReference: {fileID: 0}
     - target: {fileID: 7013971883854063744, guid: 22cd9e77ce4cf8849877c0ea79123ecd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -328,6 +333,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7277412676618652549}
     m_Modifications:
+    - target: {fileID: 2576402273485899472, guid: 8083f6fb916b1d048bfe5bc62b2cc39c,
+        type: 3}
+      propertyPath: m_TagString
+      value: MenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576402273588921476, guid: 8083f6fb916b1d048bfe5bc62b2cc39c,
+        type: 3}
+      propertyPath: m_TagString
+      value: MenuButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2576402273796141461, guid: 8083f6fb916b1d048bfe5bc62b2cc39c,
         type: 3}
       propertyPath: m_Name
@@ -497,6 +512,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253569444082304910, guid: 8083f6fb916b1d048bfe5bc62b2cc39c,
+        type: 3}
+      propertyPath: m_TagString
+      value: MenuButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8083f6fb916b1d048bfe5bc62b2cc39c, type: 3}
@@ -774,6 +794,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6345322580889184717, guid: 471fe1a595dce1b408adea3a09859624,
+        type: 3}
+      propertyPath: m_TagString
+      value: MenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345322581059316633, guid: 471fe1a595dce1b408adea3a09859624,
+        type: 3}
+      propertyPath: m_TagString
+      value: MenuButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471fe1a595dce1b408adea3a09859624, type: 3}
 --- !u!224 &4391446147290520434 stripped
@@ -918,6 +948,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UiScaleMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624511072466885245, guid: a457bfb778954ca4baeaa81c1cb62aa3,
+        type: 3}
+      propertyPath: m_TagString
+      value: MenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922332299702048275, guid: a457bfb778954ca4baeaa81c1cb62aa3,
+        type: 3}
+      propertyPath: m_TagString
+      value: MenuButton
       objectReference: {fileID: 0}
     - target: {fileID: 8965087231035858990, guid: a457bfb778954ca4baeaa81c1cb62aa3,
         type: 3}

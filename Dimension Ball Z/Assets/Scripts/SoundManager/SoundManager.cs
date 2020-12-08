@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
@@ -10,10 +13,14 @@ public class SoundManager : MonoBehaviour
     private static AudioClip _slowMotion2;
 
     private static AudioClip _positiveFeedback;
-
+    
+    private static AudioClip _buttonClick;
+    
     private static List<AudioClip> ballHitSounds = new List<AudioClip>();
     private static List<AudioClip> paddleHitSounds = new List<AudioClip>();
 
+    // private static GameObject[] allButtons = new GameObject[];
+    
     private static AudioClip _abilityCooldown;
     private static AudioClip _thrustReady;
 
@@ -31,13 +38,37 @@ public class SoundManager : MonoBehaviour
         _thrustReady = Resources.Load<AudioClip>("Development/thrustReady");
         _positiveFeedback = Resources.Load<AudioClip>("Development/positiveFeedback");
 
+        _buttonClick = Resources.Load<AudioClip>("Development/clickButtonEffect");
+
         for (var i = 1; i <= 5; i++)
         {
            ballHitSounds.Add(Resources.Load<AudioClip>("Development/BallHit/BallHit"+i));
            paddleHitSounds.Add(Resources.Load<AudioClip>("Development/Paddle/PaddleHit"+i));
         }
+
+        AddAudioSourceToButtons();
         
         _audioSource = GetComponent<AudioSource>();
+    }
+
+    private static void AddAudioSourceToButtons()
+    {
+        var allButtons = GameObject.FindGameObjectsWithTag("MenuButton");
+        
+        foreach (var buttonGameObject in allButtons )
+        {
+            var source = buttonGameObject.AddComponent<AudioSource>();
+            var buttonComponent = buttonGameObject.GetComponent<Button>();
+            source.clip = _buttonClick;
+            source.playOnAwake = false;
+            buttonComponent.onClick.AddListener(()=> PlayMenuButtonSoundEffect(source));
+        }
+    }
+    
+    private static void PlayMenuButtonSoundEffect(AudioSource source)
+    {
+        Debug.Log("play sound thing");
+        source.PlayOneShot(_buttonClick);
     }
     
     public static void PlaySoundEffect(string SoundEffectName)
