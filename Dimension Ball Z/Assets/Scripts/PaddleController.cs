@@ -20,12 +20,6 @@ public class PaddleController : MonoBehaviour
     public Light2D freeFormLight;
     private float _originalIntensity;
 
-    
-   private void Update()
-    {
-
-    }
-
     private void Start()
     {
         

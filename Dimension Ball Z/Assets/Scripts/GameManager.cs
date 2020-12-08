@@ -45,9 +45,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         ProcessInputs();
-        
-
-        
     }
 
     void ProcessInputs()
