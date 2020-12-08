@@ -7,14 +7,14 @@ public class MenuController : MonoBehaviour
     public GameObject gameName;
     public GameObject inputMenu;
     public GameObject mainMenu;
-    /*private bool _backgroundStarted;
+    private bool _backgroundStarted;
     
     private void Update()
     {
         if (_backgroundStarted) return;
         GameManager.Instance.StartLevel();
         _backgroundStarted = true;
-    }*/
+    }
 
     private void Start()
     {
