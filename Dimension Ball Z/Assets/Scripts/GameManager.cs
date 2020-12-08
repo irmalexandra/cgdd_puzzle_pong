@@ -131,6 +131,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ChangeInput(bool mouse)
+    {
+        PlayerPrefs.SetInt("Input", mouse ? 1 : 0);
+    }
+
     public bool IsPaused()
     {
         return TimeManager.Instance.GetPaused();
