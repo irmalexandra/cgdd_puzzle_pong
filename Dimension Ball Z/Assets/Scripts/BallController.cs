@@ -105,8 +105,8 @@ public class BallController : MonoBehaviour
 
     private void ProcessInputs()
     {
-        _horizontal = Input.GetAxisRaw("Horizontal");
-        _vertical = Input.GetAxisRaw("Vertical");
+        /*_horizontal = Input.GetAxisRaw("Horizontal");
+        _vertical = Input.GetAxisRaw("Vertical");*/
         /*if (Input.GetButton("Jump"))
         {
             
@@ -115,10 +115,31 @@ public class BallController : MonoBehaviour
                 Nudge();
             }
         }*/
+        _horizontal = 0;
+        _vertical = 0;
+        if (Input.GetKey(KeyCode.A))
+        {
+            _horizontal = -1;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            _horizontal = 1;
+        }
+        else if (Input.GetKey(KeyCode.W))
+        {
+            _vertical = 1;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            _vertical = -1;
+        }
         if (_thrustOnCooldown)
         {
             trail.time -= 0.005f;
-            if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal"))
+            if (Input.GetKeyDown(KeyCode.A) 
+                || Input.GetKeyDown(KeyCode.S) 
+                || Input.GetKeyDown(KeyCode.W) 
+                || Input.GetKeyDown(KeyCode.D))
             {
                 SoundManager.PlaySoundEffect("Cooldown");
             }
