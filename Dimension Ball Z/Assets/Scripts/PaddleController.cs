@@ -83,7 +83,6 @@ public class PaddleController : MonoBehaviour
             || (_moveDirection.y > 0 && transform.position.y > upperBound))
         {
             if (!Input.GetKey(KeyCode.Mouse2)) return;
-            Debug.Log("Hello!");
             _mousePosition = Input.mousePosition;
             _mousePosition = Camera.main.ScreenToWorldPoint(_mousePosition);
             transform.position = Vector2.Lerp(transform.position, _mousePosition, 2.0f);
