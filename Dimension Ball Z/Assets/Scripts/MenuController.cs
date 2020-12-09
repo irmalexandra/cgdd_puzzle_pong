@@ -1,12 +1,15 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
     public GameObject gameName;
     public GameObject inputMenu;
     public GameObject mainMenu;
+    public TextMeshProUGUI levelInputField;
     private bool _backgroundStarted;
     
     private void Update()
@@ -68,6 +71,16 @@ public class MenuController : MonoBehaviour
         {
             PlayerPrefs.SetInt("Input", 0);
         }
+    }
+
+    public void SelectLevel()
+    {
+        int.TryParse(levelInputField.text.Replace("\u200b", ""), out int sceneIndex);
+        if (sceneIndex != 0)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+
     }
 }
 
