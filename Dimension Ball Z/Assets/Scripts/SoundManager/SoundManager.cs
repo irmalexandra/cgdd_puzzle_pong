@@ -45,29 +45,26 @@ public class SoundManager : MonoBehaviour
            ballHitSounds.Add(Resources.Load<AudioClip>("Development/BallHit/BallHit"+i));
            paddleHitSounds.Add(Resources.Load<AudioClip>("Development/Paddle/PaddleHit"+i));
         }
-
-        AddAudioSourceToButtons();
         
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private static void AddAudioSourceToButtons()
+    public static void AddAudioSourceToMenuButtons()
     {
-        var allButtons = GameObject.FindGameObjectsWithTag("MenuButton");
-        
+        var allButtons = GameObject.FindGameObjectsWithTag("MenuButton"); ;
         foreach (var buttonGameObject in allButtons )
         {
-            var source = buttonGameObject.AddComponent<AudioSource>();
+            // var source = buttonGameObject.AddComponent<AudioSource>();
             var buttonComponent = buttonGameObject.GetComponent<Button>();
-            source.clip = _buttonClick;
-            source.playOnAwake = false;
-            buttonComponent.onClick.AddListener(()=> PlayMenuButtonSoundEffect(source));
+            // source.clip = _buttonClick;
+            // source.playOnAwake = false;
+            buttonComponent.onClick.AddListener(()=> PlayMenuButtonSoundEffect());
         }
     }
     
-    private static void PlayMenuButtonSoundEffect(AudioSource source)
+    private static void PlayMenuButtonSoundEffect()
     {
-        source.PlayOneShot(_buttonClick);
+        _audioSource.PlayOneShot(_buttonClick);
     }
     
     public static void PlaySoundEffect(string SoundEffectName)

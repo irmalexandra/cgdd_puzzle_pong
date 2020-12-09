@@ -8,30 +8,21 @@ using UnityEngine.SocialPlatforms.Impl;
 public class GameManager : MonoBehaviour
 {
     private GameObject[] _dimensions;
-    public static GameObject GameOverCanvas;
-    public static GameObject PauseCanvas;
-    public static GameObject LevelStartCanvas;
-    public static GameObject LevelCompleteCanvas;
+    public GameObject GameOverCanvas;
+    public GameObject PauseCanvas;
+    public GameObject LevelStartCanvas;
+    public GameObject LevelCompleteCanvas;
     
     public static GameManager Instance;
     public int extraBalls;
 
     private bool _levelStarted;
     private bool _paused;
-   
-    // Start is called before the first frame update
+    
     void Start()
     {
         Instance = this;
         _dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
-        
-        GameOverCanvas = GameObject.FindWithTag("GameOverMenu");
-        PauseCanvas = GameObject.FindWithTag("PauseMenu");
-        LevelStartCanvas = GameObject.FindWithTag("LevelStartMenu");
-        LevelCompleteCanvas = GameObject.FindWithTag("LevelCompleteMenu");
-        GameOverCanvas.SetActive(false);
-        PauseCanvas.SetActive(false);
-        LevelCompleteCanvas.SetActive(false);
         
         Physics2D.IgnoreLayerCollision(8, 8, true);
         Physics2D.IgnoreLayerCollision(9, 10, true);
@@ -63,6 +54,7 @@ public class GameManager : MonoBehaviour
             {
                 if (!IsPaused())
                 {
+                    Debug.Log(PauseCanvas);
                     Pause();
                 }
                 else
