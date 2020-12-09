@@ -62,8 +62,7 @@ MonoBehaviour:
   toggle: 0
   selfClose: 0
   timeToClose: 0
-  ignorables:
-  - {fileID: 0}
+  ignorables: []
   multiButtons: []
 --- !u!1001 &6492222135082658074
 PrefabInstance:
@@ -155,7 +154,7 @@ PrefabInstance:
     - target: {fileID: 8161562697924493162, guid: 39f193ff5e0bc4645b54aff0cd64df1d,
         type: 3}
       propertyPath: m_InstanceId
-      value: -259768
+      value: -262452
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39f193ff5e0bc4645b54aff0cd64df1d, type: 3}
