@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -6,23 +7,26 @@ public class InteractablesController : MonoBehaviour
 {
 
     public bool toggle;
+    public bool selfClose;
+    public float timeToClose;
+    
     public GameObject[] ignorables;
     private bool _toggled;
 
     public GameObject[] multiButtons;
     private bool _activated;
-
+    
 
     private void Start()
     {
+        
         foreach (var item in ignorables)
         {
             Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
         
     }
-
-
+    
     public void Signal()
     {
         if (toggle)
@@ -56,7 +60,7 @@ public class InteractablesController : MonoBehaviour
     {
         if (CompareTag("Door"))
         {
-            OpenDoor();
+            StartCoroutine(OpenDoor());
         }
         if (CompareTag("Pear"))
         {
@@ -125,7 +129,7 @@ public class InteractablesController : MonoBehaviour
         }
     }
     
-    private void OpenDoor()
+    private IEnumerator OpenDoor()
     {
         HingeJoint2D hinge = gameObject.GetComponent<HingeJoint2D>();
         JointMotor2D direction = hinge.motor;
@@ -133,6 +137,17 @@ public class InteractablesController : MonoBehaviour
         door.constraints = RigidbodyConstraints2D.None;
         direction.motorSpeed *= -1;
         hinge.motor = direction;
+
+        if (selfClose)
+        {
+            yield return new WaitForSeconds(timeToClose);
+            hinge = gameObject.GetComponent<HingeJoint2D>();
+            direction = hinge.motor;
+            door = gameObject.GetComponent<Rigidbody2D>();
+            door.constraints = RigidbodyConstraints2D.None;
+            direction.motorSpeed *= -1;
+            hinge.motor = direction;
+        }
     }
 
     private IEnumerator FlashGreen()
