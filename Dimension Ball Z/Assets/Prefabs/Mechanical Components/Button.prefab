@@ -175,6 +175,7 @@ MonoBehaviour:
   toActivate: []
   hold: 0
   buttonFace: {fileID: 5212117034078493143}
+  pressed: 0
 --- !u!212 &5212117033872073581
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -343,7 +344,7 @@ MonoBehaviour:
   - {x: -2.275, y: 0.7350003, z: 0}
   m_ShapePathHash: -1043048012
   m_Mesh: {fileID: 0}
-  m_InstanceId: 171370
+  m_InstanceId: 75792
 --- !u!1 &5212117034078493143
 GameObject:
   m_ObjectHideFlags: 0
