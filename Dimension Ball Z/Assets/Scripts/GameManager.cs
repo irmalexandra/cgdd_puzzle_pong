@@ -91,9 +91,8 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        ScoreTracking.ResetScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
-        
     }
 
     public void ReturnToMenu()

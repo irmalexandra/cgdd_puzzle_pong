@@ -261,7 +261,6 @@ public class BallController : MonoBehaviour
     {
         _flashing = true;
         paraLight.intensity += 2f;
-        //pointLight.intensity = 0f;
         flash.intensity = 3f;
         yield return new WaitForSeconds(0.1f);
         _flashing = false;

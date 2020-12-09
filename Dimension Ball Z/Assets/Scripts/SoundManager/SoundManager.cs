@@ -28,6 +28,8 @@ public class SoundManager : MonoBehaviour
     
     
     private static AudioSource _audioSource;
+
+    private static float nextPaddleSound = 0f;
     void Start()
     {
         _portalSound = Resources.Load<AudioClip>("PortalSounds/PortalSound");
@@ -84,7 +86,12 @@ public class SoundManager : MonoBehaviour
                 _audioSource.PlayOneShot(ballHitSounds[_ballHitSound]);
                 break;
             case "PaddleHit":
-                _audioSource.PlayOneShot(paddleHitSounds[Random.Range(0, paddleHitSounds.Count)]);
+                if (Time.time >=nextPaddleSound)
+                {
+                    var sound = paddleHitSounds[Random.Range(0, paddleHitSounds.Count)];
+                    _audioSource.PlayOneShot(sound);
+                    nextPaddleSound = Time.time + sound.length;
+                }
                 break;
             case "Cooldown":
                 _audioSource.PlayOneShot(_abilityCooldown);
@@ -97,5 +104,4 @@ public class SoundManager : MonoBehaviour
                 break;
         }
     }
-
 }
