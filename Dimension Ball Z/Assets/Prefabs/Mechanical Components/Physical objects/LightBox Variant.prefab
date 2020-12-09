@@ -97,6 +97,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8459680997524097775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222956705424830444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23e1e6be29d28a4090a8c2a514fb99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toAvoid: []
+  timer: 5
+  divisor: 5
+  levelBounds: {x: 0, y: 0}
+  startPosition: {x: 0, y: 0}
 --- !u!1001 &2808884878994653187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 6648232782786195015, guid: 1a5fabcd392e1494ea49bc40445c70f8,
         type: 3}
       propertyPath: m_InstanceId
-      value: -381420
+      value: -149180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a5fabcd392e1494ea49bc40445c70f8, type: 3}
