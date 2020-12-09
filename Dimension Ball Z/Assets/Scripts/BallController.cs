@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Rendering;
@@ -16,7 +17,7 @@ public class BallController : MonoBehaviour
     private float defaultTrailTime = 0.2f;
 
     private bool _thrustOnCooldown;
-    private bool _thrustSoundCD;
+    private bool _thrustSoundCd;
     private float _thrustStaminaCost = 0.0115f;
 
     public TrailRenderer trail;
@@ -27,12 +28,18 @@ public class BallController : MonoBehaviour
     public float thrustStaminaCost = 1f;
 
     public Light2D pointLight;
+    private float _pointLightIntensity;
+    
     public Light2D paraLight;
-    private Color originalColor;
+    private float _paraLightIntensity;
+
+    public Light2D flash;
+    private Color _originalColor;
 
     private float _horizontal;
     private float _vertical;
     private bool _flashGreen;
+    private bool _flashing;
     
     void Start()
     {
@@ -40,7 +47,10 @@ public class BallController : MonoBehaviour
         trail.time = 0;
         startPosition = transform.position;
         body.velocity = direction.normalized * speed;
-        originalColor = paraLight.color;
+        _originalColor = paraLight.color;
+        _pointLightIntensity = pointLight.intensity;
+        _paraLightIntensity = paraLight.intensity;
+        
     }
 
     private void Update()
@@ -82,7 +92,7 @@ public class BallController : MonoBehaviour
     {
         Vector2 reDirection = GetComponent<Rigidbody2D>().velocity;
 
-
+        StartCoroutine(Flash());
         if (other.gameObject.CompareTag("Paddle"))
         {
             SoundManager.PlaySoundEffect("PaddleHit");
@@ -209,13 +219,16 @@ public class BallController : MonoBehaviour
 
     private void ChangeLights()
     {
+        if(_flashing) return;
         pointLight.intensity = 1 * StaminaBar.instance.GetStamPercentage();
         if (StaminaBar.instance.GetStamPercentage() < 1f)
         {
             pointLight.color =
-                Color.LerpUnclamped(Color.red, originalColor, 1 * StaminaBar.instance.GetStamPercentage());
+                Color.LerpUnclamped(Color.red, _originalColor, 1 * StaminaBar.instance.GetStamPercentage());
             paraLight.color =
-                Color.LerpUnclamped(Color.red, originalColor, 1 * StaminaBar.instance.GetStamPercentage());
+                Color.LerpUnclamped(Color.red, _originalColor, 1 * StaminaBar.instance.GetStamPercentage());
+            flash.color =
+                Color.LerpUnclamped(Color.red, _originalColor, 1 * StaminaBar.instance.GetStamPercentage());
 
             trail.startColor = pointLight.color;
         }
@@ -234,13 +247,28 @@ public class BallController : MonoBehaviour
         ChangeLightsColor(Color.green);
         SoundManager.PlaySoundEffect("ThrustReady");
         yield return new WaitForSeconds(0.3f);
-        ChangeLightsColor(originalColor);
+        ChangeLightsColor(_originalColor);
     }
     
     private void ChangeLightsColor(Color color)
     {
         pointLight.color = color;
         paraLight.color = color;
+        flash.color = color;
+    }
+
+    private IEnumerator Flash()
+    {
+        Debug.Log("Ball Flash");
+        _flashing = true;
+        paraLight.intensity += 2f;
+        //pointLight.intensity = 0f;
+        flash.intensity = 3f;
+        yield return new WaitForSeconds(0.1f);
+        _flashing = false;
+        paraLight.intensity = _paraLightIntensity;
+        pointLight.intensity = _pointLightIntensity;
+        flash.intensity = 0f;
     }
 }
 

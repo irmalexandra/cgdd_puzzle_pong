@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -19,6 +20,7 @@ public class PaddleController : MonoBehaviour
     public bool scoreSystemInPlay;
     public Light2D freeFormLight;
     private float _originalIntensity;
+    public bool flashing;
 
     private void Start()
     {
@@ -110,9 +112,12 @@ public class PaddleController : MonoBehaviour
     
     private IEnumerator Flash()
     {
+        flashing = true;
         freeFormLight.intensity += 2;
         yield return new WaitForSeconds(0.1f);
         freeFormLight.intensity = _originalIntensity;
+        flashing = false;
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)

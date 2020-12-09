@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(9, 9, true);
         Physics2D.IgnoreLayerCollision(11, 11, true);
         Physics2D.IgnoreLayerCollision(11, 9, true);
+        Physics2D.IgnoreLayerCollision(13, 14, true);
         
         Time.timeScale = 0;
     }
@@ -118,7 +119,11 @@ public class GameManager : MonoBehaviour
                 dimensionPaddle.active = otherPaddles.Contains(dimensionPaddle);
                 if (dimensionPaddle.active)
                 {
-                    dimensionPaddle.GetComponentInChildren<Light2D>().intensity = 0.5f;
+                    if (!dimensionPaddle.flashing)
+                    {
+                        dimensionPaddle.GetComponentInChildren<Light2D>().intensity = 0.5f;
+                    }
+                    
                 }
                 else
                 {
