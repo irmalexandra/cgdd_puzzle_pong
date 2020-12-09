@@ -122,8 +122,6 @@ public class PaddleController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        
-        Debug.Log("flashing");
         StartCoroutine(Flash());
         
         if (!scoreSystemInPlay) return;
