@@ -6,6 +6,7 @@ public class ButtonController : MonoBehaviour
 {
     public GameObject[] toActivate;
     public bool hold;
+    public bool flash;
     private bool _open;
     public GameObject buttonFace;
     private Color _buttonFaceInvertedColor;
@@ -50,12 +51,12 @@ public class ButtonController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        
-
         if (other.gameObject.name == "ButtonFace")
         {
             pressed = true;
+
             invertButtonFaceColors(other);
+ 
             foreach (var interactableObject in toActivate)
             {
                 interactableObject.GetComponent<InteractablesController>().Signal();
@@ -69,11 +70,17 @@ public class ButtonController : MonoBehaviour
         if (hold && other.gameObject.name == "ButtonFace")
         {
             pressed = false;
+            
             invertButtonFaceColors(other);
+            
             foreach (var interactableObject in toActivate)
             {
                 interactableObject.GetComponent<InteractablesController>().Signal();
             }
+        }
+        else if (flash)
+        {
+            invertButtonFaceColors(other);
         }
     }
 }
