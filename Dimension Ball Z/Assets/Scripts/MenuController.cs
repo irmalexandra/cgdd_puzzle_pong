@@ -50,7 +50,7 @@ public class MenuController : MonoBehaviour
 
     public void PortalInsanity()
     {
-        SceneManager.LoadScene("PortalInsanity");
+        SceneManager.LoadScene("Portal_Insanity");
     }
 
     public void Quit()
