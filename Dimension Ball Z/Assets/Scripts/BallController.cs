@@ -259,7 +259,6 @@ public class BallController : MonoBehaviour
 
     private IEnumerator Flash()
     {
-        Debug.Log("Ball Flash");
         _flashing = true;
         paraLight.intensity += 2f;
         //pointLight.intensity = 0f;
