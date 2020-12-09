@@ -71,6 +71,11 @@ public class InteractablesController : MonoBehaviour
             StartCoroutine(Push());
         }
 
+        if (CompareTag("Spawner"))
+        {
+            GetComponent<SpawnerController>().Spawn();
+        }
+        
         if (CompareTag("MultiDoor"))
         {
             var open = true;
