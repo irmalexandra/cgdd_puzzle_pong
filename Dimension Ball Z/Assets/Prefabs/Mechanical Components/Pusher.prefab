@@ -34,7 +34,7 @@ SliderJoint2D:
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 8.189, y: 0.786}
   m_AutoConfigureAngle: 0
@@ -60,8 +60,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggle: 0
+  selfClose: 0
+  timeToClose: 0
   ignorables:
   - {fileID: 0}
+  multiButtons: []
 --- !u!1001 &6492222135082658074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,7 +155,7 @@ PrefabInstance:
     - target: {fileID: 8161562697924493162, guid: 39f193ff5e0bc4645b54aff0cd64df1d,
         type: 3}
       propertyPath: m_InstanceId
-      value: -392098
+      value: -259768
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39f193ff5e0bc4645b54aff0cd64df1d, type: 3}
