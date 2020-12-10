@@ -119,14 +119,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7216249684988415357, guid: 03bacf73926f9e24bbee8d46d036780d,
+      - m_Target: {fileID: 7800865811797575573, guid: 5701a868c8d5c9a439c8efaae6e98272,
           type: 3}
-        m_MethodName: PlayOneShot
-        m_Mode: 2
+        m_MethodName: TriggerMenuButtonSoundEffect
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: dfa0d9ade17f6014fb87e4d5f74d42c0,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
