@@ -66,7 +66,11 @@ public class GameManager : MonoBehaviour
         }
         
     }
-    // Update is called once per frame
+
+    public void TriggerMenuButtonSoundEffect()
+    {
+        SoundManager.PlayMenuButtonSoundEffect();
+    }
 
 
     public void TriggerGameOverMenu()

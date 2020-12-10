@@ -19,8 +19,6 @@ public class SoundManager : MonoBehaviour
     private static List<AudioClip> ballHitSounds = new List<AudioClip>();
     private static List<AudioClip> paddleHitSounds = new List<AudioClip>();
 
-    // private static GameObject[] allButtons = new GameObject[];
-    
     private static AudioClip _abilityCooldown;
     private static AudioClip _thrustReady;
 
@@ -51,20 +49,7 @@ public class SoundManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public static void AddAudioSourceToMenuButtons()
-    {
-        var allButtons = GameObject.FindGameObjectsWithTag("MenuButton"); ;
-        foreach (var buttonGameObject in allButtons )
-        {
-            // var source = buttonGameObject.AddComponent<AudioSource>();
-            var buttonComponent = buttonGameObject.GetComponent<Button>();
-            // source.clip = _buttonClick;
-            // source.playOnAwake = false;
-            buttonComponent.onClick.AddListener(()=> PlayMenuButtonSoundEffect());
-        }
-    }
-    
-    private static void PlayMenuButtonSoundEffect()
+    public static void PlayMenuButtonSoundEffect()
     {
         _audioSource.PlayOneShot(_buttonClick);
     }
