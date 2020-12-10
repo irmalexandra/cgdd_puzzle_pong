@@ -25,7 +25,6 @@ public class PhysicsObject : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _originalColor = _spriteRenderer.color;
         startPosition = transform.position;
-        levelBounds = new Vector2(9.6f, 5f);
     }
 
     private void Update()
