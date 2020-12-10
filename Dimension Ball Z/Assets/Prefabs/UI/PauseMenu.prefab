@@ -69,7 +69,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.000091552734, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -263,7 +263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2576402273796141467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -454,8 +454,8 @@ RectTransform:
   m_Father: {fileID: 4657439638869970978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -547,7 +547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1981804989471421203
 Transform:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7952217220065616729
 Transform:
   m_ObjectHideFlags: 0
@@ -1387,7 +1387,7 @@ PrefabInstance:
     - target: {fileID: 8371516842223275036, guid: ae4eaf4e9af147f4f95dec189756c1a7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8371516842223275037, guid: ae4eaf4e9af147f4f95dec189756c1a7,
         type: 3}
@@ -1740,6 +1740,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResumeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8371516842223275036, guid: ae4eaf4e9af147f4f95dec189756c1a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8371516842223275037, guid: ae4eaf4e9af147f4f95dec189756c1a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1900,6 +1905,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371516842223275036, guid: ae4eaf4e9af147f4f95dec189756c1a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8371516842223275037, guid: ae4eaf4e9af147f4f95dec189756c1a7,
         type: 3}
