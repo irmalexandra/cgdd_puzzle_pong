@@ -124,7 +124,7 @@ public class InteractablesController : MonoBehaviour
         sliderMotor.motorSpeed *= -1;
         gameObject.GetComponent<SliderJoint2D>().motor = sliderMotor;
 
-        if (!toggle)
+        if (selfClose)
         {
             yield return new WaitForSeconds(0.5f);
         
