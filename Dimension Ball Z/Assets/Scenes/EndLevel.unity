@@ -171,9 +171,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 30463609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3993b4ca11eb9747a3e7bd9dc637d64, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d853aa2624398e419050fe90cfd120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOverCanvas: {fileID: 0}
+  PauseCanvas: {fileID: 0}
+  LevelStartCanvas: {fileID: 0}
+  LevelCompleteCanvas: {fileID: 0}
+  extraBalls: 0
 --- !u!114 &30463612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 442110, guid: 512fc5c070c5e3b4592265be30712a2e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17
+      value: 3.17
       objectReference: {fileID: 0}
     - target: {fileID: 442110, guid: 512fc5c070c5e3b4592265be30712a2e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -637,7 +642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 493604, guid: e4710bfb86d142944a2e14b9e9235757, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.25
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 493604, guid: e4710bfb86d142944a2e14b9e9235757, type: 3}
       propertyPath: m_LocalPosition.z
@@ -763,7 +768,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -104}
+  m_AnchoredPosition: {x: 0, y: -54.8}
   m_SizeDelta: {x: 423.62, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1836936970
@@ -1051,7 +1056,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -152.70001}
+  m_AnchoredPosition: {x: 0, y: -103.500015}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925804625
@@ -1098,7 +1103,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 30463611}
-        m_MethodName: OpenMainMenu
+        m_MethodName: ReturnToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
