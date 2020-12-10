@@ -14,7 +14,7 @@ public class LevelTimer : MonoBehaviour
         if (GameManager.Instance.extraBalls == 0)
             StopTimer();
         if (!_isRunning) return;
-        _elapsedTime += Time.unscaledDeltaTime;
+        _elapsedTime += Time.deltaTime;
         minutes = (int)(_elapsedTime / 60f);
         seconds = (int)(_elapsedTime % 60f);
         milliseconds = (int)(_elapsedTime * 1000f) % 100;
