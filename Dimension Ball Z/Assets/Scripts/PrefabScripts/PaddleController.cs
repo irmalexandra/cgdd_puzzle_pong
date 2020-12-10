@@ -19,10 +19,12 @@ public class PaddleController : MonoBehaviour
     public Light2D freeFormLight;
     private float _originalIntensity;
     public bool flashing;
+    private Camera _camera;
 
     private void Start()
     {
-        
+        _camera = Camera.main;
+
         _originalIntensity = freeFormLight.intensity;
     }
 
@@ -34,20 +36,21 @@ public class PaddleController : MonoBehaviour
         {
             if (!active) return;
             _mousePosition = Input.mousePosition;
-            _mousePosition = Camera.main.ScreenToWorldPoint(_mousePosition);
+            _mousePosition = _camera.ScreenToWorldPoint(_mousePosition);
+            
+            
             var paddleLocation = transform.position;
             var step = speed * Time.deltaTime;
             if (transform.position.y <= upperBound && transform.position.y >= lowerBound)
             {
-                transform.position = 
-                    Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);
+                
+                transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);
             }
             else
             {
                 if (transform.position.y >= upperBound && _mousePosition.y <= upperBound)
                 {
-                    transform.position =
-                        Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, upperBound), step);
+                    transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, upperBound), step);
                 }
                 else if (transform.position.y <= lowerBound && _mousePosition.y >= lowerBound)
                 {
