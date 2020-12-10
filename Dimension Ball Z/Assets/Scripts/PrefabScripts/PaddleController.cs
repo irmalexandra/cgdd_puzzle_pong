@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEditor.Rendering;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
