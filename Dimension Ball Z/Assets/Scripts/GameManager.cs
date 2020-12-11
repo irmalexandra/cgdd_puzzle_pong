@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private bool _levelStarted;
     private bool _paused;
     public  bool locked;
+    public bool DisablePauseMenu;
 
 
 
@@ -42,30 +43,34 @@ public class GameManager : MonoBehaviour
 
     public void ProcessInputs()
     {
-        if (!_levelStarted)
+        if (!DisablePauseMenu)
         {
-            if (Input.GetButtonDown("Submit"))
+            if (!_levelStarted)
             {
-                StartLevel();
+                if (Input.GetButtonDown("Submit"))
+                {
+                    StartLevel();
+                }
             }
-        }
-        else
-        {
-            if (Input.GetButtonDown("Cancel"))
+            else
             {
-                if (!IsPaused())
+                if (Input.GetButtonDown("Cancel"))
                 {
-                    Pause();
-                    LockMouse();
-                }
-                else
-                {
-                    Resume();
-                    LockMouse();
-                }
+                    if (!IsPaused())
+                    {
+                        Pause();
+                        LockMouse();
+                    }
+                    else
+                    {
+                        Resume();
+                        LockMouse();
+                    }
                 
+                }
             }
         }
+        
         
     }
 
