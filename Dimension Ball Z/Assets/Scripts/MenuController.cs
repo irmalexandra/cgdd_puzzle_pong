@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,10 +7,10 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject gameName;
-    public GameObject inputMenu;
-    public GameObject mainMenu;
-    public TextMeshProUGUI levelInputField;
+    [CanBeNull] public GameObject gameName;
+    [CanBeNull] public GameObject inputMenu;
+    [CanBeNull] public GameObject mainMenu;
+    [CanBeNull] public TextMeshProUGUI levelInputField;
     private bool _backgroundStarted;
     
     private void Update()
@@ -23,9 +24,19 @@ public class MenuController : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("Input"))
         {
-            gameName.gameObject.SetActive(true);
-            mainMenu.gameObject.SetActive(true);
-            inputMenu.gameObject.SetActive(false);
+            if (gameName)
+            {
+                gameName.gameObject.SetActive(true);
+            }
+
+            if (mainMenu)
+            {
+                mainMenu.gameObject.SetActive(true);
+            }
+            if (inputMenu)
+            {
+                inputMenu.gameObject.SetActive(false);
+            }
         }
 
     }
