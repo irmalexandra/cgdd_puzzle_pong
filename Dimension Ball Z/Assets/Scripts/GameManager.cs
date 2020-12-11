@@ -12,13 +12,17 @@ public class GameManager : MonoBehaviour
     public GameObject PauseCanvas;
     public GameObject LevelStartCanvas;
     public GameObject LevelCompleteCanvas;
+    public static Cursor mouse;
     
     public static GameManager Instance;
     public int extraBalls;
 
     private bool _levelStarted;
     private bool _paused;
-    
+    public  bool locked;
+
+
+
     void Start()
     {
         Instance = this;
@@ -54,8 +58,8 @@ public class GameManager : MonoBehaviour
             {
                 if (!IsPaused())
                 {
-                    Cursor.lockState = CursorLockMode.None;
                     Pause();
+                    LockMouse();
                 }
                 else
                 {
@@ -63,6 +67,7 @@ public class GameManager : MonoBehaviour
                     
                     
                     Resume();
+                    LockMouse();
                     
                 
                     Debug.Log(Cursor.lockState);
@@ -150,10 +155,7 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.Instance.Resume();
         PauseCanvas.SetActive(false);
-        
-        
-        
-    
+
     }
 
     public void Pause()
@@ -164,11 +166,27 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void LockMouse()
+    {
+        if (locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+                locked = !locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            locked = !locked;
+        }
+
+    }
+
     public void StartLevel()
     {
         TimeManager.Instance.Resume();
         GameObject.FindGameObjectWithTag("LevelStartMenu").SetActive(false);
         _levelStarted = true;
+        locked = true;
         LevelTimer.StartTimer();
         Cursor.lockState = CursorLockMode.Locked;
     }

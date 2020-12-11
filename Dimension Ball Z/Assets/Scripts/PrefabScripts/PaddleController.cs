@@ -46,7 +46,8 @@ public class PaddleController : MonoBehaviour
             if (transform.position.y <= upperBound && transform.position.y >= lowerBound)
             {
                 
-                _mouseDistance = Input.GetAxisRaw("Mouse Y") * speed * Time.unscaledTime;
+                _mouseDistance = Input.GetAxisRaw("Mouse Y") * speed * Time.deltaTime ;
+                step *= Mathf.Abs(_mouseDistance) * 20;
                 
                 _mouseDistance = Mathf.Clamp(transform.position.y + _mouseDistance, -4.0f, 4.0f);
                 transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mouseDistance ), step);
