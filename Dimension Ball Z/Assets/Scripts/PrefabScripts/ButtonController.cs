@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class ButtonController : MonoBehaviour
 {
@@ -62,7 +63,17 @@ public class ButtonController : MonoBehaviour
                 interactableObject.GetComponent<InteractablesController>().Signal();
             }
 
+            if (flash)
+            {
+                StartCoroutine(Flash(other));
+            }
         }
+    }
+
+    private IEnumerator Flash(Collision2D other)
+    {
+        yield return new WaitForSeconds(0.15f);
+        invertButtonFaceColors(other);
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -78,9 +89,6 @@ public class ButtonController : MonoBehaviour
                 interactableObject.GetComponent<InteractablesController>().Signal();
             }
         }
-        else if (flash)
-        {
-            invertButtonFaceColors(other);
-        }
+
     }
 }
