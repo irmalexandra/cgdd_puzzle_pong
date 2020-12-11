@@ -29,6 +29,8 @@ public class Portal : MonoBehaviour
         if (!other.CompareTag("Ball") && !other.CompareTag("PhysicsObject")) return;
         if (!(PlayerPrefs.GetFloat("timer") < 0.0001f)) return;
         SoundManager.PlaySoundEffect("PortalSoundEffect");
+        var otherTrail = other.GetComponentInParent<TrailRenderer>(); 
+        otherTrail.time = 0;
         if (portals[0] == GetComponent<Rigidbody2D>())
         {
             other.transform.position = portals[1].transform.position;
@@ -38,9 +40,5 @@ public class Portal : MonoBehaviour
             other.transform.position = portals[0].transform.position;
         }
         PlayerPrefs.SetFloat("timer", timer);
-
-
     }
-
-
 }

@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void TriggerGameOverMenu()
     {
+        TimeManager.Instance.Pause();
         GameOverCanvas.SetActive(true);
         LockMouse();
     }
