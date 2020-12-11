@@ -7,12 +7,16 @@ public class SpawnerController : MonoBehaviour
 {
     public GameObject toSpawn;
     public int allowedAmount;
+    public bool selfSpawn;
+    public float selfSpawnTimer;
+    private float _timer;
     private List<GameObject> _currentSpawns;
 
 
     private void Start()
     {
         _currentSpawns = new List<GameObject>();
+        _timer = selfSpawnTimer;
     }
 
     public void Spawn()
@@ -23,6 +27,23 @@ public class SpawnerController : MonoBehaviour
         {
             Destroy(_currentSpawns[0]);
             _currentSpawns.RemoveAt(0);
+        }
+    }
+
+
+    private void Update()
+    {
+        if (selfSpawn)
+        {
+            if (_timer > 0)
+            {
+                _timer -= Time.deltaTime;
+            }
+            else
+            {
+                _timer = selfSpawnTimer;
+                Spawn();
+            }
         }
     }
 }
