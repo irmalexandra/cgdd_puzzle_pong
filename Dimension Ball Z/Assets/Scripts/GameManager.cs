@@ -188,8 +188,7 @@ public class GameManager : MonoBehaviour
         _levelStarted = true;
         locked = true;
         LevelTimer.StartTimer();
-        Cursor.visible = false;
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     
 }
