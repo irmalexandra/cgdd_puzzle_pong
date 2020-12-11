@@ -12,11 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject PauseCanvas;
     public GameObject LevelStartCanvas;
     public GameObject LevelCompleteCanvas;
-    public static Cursor mouse;
-    
     public static GameManager Instance;
     public int extraBalls;
-
     private bool _levelStarted;
     private bool _paused;
     public  bool locked;
@@ -63,15 +60,8 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(Cursor.lockState);
-                    
-                    
                     Resume();
                     LockMouse();
-                    
-                
-                    Debug.Log(Cursor.lockState);
-                    
                 }
                 
             }
@@ -88,14 +78,14 @@ public class GameManager : MonoBehaviour
     public void TriggerGameOverMenu()
     {
         GameOverCanvas.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
+        LockMouse();
     }
 
     public void TriggerLevelCompleteMenu()
     {
         TimeManager.Instance.Pause();
         LevelCompleteCanvas.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
+        LockMouse();
     }
 
     public void RestartLevel()
@@ -186,9 +176,8 @@ public class GameManager : MonoBehaviour
         TimeManager.Instance.Resume();
         GameObject.FindGameObjectWithTag("LevelStartMenu").SetActive(false);
         _levelStarted = true;
-        locked = true;
         LevelTimer.StartTimer();
-        Cursor.lockState = CursorLockMode.Locked;
+        LockMouse();
     }
     
 }
