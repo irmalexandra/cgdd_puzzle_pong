@@ -30,7 +30,7 @@ public class PaddleController : MonoBehaviour
         _originalIntensity = freeFormLight.intensity;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         
 
