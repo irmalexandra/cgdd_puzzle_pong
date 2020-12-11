@@ -100,6 +100,8 @@ MonoBehaviour:
   toAvoid: []
   timer: 5
   divisor: 5.5
+  levelBounds: {x: 9.6, y: 5}
+  startPosition: {x: 0, y: 0}
 --- !u!50 &1204443768844681009
 Rigidbody2D:
   serializedVersion: 4
