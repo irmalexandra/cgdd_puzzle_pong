@@ -83,7 +83,7 @@ MonoBehaviour:
   - {x: -8.353172, y: 0.079310894, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 91580
+  m_InstanceId: 148282
 --- !u!1 &1542967791203987152
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   - {x: -8.356825, y: 0.09397507, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 91570
+  m_InstanceId: 148272
 --- !u!1 &2479548609702939136
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5872545762936871154}
+  - {fileID: 3901232854325657408}
   - {fileID: 5300439997895828621}
   - {fileID: 3489918026852748157}
   - {fileID: 1542967791203987158}
@@ -1202,7 +1202,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1542967790485831228}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4494326146966774115
+--- !u!1001 &6414113285805590225
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1271,11 +1271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 911fa323b26c3e84fbe8cb442021c861, type: 3}
---- !u!4 &5872545762936871154 stripped
+--- !u!4 &3901232854325657408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8007528300524583313, guid: 911fa323b26c3e84fbe8cb442021c861,
     type: 3}
-  m_PrefabInstance: {fileID: 4494326146966774115}
+  m_PrefabInstance: {fileID: 6414113285805590225}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7821036128887558604
 PrefabInstance:
