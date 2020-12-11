@@ -697,10 +697,9 @@ GameObject:
   m_Component:
   - component: {fileID: 272452221496585444}
   - component: {fileID: 6115078675843330189}
-  - component: {fileID: 8167534712363630165}
   m_Layer: 0
   m_Name: Slider
-  m_TagString: Untagged
+  m_TagString: Slider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -777,7 +776,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8167534712363630165}
+      - m_Target: {fileID: -1430689266379622596, guid: 69a84a371e6f01c4e878d7b22809b54b,
+          type: 3}
         m_MethodName: SetLevel
         m_Mode: 0
         m_Arguments:
@@ -788,19 +788,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8167534712363630165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6919077889817841200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64f371959d55a8469a51aed79e7d6f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: 93df336e8b624c748b2a232e5a09c070, type: 2}
 --- !u!1 &7387324931390215455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1225,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae4eaf4e9af147f4f95dec189756c1a7, type: 3}
+--- !u!224 &8616472789821565333 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8371516842223275037, guid: ae4eaf4e9af147f4f95dec189756c1a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 269730470609626504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8616472789821565338 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8371516842223275026, guid: ae4eaf4e9af147f4f95dec189756c1a7,
@@ -1253,12 +1246,6 @@ MonoBehaviour:
 --- !u!1 &8616472789821565332 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8371516842223275036, guid: ae4eaf4e9af147f4f95dec189756c1a7,
-    type: 3}
-  m_PrefabInstance: {fileID: 269730470609626504}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &8616472789821565333 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8371516842223275037, guid: ae4eaf4e9af147f4f95dec189756c1a7,
     type: 3}
   m_PrefabInstance: {fileID: 269730470609626504}
   m_PrefabAsset: {fileID: 0}

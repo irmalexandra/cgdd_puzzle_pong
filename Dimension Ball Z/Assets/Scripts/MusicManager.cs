@@ -14,7 +14,7 @@ public class MusicManager : MonoBehaviour
         {
             if(_instance == null)
             {
-                _instance = GameObject.FindObjectOfType<MusicManager>();
+                _instance = FindObjectOfType<MusicManager>();
                 DontDestroyOnLoad(_instance.gameObject);
             }
  
