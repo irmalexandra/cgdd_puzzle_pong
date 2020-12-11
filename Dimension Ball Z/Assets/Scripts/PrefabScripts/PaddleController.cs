@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -14,6 +15,7 @@ public class PaddleController : MonoBehaviour
     private float _verticalMovement;
     private Vector2 _moveDirection;
     public bool active = false;
+    private float _mouseDistance = 0.0f;
 
     public bool scoreSystemInPlay;
     public Light2D freeFormLight;
@@ -28,15 +30,15 @@ public class PaddleController : MonoBehaviour
         _originalIntensity = freeFormLight.intensity;
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         
 
         if (PlayerPrefs.GetInt("Input") == 1)
         {
             if (!active) return;
-            _mousePosition = Input.mousePosition;
-            _mousePosition = _camera.ScreenToWorldPoint(_mousePosition);
+            /*_mousePosition = Input.mousePosition;*/
+            /*_mousePosition = _camera.ScreenToWorldPoint(_mousePosition);*/
             
             
             var paddleLocation = transform.position;
@@ -44,9 +46,13 @@ public class PaddleController : MonoBehaviour
             if (transform.position.y <= upperBound && transform.position.y >= lowerBound)
             {
                 
-                transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);
+                _mouseDistance = Input.GetAxisRaw("Mouse Y") * speed * Time.unscaledTime;
+                
+                _mouseDistance = Mathf.Clamp(transform.position.y + _mouseDistance, -4.0f, 4.0f);
+                transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mouseDistance ), step);
+                /*transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);*/
             }
-            else
+            /*else
             {
                 if (transform.position.y >= upperBound && _mousePosition.y <= upperBound)
                 {
@@ -57,7 +63,7 @@ public class PaddleController : MonoBehaviour
                     transform.position =
                         Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, lowerBound), step);
                 }
-            }
+            }*/
         }
         else
         {

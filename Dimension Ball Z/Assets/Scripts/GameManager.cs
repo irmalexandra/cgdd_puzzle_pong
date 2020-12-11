@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         ProcessInputs();
     }
 
-    void ProcessInputs()
+    public void ProcessInputs()
     {
         if (!_levelStarted)
         {
@@ -54,12 +54,19 @@ public class GameManager : MonoBehaviour
             {
                 if (!IsPaused())
                 {
-                    Debug.Log(PauseCanvas);
+                    Cursor.lockState = CursorLockMode.None;
                     Pause();
                 }
                 else
                 {
+                    Debug.Log(Cursor.lockState);
+                    
+                    
                     Resume();
+                    
+                
+                    Debug.Log(Cursor.lockState);
+                    
                 }
                 
             }
@@ -76,13 +83,14 @@ public class GameManager : MonoBehaviour
     public void TriggerGameOverMenu()
     {
         GameOverCanvas.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void TriggerLevelCompleteMenu()
     {
         TimeManager.Instance.Pause();
-        TimeManager.Instance.Pause();
         LevelCompleteCanvas.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void RestartLevel()
@@ -142,6 +150,9 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.Instance.Resume();
         PauseCanvas.SetActive(false);
+        
+        
+        
     
     }
 
@@ -149,6 +160,8 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.Instance.Pause();
         PauseCanvas.SetActive(true);
+        
+        
     }
 
     public void StartLevel()
@@ -157,6 +170,7 @@ public class GameManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("LevelStartMenu").SetActive(false);
         _levelStarted = true;
         LevelTimer.StartTimer();
+        Cursor.lockState = CursorLockMode.Locked;
     }
     
 }

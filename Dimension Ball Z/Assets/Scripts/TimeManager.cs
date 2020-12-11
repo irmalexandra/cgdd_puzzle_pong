@@ -41,12 +41,14 @@ public class TimeManager : MonoBehaviour
         _paused = true;
         _previousTimeScale = Time.timeScale;
         Time.timeScale = 0;
+        
     }
 
     public void Resume()
     {
         _paused = false;
         Time.timeScale = _previousTimeScale;
+        
         
     }
 
