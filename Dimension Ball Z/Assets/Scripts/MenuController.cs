@@ -10,6 +10,9 @@ public class MenuController : MonoBehaviour
     [CanBeNull] public GameObject gameName;
     [CanBeNull] public GameObject inputMenu;
     [CanBeNull] public GameObject mainMenu;
+    [CanBeNull] public GameObject levelSelectDropdown;
+    [CanBeNull] public GameObject bonusLevelDropdown;
+    
     [CanBeNull] public TextMeshProUGUI levelInputField;
     private bool _backgroundStarted;
     
@@ -75,7 +78,39 @@ public class MenuController : MonoBehaviour
         {
             SceneManager.LoadScene(sceneIndex);
         }
+    }
 
+    private string LevelSelect(string dropDownName)
+    {
+        var selectedLevel = "";
+        switch (dropDownName)
+        {
+            case "LevelSelect":
+                selectedLevel = levelSelectDropdown.GetComponent<Dropdown>().value.ToString();
+                Debug.Log(selectedLevel); 
+                break;
+            case "BonusLevel":
+                selectedLevel = bonusLevelDropdown.GetComponent<TMP_Dropdown>()
+                    .options[bonusLevelDropdown.GetComponent<TMP_Dropdown>().value].text;
+                Debug.Log(selectedLevel);
+                break;
+        }
+
+        return selectedLevel;
+    }
+
+    public void PlaySelectedLevel(string dropDownName)
+    {
+        switch (dropDownName)
+        {
+            case "LevelSelect":
+                SceneManager.LoadScene(int.Parse(LevelSelect(dropDownName))+1);
+                break;
+            case "BonusLevel":
+                SceneManager.LoadScene(LevelSelect(dropDownName).Replace(" ", ""));
+                break;
+            
+        }
     }
 }
 
