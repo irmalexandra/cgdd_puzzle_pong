@@ -53,7 +53,7 @@ public class Portal : MonoBehaviour
     private static IEnumerator ResetTrailRenderer(TrailRenderer tr) {
         var trailTime = tr.time;
         tr.time = 0;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(5f);
         tr.time = trailTime;
     }
     
