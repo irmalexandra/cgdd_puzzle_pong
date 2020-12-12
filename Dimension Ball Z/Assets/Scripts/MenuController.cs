@@ -13,15 +13,9 @@ public class MenuController : MonoBehaviour
     [CanBeNull] public TextMeshProUGUI levelInputField;
     private bool _backgroundStarted;
     
-    private void Update()
-    {
-        if (_backgroundStarted) return;
-        GameManager.Instance.StartLevel();
-        _backgroundStarted = true;
-    }
-
     private void Start()
     {
+        TimeManager.Instance.Resume();
         if (PlayerPrefs.HasKey("Input"))
         {
             if (gameName)
@@ -41,16 +35,6 @@ public class MenuController : MonoBehaviour
 
     }
 
-    public void PlayTutorial()
-    {
-        SceneManager.LoadScene("PaddleTutorial");
-    }
-    public void ShowTutorialI()
-    {
-        SceneManager.LoadScene("Tutorial");
-    }
-
-    // Start is called before the first frame update
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

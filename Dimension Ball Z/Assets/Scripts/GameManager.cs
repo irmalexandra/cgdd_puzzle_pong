@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
+        if (DisablePauseMenu) return;
         ProcessInputs();
     }
 
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
         TimeManager.Instance.Pause();
         GameOverCanvas.SetActive(true);
         LockMouse();
+        DisablePauseMenu = true;
     }
 
     public void TriggerLevelCompleteMenu()
@@ -89,6 +91,7 @@ public class GameManager : MonoBehaviour
         TimeManager.Instance.Pause();
         LevelCompleteCanvas.SetActive(true);
         LockMouse();
+        DisablePauseMenu = true;
     }
 
     public void RestartLevel()
@@ -148,7 +151,8 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.Instance.Resume();
         PauseCanvas.SetActive(false);
-
+        Debug.Log("Resume being called");
+        LockMouse();
     }
 
     public void Pause()
@@ -176,11 +180,12 @@ public class GameManager : MonoBehaviour
 
     public void StartLevel()
     {
-        TimeManager.Instance.Resume();
+        Resume();
+        
         GameObject.FindGameObjectWithTag("LevelStartMenu").SetActive(false);
         _levelStarted = true;
         LevelTimer.StartTimer();
-        LockMouse();
+        
     }
     
 }
