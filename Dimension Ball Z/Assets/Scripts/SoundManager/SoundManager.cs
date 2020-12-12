@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
     private static AudioSource _audioSource;
 
     private static float nextPaddleSound = 0f;
+    private static float nextPositiveFeedbackSound = 0f;
     void Start()
     {
         _portalSound = Resources.Load<AudioClip>("PortalSounds/PortalSound");
@@ -82,7 +83,11 @@ public class SoundManager : MonoBehaviour
                 _audioSource.PlayOneShot(_thrustReady);
                 break;
             case "PositiveFeedback":
-                _audioSource.PlayOneShot(_positiveFeedback);
+                if (Time.time >=nextPositiveFeedbackSound)
+                {
+                    _audioSource.PlayOneShot(_positiveFeedback);
+                    nextPositiveFeedbackSound = Time.time + 2f;
+                }
                 break;
         }
     }

@@ -14,7 +14,6 @@ public class InteractablesController : MonoBehaviour
 
     public GameObject[] multiButtons;
     private bool _activated;
-    
 
     private void Start()
     {
@@ -57,6 +56,8 @@ public class InteractablesController : MonoBehaviour
 
     private void Activate()
     {
+           
+        SoundManager.PlaySoundEffect("PositiveFeedback");
         if (CompareTag("Door"))
         {
             StartCoroutine(OpenDoor());
@@ -159,7 +160,6 @@ public class InteractablesController : MonoBehaviour
         Light2D light = GetComponentInChildren<Light2D>();
         Color originalColor = light.color;
         light.color = Color.green;
-        SoundManager.PlaySoundEffect("PositiveFeedback");
         yield return new WaitForSeconds(0.3f);
         light.color = originalColor;
     }
