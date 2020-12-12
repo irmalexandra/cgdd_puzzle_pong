@@ -70,16 +70,13 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
-        
     }
 
     public void TriggerMenuButtonSoundEffect()
     {
         SoundManager.PlayMenuButtonSoundEffect();
     }
-
-
+    
     public void TriggerGameOverMenu()
     {
         TimeManager.Instance.Pause();

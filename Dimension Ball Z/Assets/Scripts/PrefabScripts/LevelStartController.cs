@@ -9,7 +9,7 @@ public class LevelStartController : MonoBehaviour
     private int _levelNumber;
     void Start()
     {
-        _levelNumber = SceneManager.GetActiveScene().buildIndex;
+        _levelNumber = SceneManager.GetActiveScene().buildIndex - 1;
         levelNumberText.text = "Level " + _levelNumber;
     }
 }
