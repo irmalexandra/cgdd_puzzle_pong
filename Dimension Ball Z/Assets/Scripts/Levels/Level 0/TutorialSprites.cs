@@ -1,18 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TutorialSprites : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject mouseAndKeyboard;
+    public GameObject KeyboardOnly;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (PlayerPrefs.HasKey("Input"))
+        {
+            if (PlayerPrefs.GetInt("Input") == 1)
+            {
+                KeyboardOnly.SetActive(false);
+            }
+            else
+            {
+                mouseAndKeyboard.SetActive(false);
+            }
+        }
+        else
+        {
+            KeyboardOnly.SetActive(false);
+        }
     }
 }
