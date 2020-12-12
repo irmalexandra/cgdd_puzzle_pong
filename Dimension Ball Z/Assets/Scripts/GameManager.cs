@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int extraBalls;
     private bool _levelStarted;
-    private GameObject[] _paddles;
+    private List<PaddleController> _paddleControllers;
     public bool locked;
     public bool disableSlowmotion;
     public bool DisablePauseMenu;
@@ -25,8 +26,17 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Instance = this;
-        _dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
-        _paddles = GameObject.FindGameObjectsWithTag("Paddle");
+        Instance._dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
+        Instance._paddleControllers = new List<PaddleController>();
+        foreach (var dimension in _dimensions)
+        {
+            var paddleControllers = dimension.GetComponentsInChildren<PaddleController>();
+            foreach (var controller in paddleControllers)
+            {
+                Instance._paddleControllers.Add(controller);
+            }
+        }
+        
         Physics2D.IgnoreLayerCollision(8, 8, true);
         Physics2D.IgnoreLayerCollision(9, 10, true);
         Physics2D.IgnoreLayerCollision(9, 9, true);
@@ -143,9 +153,9 @@ public class GameManager : MonoBehaviour
 
     public void ChangeInput(bool mouse)
     {
-        foreach (GameObject paddle in _paddles)
+        foreach (PaddleController controller in Instance._paddleControllers)
         {
-            paddle.GetComponent<PaddleController>().UpdateInput(mouse);
+            controller.UpdateInput(mouse);
         }
         PlayerPrefs.SetInt("Input", mouse ? 1 : 0);
     }
