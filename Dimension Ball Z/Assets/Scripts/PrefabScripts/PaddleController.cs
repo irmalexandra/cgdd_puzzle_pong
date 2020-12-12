@@ -21,10 +21,15 @@ public class PaddleController : MonoBehaviour
     private float _originalIntensity;
     public bool flashing;
     private Camera _camera;
+    private bool _mouse;
 
     private void Start()
     {
         _camera = Camera.main;
+        if (PlayerPrefs.GetInt("Input") == 1)
+        {
+            _mouse = true;
+        }
 
         _originalIntensity = freeFormLight.intensity;
     }
@@ -33,7 +38,7 @@ public class PaddleController : MonoBehaviour
     {
         
 
-        if (PlayerPrefs.GetInt("Input") == 1)
+        if (_mouse)
         {
             if (!active) return;
             /*_mousePosition = Input.mousePosition;*/
@@ -84,10 +89,11 @@ public class PaddleController : MonoBehaviour
             
         }
         
-        
-        
-        
-        
+    }
+
+    public void UpdateInput(bool mouse)
+    {
+        _mouse = mouse;
     }
 
     void ProcessInputs()

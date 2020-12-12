@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int extraBalls;
     private bool _levelStarted;
+    private GameObject[] _paddles;
     public bool locked;
     public bool disableSlowmotion;
     public bool DisablePauseMenu;
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         _dimensions = GameObject.FindGameObjectsWithTag("DimensionZone");
-        
+        _paddles = GameObject.FindGameObjectsWithTag("Paddle");
         Physics2D.IgnoreLayerCollision(8, 8, true);
         Physics2D.IgnoreLayerCollision(9, 10, true);
         Physics2D.IgnoreLayerCollision(9, 9, true);
@@ -142,6 +143,10 @@ public class GameManager : MonoBehaviour
 
     public void ChangeInput(bool mouse)
     {
+        foreach (GameObject paddle in _paddles)
+        {
+            paddle.GetComponent<PaddleController>().UpdateInput(mouse);
+        }
         PlayerPrefs.SetInt("Input", mouse ? 1 : 0);
     }
 
@@ -204,5 +209,7 @@ public class GameManager : MonoBehaviour
         LevelTimer.StartTimer();
         
     }
+
+
     
 }
