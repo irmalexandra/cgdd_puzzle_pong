@@ -86,7 +86,7 @@ public class MenuController : MonoBehaviour
         switch (dropDownName)
         {
             case "LevelSelect":
-                selectedLevel = levelSelectDropdown.GetComponent<Dropdown>().value.ToString();
+                selectedLevel = levelSelectDropdown.GetComponent<TMP_Dropdown>().value.ToString();
                 Debug.Log(selectedLevel); 
                 break;
             case "BonusLevel":
@@ -104,6 +104,7 @@ public class MenuController : MonoBehaviour
         switch (dropDownName)
         {
             case "LevelSelect":
+                Debug.Log(LevelSelect(dropDownName));
                 SceneManager.LoadScene(int.Parse(LevelSelect(dropDownName))+1);
                 break;
             case "BonusLevel":
