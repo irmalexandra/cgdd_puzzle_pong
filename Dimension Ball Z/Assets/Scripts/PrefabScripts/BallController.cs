@@ -18,8 +18,6 @@ public class BallController : MonoBehaviour
     private float _thrustStaminaCost = 0.0115f;
 
     public TrailRenderer trail;
-    /*public float nudgePower;
-    public int nudgeStaminaCost;*/
 
     public float thrustPower = 0.0115f;
     public float thrustStaminaCost = 1f;
@@ -37,6 +35,8 @@ public class BallController : MonoBehaviour
     private float _vertical;
     private bool _flashGreen;
     private bool _flashing;
+
+    private bool _gameOver;
     
     void Start()
     {
@@ -47,24 +47,22 @@ public class BallController : MonoBehaviour
         _originalColor = paraLight.color;
         _pointLightIntensity = pointLight.intensity;
         _paraLightIntensity = paraLight.intensity;
-        
     }
 
     private void Update()
     {
         CooldownTrigger();
         ChangeLights();
-        
 
         if (!GameManager.Instance.IsPaused())
         {
             ProcessInputs();
         }
         BoundCheck();
-        if (GameManager.Instance.extraBalls == 0)
+        if (_gameOver)
         {
             GameManager.Instance.TriggerGameOverMenu();
-
+            _gameOver = false;
         }
     }
 
@@ -77,9 +75,13 @@ public class BallController : MonoBehaviour
         {
             GameManager.Instance.extraBalls--;
             BallCounter.loseLife(GameManager.Instance.extraBalls);
+        } else
+        {
+            _gameOver = true;
+            transform.position = startPosition;
+            return;
         }
-
-        if (GameManager.Instance.extraBalls == 0) return;
+        
         transform.position = startPosition;
         body.velocity = direction.normalized * speed;
     }
@@ -112,16 +114,6 @@ public class BallController : MonoBehaviour
 
     private void ProcessInputs()
     {
-        /*_horizontal = Input.GetAxisRaw("Horizontal");
-        _vertical = Input.GetAxisRaw("Vertical");*/
-        /*if (Input.GetButton("Jump"))
-        {
-            
-            if (StaminaBar.instance.UseStamina(nudgeStaminaCost))
-            {
-                Nudge();
-            }
-        }*/
         _horizontal = 0;
         _vertical = 0;
         if (Input.GetKey(KeyCode.A))
@@ -142,7 +134,7 @@ public class BallController : MonoBehaviour
         }
         if (_thrustOnCooldown)
         {
-            trail.time -= 0.005f;
+            if (trail.time > 0f) trail.time -= 0.005f;
             if (Input.GetKeyDown(KeyCode.A) 
                 || Input.GetKeyDown(KeyCode.S) 
                 || Input.GetKeyDown(KeyCode.W) 
@@ -155,18 +147,12 @@ public class BallController : MonoBehaviour
         {
             if (_vertical == 0 && _horizontal == 0)
             {
-                trail.time -= 0.005f;
+                if (trail.time > 0f) trail.time -= 0.005f;
                 return;
             }
-                
             if (!StaminaBar.instance.UseStamina(thrustStaminaCost)) return;
             trail.time = defaultTrailTime;
             Thrust2();
-
-            if (_vertical == 0 && _horizontal == 0)
-            {
-                trail.time -= 0.005f;
-            }
         }
     }
 
@@ -234,11 +220,8 @@ public class BallController : MonoBehaviour
             StartCoroutine(ColorStatusUpdate());
             _flashGreen = false;
         }
-        
-        
     }
-
-
+    
     private IEnumerator ColorStatusUpdate()
     {
         ChangeLightsColor(Color.green);
@@ -266,39 +249,3 @@ public class BallController : MonoBehaviour
         flash.intensity = 0f;
     }
 }
-
-/*private  void Nudge()
-{
-
-    var nudgeDirection = body.velocity;
-    
-    var above = transform.position.y <= Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-    var right = transform.position.x <= Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-    
-    var goingHorizontal = Mathf.Abs(body.velocity.x) > Mathf.Abs(body.velocity.y);
-
-    if (goingHorizontal)
-    {
-        if (above)
-        {
-            nudgeDirection.y += (nudgePower);
-        }
-        else
-        {
-            nudgeDirection.y -= nudgePower;
-        }
-    }
-    else
-    {
-        if (right)
-        {
-            nudgeDirection.x += nudgePower;
-        }
-        else
-        {
-            nudgeDirection.x -= nudgePower;
-        }
-    }
-    body.velocity = nudgeDirection;
-}
-}*/

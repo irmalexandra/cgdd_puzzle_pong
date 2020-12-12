@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,40 +7,37 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject gameName;
-    public GameObject inputMenu;
-    public GameObject mainMenu;
-    public TextMeshProUGUI levelInputField;
+    [CanBeNull] public GameObject gameName;
+    [CanBeNull] public GameObject inputMenu;
+    [CanBeNull] public GameObject mainMenu;
+    [CanBeNull] public GameObject levelSelectDropdown;
+    [CanBeNull] public GameObject bonusLevelDropdown;
+    
+    [CanBeNull] public TextMeshProUGUI levelInputField;
     private bool _backgroundStarted;
     
-    private void Update()
-    {
-        if (_backgroundStarted) return;
-        GameManager.Instance.StartLevel();
-        _backgroundStarted = true;
-    }
-
     private void Start()
     {
+        TimeManager.Instance.Resume();
         if (PlayerPrefs.HasKey("Input"))
         {
-            gameName.gameObject.SetActive(true);
-            mainMenu.gameObject.SetActive(true);
-            inputMenu.gameObject.SetActive(false);
+            if (gameName)
+            {
+                gameName.gameObject.SetActive(true);
+            }
+
+            if (mainMenu)
+            {
+                mainMenu.gameObject.SetActive(true);
+            }
+            if (inputMenu)
+            {
+                inputMenu.gameObject.SetActive(false);
+            }
         }
 
     }
 
-    public void PlayTutorial()
-    {
-        SceneManager.LoadScene("PaddleTutorial");
-    }
-    public void ShowTutorialI()
-    {
-        SceneManager.LoadScene("Tutorial");
-    }
-
-    // Start is called before the first frame update
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -80,7 +78,40 @@ public class MenuController : MonoBehaviour
         {
             SceneManager.LoadScene(sceneIndex);
         }
+    }
 
+    private string LevelSelect(string dropDownName)
+    {
+        var selectedLevel = "";
+        switch (dropDownName)
+        {
+            case "LevelSelect":
+                selectedLevel = levelSelectDropdown.GetComponent<TMP_Dropdown>().value.ToString();
+                Debug.Log(selectedLevel); 
+                break;
+            case "BonusLevel":
+                selectedLevel = bonusLevelDropdown.GetComponent<TMP_Dropdown>()
+                    .options[bonusLevelDropdown.GetComponent<TMP_Dropdown>().value].text;
+                Debug.Log(selectedLevel);
+                break;
+        }
+
+        return selectedLevel;
+    }
+
+    public void PlaySelectedLevel(string dropDownName)
+    {
+        switch (dropDownName)
+        {
+            case "LevelSelect":
+                Debug.Log(LevelSelect(dropDownName));
+                SceneManager.LoadScene(int.Parse(LevelSelect(dropDownName))+1);
+                break;
+            case "BonusLevel":
+                SceneManager.LoadScene(LevelSelect(dropDownName).Replace(" ", ""));
+                break;
+            
+        }
     }
 }
 

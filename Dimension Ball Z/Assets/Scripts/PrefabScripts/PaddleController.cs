@@ -49,7 +49,7 @@ public class PaddleController : MonoBehaviour
                 _mouseDistance = Input.GetAxisRaw("Mouse Y") * speed * Time.deltaTime ;
                 step *= Mathf.Abs(_mouseDistance) * 20;
                 
-                _mouseDistance = Mathf.Clamp(transform.position.y + _mouseDistance, -4.0f, 4.0f);
+                _mouseDistance = Mathf.Clamp(transform.position.y + _mouseDistance, lowerBound, upperBound);
                 transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mouseDistance ), step);
                 /*transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);*/
             }
