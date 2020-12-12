@@ -8,7 +8,6 @@ public class BallController : MonoBehaviour
     public Rigidbody2D body;
     public Vector2 direction;
     public float speed;
-    public float currentMagnitude;
     public Vector2 levelBounds;
     public Vector2 startPosition;
     public float defaultTrailTime = 0.2f;
@@ -70,7 +69,6 @@ public class BallController : MonoBehaviour
 
     private void BoundCheck()
     {
-        currentMagnitude = body.velocity.magnitude;
         if (!(transform.position.x < -levelBounds.x) && !(transform.position.x > levelBounds.x) &&
             !(transform.position.y < -levelBounds.y) && !(transform.position.y > levelBounds.y)) return;
         
