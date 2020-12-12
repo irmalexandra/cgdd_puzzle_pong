@@ -151,7 +151,6 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.Instance.Resume();
         PauseCanvas.SetActive(false);
-        Debug.Log("Resume being called");
         LockMouse();
     }
 
