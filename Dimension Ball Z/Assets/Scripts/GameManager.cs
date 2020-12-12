@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool locked;
     public bool disableSlowmotion;
     public bool DisablePauseMenu;
+    public bool StartInBeginning;
 
     private bool _shouldBeLocked;
 
@@ -41,7 +42,12 @@ public class GameManager : MonoBehaviour
         {
             DisableSlowMo(false);
         }
-        Time.timeScale = 0;
+
+        if (!StartInBeginning)
+        {
+            Time.timeScale = 0;
+
+        }
     }
     
     private void Update()

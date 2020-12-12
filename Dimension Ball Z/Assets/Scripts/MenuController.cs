@@ -21,7 +21,7 @@ public class MenuController : MonoBehaviour
         if(!PlayerPrefs.HasKey("Slowmotion"))
             PlayerPrefs.SetInt("Slowmotion", 1);
         
-        TimeManager.Instance.Resume();
+        //TimeManager.Instance.Resume();
         if (PlayerPrefs.HasKey("Input"))
         {
             if (gameName)
