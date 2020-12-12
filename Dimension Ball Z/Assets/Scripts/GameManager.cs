@@ -15,11 +15,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int extraBalls;
     private bool _levelStarted;
-    private bool _paused;
-    public  bool locked;
+    public bool locked;
     public bool disableSlowmotion;
     public bool DisablePauseMenu;
 
+    private bool _shouldBeLocked;
 
 
     void Start()
@@ -65,17 +65,8 @@ public class GameManager : MonoBehaviour
             {
                 if (Input.GetButtonDown("Cancel"))
                 {
-                    if (!IsPaused())
-                    {
-                        Pause();
-                        LockMouse();
-                    }
-                    else
-                    {
-                        Resume();
-                        LockMouse();
-                    }
-                
+                    if (!IsPaused()) Pause();
+                    else Resume();
                 }
             }
         }
@@ -166,8 +157,7 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.Instance.Pause();
         PauseCanvas.SetActive(true);
-        
-        
+        LockMouse();
     }
 
     public void LockMouse()
@@ -175,14 +165,15 @@ public class GameManager : MonoBehaviour
         if (locked)
         {
             Cursor.lockState = CursorLockMode.None;
-                locked = !locked;
+            Cursor.visible = true;
+            locked = !locked;
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             locked = !locked;
         }
-
     }
 
     public void DisableSlowMo(bool on)
