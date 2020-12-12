@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SlowMotionTrigger : MonoBehaviour
+public abstract class SlowMotionTrigger : MonoBehaviour
 {
 
     public bool disableSlowmotion;
@@ -11,5 +11,10 @@ public class SlowMotionTrigger : MonoBehaviour
         if (GameManager.Instance.IsPaused()) {return;}
         if (!other.gameObject.CompareTag("Ball")) return;
         TimeManager.Instance.DoSlowmotion();
+    }
+
+    public static void DisableSlowmotion()
+    {
+        throw new System.NotImplementedException();
     }
 }

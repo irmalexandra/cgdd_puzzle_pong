@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private bool _levelStarted;
     private bool _paused;
     public  bool locked;
+    public bool slowMo;
     public bool DisablePauseMenu;
 
 
@@ -174,6 +175,11 @@ public class GameManager : MonoBehaviour
             locked = !locked;
         }
 
+    }
+
+    public void DisableSlowMo()
+    {
+        SlowMotionTrigger.DisableSlowmotion();
     }
 
     public void StartLevel()
