@@ -52,6 +52,11 @@ public class PaddleController : MonoBehaviour
                 _mouseDistance = Mathf.Clamp(transform.position.y + _mouseDistance, lowerBound, upperBound);
                 transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mouseDistance ), step);
                 /*transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);*/
+                
+                /*Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 direction = (mousePosition - transform.position).normalized;
+                body.velocity = new Vector2(0, direction.y * movementSpeed * movementSpeed*movementSpeed);*/
+                
             }
             /*else
             {

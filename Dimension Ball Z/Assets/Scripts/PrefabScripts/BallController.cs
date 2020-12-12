@@ -86,7 +86,6 @@ public class BallController : MonoBehaviour
             
             return;
         }
-        Debug.Log(trail.time);
         
         transform.position = startPosition;
         body.velocity = direction.normalized * speed;
