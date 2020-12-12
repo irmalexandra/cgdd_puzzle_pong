@@ -18,6 +18,9 @@ public class MenuController : MonoBehaviour
     
     private void Start()
     {
+        if(!PlayerPrefs.HasKey("Slowmotion"))
+            PlayerPrefs.SetInt("Slowmotion", 1);
+        
         TimeManager.Instance.Resume();
         if (PlayerPrefs.HasKey("Input"))
         {

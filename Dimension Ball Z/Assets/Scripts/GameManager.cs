@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     private bool _levelStarted;
     private bool _paused;
     public  bool locked;
-    public bool slowMo;
+    public bool disableSlowmotion;
     public bool DisablePauseMenu;
 
 
@@ -33,7 +33,14 @@ public class GameManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(11, 11, true);
         Physics2D.IgnoreLayerCollision(11, 9, true);
         Physics2D.IgnoreLayerCollision(13, 14, true);
-        
+        if (PlayerPrefs.GetInt("Slowmotion") == 1)
+        {
+            DisableSlowMo(true);
+        }
+        else
+        {
+            DisableSlowMo(false);
+        }
         Time.timeScale = 0;
     }
     
@@ -178,9 +185,19 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void DisableSlowMo()
+    public void DisableSlowMo(bool on)
     {
-        SlowMotionTrigger.DisableSlowmotion();
+        disableSlowmotion = on;
+        SlowMotionTrigger.DisableSlowmotion(on);
+        if(on)
+        {
+            PlayerPrefs.SetInt("Slowmotion", 1);
+            
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Slowmotion", 0);
+        }
     }
 
     public void StartLevel()

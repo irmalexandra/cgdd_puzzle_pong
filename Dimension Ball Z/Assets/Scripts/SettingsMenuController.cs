@@ -9,6 +9,7 @@ public class SettingsMenuController : MonoBehaviour
     // Start is called before the first frame update
     public GameObject keyboardAndMouse;
     public GameObject keyboardOnly;
+    public GameObject SlowMotionToggle;
     private void Start()
     {
         if (PlayerPrefs.HasKey("Input"))
@@ -23,6 +24,9 @@ public class SettingsMenuController : MonoBehaviour
                 keyboardAndMouse.GetComponent<Button>().interactable = true;
                 keyboardOnly.GetComponent<Button>().interactable = false;
             }
+            
         }
+
+        SlowMotionToggle.GetComponent<Toggle>().isOn = PlayerPrefs.GetInt("Slowmotion") == 1;
     }
 }

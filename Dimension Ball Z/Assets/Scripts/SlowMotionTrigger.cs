@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-public abstract class SlowMotionTrigger : MonoBehaviour
+public class SlowMotionTrigger : MonoBehaviour
 {
-
-    public bool disableSlowmotion;
+    public static bool disableSlowmotion;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,8 +12,8 @@ public abstract class SlowMotionTrigger : MonoBehaviour
         TimeManager.Instance.DoSlowmotion();
     }
 
-    public static void DisableSlowmotion()
+    public static void DisableSlowmotion(bool on)
     {
-        throw new System.NotImplementedException();
+        disableSlowmotion = !on;
     }
 }
