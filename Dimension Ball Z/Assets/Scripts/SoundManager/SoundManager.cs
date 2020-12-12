@@ -86,7 +86,7 @@ public class SoundManager : MonoBehaviour
                 if (Time.time >=nextPositiveFeedbackSound)
                 {
                     _audioSource.PlayOneShot(_positiveFeedback);
-                    nextPositiveFeedbackSound = Time.time + 2f;
+                    nextPositiveFeedbackSound = Time.time + 1f;
                 }
                 break;
         }
