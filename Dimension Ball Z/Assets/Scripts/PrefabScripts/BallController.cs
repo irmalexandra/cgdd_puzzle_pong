@@ -134,7 +134,7 @@ public class BallController : MonoBehaviour
         }
         if (_thrustOnCooldown)
         {
-            trail.time -= 0.005f;
+            if (trail.time > 0f) trail.time -= 0.005f;
             if (Input.GetKeyDown(KeyCode.A) 
                 || Input.GetKeyDown(KeyCode.S) 
                 || Input.GetKeyDown(KeyCode.W) 
@@ -147,18 +147,12 @@ public class BallController : MonoBehaviour
         {
             if (_vertical == 0 && _horizontal == 0)
             {
-                trail.time -= 0.005f;
+                if (trail.time > 0f) trail.time -= 0.005f;
                 return;
             }
-                
             if (!StaminaBar.instance.UseStamina(thrustStaminaCost)) return;
             trail.time = defaultTrailTime;
             Thrust2();
-
-            if (_vertical == 0 && _horizontal == 0)
-            {
-                trail.time -= 0.005f;
-            }
         }
     }
 

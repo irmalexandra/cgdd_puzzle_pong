@@ -40,6 +40,7 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusic()
     {
+        Debug.Log("Play music called");
         if (_musicSource.isPlaying) return;
         _musicSource.Play();
     }
