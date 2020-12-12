@@ -35,7 +35,7 @@ public class Portal : MonoBehaviour
         {
             if (other.GetComponent<TrailRenderer>().time > 0)
             {
-                StartCoroutine(ResetTrailRenderer(other.GetComponent<TrailRenderer>()));
+                StartCoroutine(other.GetComponent<BallController>().ResetTrailRenderer());
             }
         }
         if (portals[0] == GetComponent<Rigidbody2D>())
@@ -48,11 +48,4 @@ public class Portal : MonoBehaviour
         }
         PlayerPrefs.SetFloat("timer", timer);
     }
-    private static IEnumerator ResetTrailRenderer(TrailRenderer tr) {
-        var trailTime = tr.time;
-        tr.time = 0;
-        yield return new WaitForSeconds(1f);
-        tr.time = trailTime;
-    }
-    
 }

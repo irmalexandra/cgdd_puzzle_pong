@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
     public float currentMagnitude;
     public Vector2 levelBounds;
     public Vector2 startPosition;
-    private float defaultTrailTime = 0.2f;
+    public float defaultTrailTime = 0.2f;
 
     private bool _thrustOnCooldown;
     private bool _thrustSoundCd;
@@ -37,7 +37,9 @@ public class BallController : MonoBehaviour
     private bool _flashing;
 
     private bool _gameOver;
-    
+
+    public bool trailDisabled;
+
     void Start()
     {
         trail = GetComponent<TrailRenderer>();
@@ -56,7 +58,7 @@ public class BallController : MonoBehaviour
 
         if (!GameManager.Instance.IsPaused())
         {
-            ProcessInputs();
+            if (!trailDisabled) ProcessInputs();
         }
         BoundCheck();
         if (_gameOver)
@@ -71,6 +73,8 @@ public class BallController : MonoBehaviour
         currentMagnitude = body.velocity.magnitude;
         if (!(transform.position.x < -levelBounds.x) && !(transform.position.x > levelBounds.x) &&
             !(transform.position.y < -levelBounds.y) && !(transform.position.y > levelBounds.y)) return;
+        
+        StartCoroutine(ResetTrailRenderer());
         if (GameManager.Instance.extraBalls > 0)
         {
             GameManager.Instance.extraBalls--;
@@ -79,8 +83,10 @@ public class BallController : MonoBehaviour
         {
             _gameOver = true;
             transform.position = startPosition;
+            
             return;
         }
+        Debug.Log(trail.time);
         
         transform.position = startPosition;
         body.velocity = direction.normalized * speed;
@@ -106,7 +112,6 @@ public class BallController : MonoBehaviour
                 reDirection += new Vector2(otherBoost.x, otherBoost.y);
             }
         }
-
         reDirection = reDirection.normalized;
         reDirection *= speed;
         GetComponent<Rigidbody2D>().velocity = reDirection;
@@ -151,7 +156,7 @@ public class BallController : MonoBehaviour
                 return;
             }
             if (!StaminaBar.instance.UseStamina(thrustStaminaCost)) return;
-            trail.time = defaultTrailTime;
+            if (!trailDisabled) trail.time = defaultTrailTime;
             Thrust2();
         }
     }
@@ -177,7 +182,6 @@ public class BallController : MonoBehaviour
         var newDirection = Vector2.LerpUnclamped(body.velocity.normalized, fromMouseToBall.normalized, _thrustStaminaCost);
 
         body.velocity = newDirection * speed;
-
     }
 
     private void CooldownTrigger()
@@ -247,5 +251,13 @@ public class BallController : MonoBehaviour
         paraLight.intensity = _paraLightIntensity;
         pointLight.intensity = _pointLightIntensity;
         flash.intensity = 0f;
+    }
+    
+    public IEnumerator ResetTrailRenderer()
+    {
+        trailDisabled = true;
+        trail.time = 0;
+        yield return new WaitForSeconds(0.05f);
+        trailDisabled = false;
     }
 }
