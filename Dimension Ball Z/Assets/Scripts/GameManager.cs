@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject PauseCanvas;
     public GameObject LevelStartCanvas;
     public GameObject LevelCompleteCanvas;
+    public GameObject settingsMenu;
+    public GameObject pauseMenu;
     public static GameManager Instance;
     public int extraBalls;
     private bool _levelStarted;
@@ -165,6 +168,7 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.Instance.Resume();
         PauseCanvas.SetActive(false);
+        
         LockMouse();
     }
 
@@ -172,6 +176,8 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.Instance.Pause();
         PauseCanvas.SetActive(true);
+        pauseMenu.SetActive(true);
+        settingsMenu.SetActive(false);
         LockMouse();
     }
 

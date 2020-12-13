@@ -307,6 +307,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 476152171493564962}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7597337432205587723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8067226510576310057, guid: 2fea8573f84abc14995d5766f83005ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 476152171493564962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &158010974252213614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 336362340646455116, guid: 2fea8573f84abc14995d5766f83005ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 476152171493564962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6949347020634327487 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7415928488843258781, guid: 2fea8573f84abc14995d5766f83005ba,
@@ -579,6 +591,16 @@ PrefabInstance:
       propertyPath: LevelStartCanvas
       value: 
       objectReference: {fileID: 7562684023510521496}
+    - target: {fileID: 7800865811797575573, guid: 5701a868c8d5c9a439c8efaae6e98272,
+        type: 3}
+      propertyPath: settingsMenu
+      value: 
+      objectReference: {fileID: 158010974252213614}
+    - target: {fileID: 7800865811797575573, guid: 5701a868c8d5c9a439c8efaae6e98272,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 7597337432205587723}
     - target: {fileID: 7800865811797575594, guid: 5701a868c8d5c9a439c8efaae6e98272,
         type: 3}
       propertyPath: m_Name
