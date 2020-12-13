@@ -26,7 +26,7 @@ public class PhysicsObject : MonoBehaviour
         startPosition = transform.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         BoundCheck();
     }
@@ -44,14 +44,14 @@ public class PhysicsObject : MonoBehaviour
     {
         if (toAvoid.Contains(other.gameObject))
         {
-            if (_timer > 0)
+            if (_timer > 0 && !TimeManager.Instance.GetPaused())
             {
-                _timer -= Time.deltaTime;
+                _timer -= Time.fixedDeltaTime;
                 Color currentColor = _spriteRenderer.color;
                 _spriteRenderer.color = new Color(currentColor.r,
                     currentColor.g,
                     currentColor.b,
-                    currentColor.a- (Time.deltaTime/divisor));
+                    currentColor.a- (Time.fixedDeltaTime/divisor));
             }
             else
             {
