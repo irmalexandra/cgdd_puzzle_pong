@@ -52,11 +52,7 @@ public class GameManager : MonoBehaviour
             DisableSlowMo(false);
         }
 
-        if (!StartInBeginning)
-        {
-            Time.timeScale = 0;
-
-        }
+        Time.timeScale = !StartInBeginning ? 0 : 1;
     }
     
     private void Update()
