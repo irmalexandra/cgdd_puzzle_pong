@@ -47,20 +47,36 @@ public class PaddleController : MonoBehaviour
             
             var paddleLocation = transform.position;
             var step = speed * Time.deltaTime;
+            
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
             if (transform.position.y <= upperBound && transform.position.y >= lowerBound)
             {
                 
-                _mouseDistance = Input.GetAxisRaw("Mouse Y") * speed * Time.deltaTime ;
+                /*_mouseDistance = Input.GetAxisRaw("Mouse Y") * speed * Time.deltaTime ;
                 step *= Mathf.Abs(_mouseDistance) * 20;
                 
                 _mouseDistance = Mathf.Clamp(transform.position.y + _mouseDistance, lowerBound, upperBound);
-                transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mouseDistance ), step);
+                transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mouseDistance ), step);*/
                 /*transform.position = Vector2.MoveTowards(paddleLocation, new Vector2(paddleLocation.x, _mousePosition.y), step);*/
-                
-                /*Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                Cursor.visible = false;
                 Vector2 direction = (mousePosition - transform.position).normalized;
-                body.velocity = new Vector2(0, direction.y * movementSpeed * movementSpeed*movementSpeed);*/
+                body.velocity = new Vector2(0, direction.y * movementSpeed * movementSpeed * movementSpeed);
                 
+            }
+            else
+            {
+                if (mousePosition.y < upperBound && mousePosition.y > lowerBound)
+                {
+                    Vector2 direction = (mousePosition - transform.position).normalized;
+                    body.velocity = new Vector2(0, direction.y * movementSpeed * movementSpeed*movementSpeed);
+                }
+                else
+                {
+                    body.velocity = new Vector2(0,0);
+
+                }
             }
             /*else
             {
