@@ -10,15 +10,14 @@ public class BallController : MonoBehaviour
     public float speed;
     public Vector2 levelBounds;
     public Vector2 startPosition;
-    public float defaultTrailTime = 0.2f;
+    public float defaultTrailTime;
 
     private bool _thrustOnCooldown;
     private bool _thrustSoundCd;
     private float _thrustStaminaCost = 0.0115f;
-
     public TrailRenderer trail;
 
-    public float thrustPower = 0.0115f;
+    public float thrustPower;
     public float thrustStaminaCost = 1f;
 
     public Light2D pointLight;
@@ -50,7 +49,7 @@ public class BallController : MonoBehaviour
         _paraLightIntensity = paraLight.intensity;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CooldownTrigger();
         ChangeLights();
@@ -165,7 +164,7 @@ public class BallController : MonoBehaviour
         
         Vector2 target = new Vector2(position.x+_horizontal, position.y+_vertical);
         
-        var newDirection = Vector2.LerpUnclamped(bodyVelocity.normalized, (target-position).normalized, _thrustStaminaCost);
+        var newDirection = Vector2.LerpUnclamped(bodyVelocity.normalized, (target-position).normalized, thrustPower);
 
         body.velocity = newDirection*speed;
     }

@@ -212,15 +212,16 @@ MonoBehaviour:
   body: {fileID: 5817526469158189059}
   direction: {x: 1, y: 0}
   speed: 6
-  currentMagnitude: 0
   levelBounds: {x: 9.6, y: 5}
   startPosition: {x: 0, y: 0}
+  defaultTrailTime: 0.2
   trail: {fileID: 5863673554370631444}
-  thrustPower: 0.0115
+  thrustPower: 0.035
   thrustStaminaCost: 1
   pointLight: {fileID: 8079811403610568490}
   paraLight: {fileID: 1039395829604475037}
   flash: {fileID: 851438352846761805}
+  trailDisabled: 0
 --- !u!96 &5863673554370631444
 TrailRenderer:
   serializedVersion: 2
