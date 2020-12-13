@@ -49,7 +49,7 @@ public class BallController : MonoBehaviour
         _paraLightIntensity = paraLight.intensity;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         CooldownTrigger();
         ChangeLights();
