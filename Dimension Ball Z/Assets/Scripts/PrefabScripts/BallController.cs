@@ -52,6 +52,11 @@ public class BallController : MonoBehaviour
 
     private void Update()
     {
+        var currentVelocity = body.velocity;
+        if (body.velocity.sqrMagnitude > speed * speed)
+        {
+            body.velocity = currentVelocity.normalized * speed;
+        }
         CooldownTrigger();
         ChangeLights();
 
@@ -90,7 +95,7 @@ public class BallController : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionExit2D(Collision2D other)
     {
         Vector2 reDirection = GetComponent<Rigidbody2D>().velocity;
 
@@ -111,7 +116,14 @@ public class BallController : MonoBehaviour
         }
         reDirection = reDirection.normalized;
         reDirection *= speed;
-        GetComponent<Rigidbody2D>().velocity = reDirection;
+        body.velocity = reDirection;
+        
+        
+        /*if (body.velocity.magnitude > speed)
+        {
+            body.AddForce((reDirection * -1f) * (body.velocity.magnitude - speed));
+        }*/
+
     }
 
     private void ProcessInputs()

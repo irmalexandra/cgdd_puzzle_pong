@@ -40,7 +40,12 @@ public class PaddleController : MonoBehaviour
 
         if (_mouse)
         {
-            if (!active) return;
+            if (!active)
+            {
+                body.velocity = Vector2.zero;
+                return;
+            }
+
             /*_mousePosition = Input.mousePosition;*/
             /*_mousePosition = _camera.ScreenToWorldPoint(_mousePosition);*/
             

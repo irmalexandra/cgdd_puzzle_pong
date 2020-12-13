@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(11, 11, true);
         Physics2D.IgnoreLayerCollision(11, 9, true);
         Physics2D.IgnoreLayerCollision(13, 14, true);
+        
         if (PlayerPrefs.GetInt("Slowmotion") == 1)
         {
             DisableSlowMo(true);
