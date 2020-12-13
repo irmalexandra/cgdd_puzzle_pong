@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (Input.GetButtonDown("Cancel"))
+                if (Input.GetKeyDown(KeyCode.P))
                 {
                     if (!IsPaused()) Pause();
                     else Resume();
@@ -184,13 +184,13 @@ public class GameManager : MonoBehaviour
         if (locked)
         {
             Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            // Cursor.visible = true;
             locked = !locked;
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            // Cursor.visible = false;
             locked = !locked;
         }
     }
