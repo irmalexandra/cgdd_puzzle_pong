@@ -26,7 +26,7 @@ public class ScoreTracking : MonoBehaviour
         _scoreObjectiveText.text = $"Increase each sides score to {_scoreLimit} to unlock the Win Portal";
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         
         _leftScoreText.text = _leftScore.ToString();
