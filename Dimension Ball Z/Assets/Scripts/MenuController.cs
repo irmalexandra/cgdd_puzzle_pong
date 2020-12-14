@@ -26,15 +26,15 @@ public class MenuController : MonoBehaviour
             {
                 gameName.gameObject.SetActive(true);
             }
-
-            if (mainMenu)
+            
+            /*if (mainMenu)
             {
                 mainMenu.gameObject.SetActive(true);
             }
             if (inputMenu)
             {
                 inputMenu.gameObject.SetActive(false);
-            }
+            }*/
         }
 
     }
